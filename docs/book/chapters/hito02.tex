@@ -1,0 +1,309 @@
+\chapter{Hito 2: Instalación y Configuración de PostgreSQL}
+
+\section{Objetivo}
+
+El objetivo de este hito es preparar el motor de base de datos que servirá como núcleo del Data Warehouse macrofinanciero.
+
+Al finalizar este hito el estudiante será capaz de:
+
+\begin{itemize}
+\item Instalar PostgreSQL.
+\item Crear una base de datos para el proyecto.
+\item Conectarse desde VS Code.
+\item Configurar variables de entorno.
+\item Conectarse desde Python.
+\item Ejecutar consultas SQL básicas.
+\end{itemize}
+
+\section{Resultado esperado}
+
+Al finalizar este hito deberá existir:
+
+\begin{itemize}
+\item Una instancia funcional de PostgreSQL.
+\item Una base de datos llamada \texttt{macrofinanzas}.
+\item Un usuario con permisos adecuados.
+\item Un archivo \texttt{.env} para gestionar credenciales.
+\item Un script Python capaz de conectarse a la base de datos.
+\end{itemize}
+
+\section{Paso 1: Verificar instalación de PostgreSQL}
+
+Abrir PowerShell y ejecutar:
+
+\begin{lstlisting}[language=bash]
+psql --version
+\end{lstlisting}
+
+Salida esperada:
+
+\begin{verbatim}
+psql (PostgreSQL) 17.x
+\end{verbatim}
+
+Si el comando no funciona:
+
+\begin{itemize}
+\item Verificar que PostgreSQL está instalado.
+\item Verificar que el directorio \texttt{bin} está en el PATH.
+\end{itemize}
+
+\section{Paso 2: Iniciar PostgreSQL}
+
+Verificar que el servicio está activo.
+
+En Windows:
+
+\begin{enumerate}
+\item Abrir Servicios.
+\item Buscar PostgreSQL.
+\item Verificar estado "Running".
+\end{enumerate}
+
+Alternativamente:
+
+\begin{lstlisting}[language=bash]
+net start postgresql-x64-17
+\end{lstlisting}
+
+\section{Paso 3: Conectarse al servidor}
+
+Abrir terminal:
+
+\begin{lstlisting}[language=bash]
+psql -U postgres
+\end{lstlisting}
+
+Introducir la contraseña configurada durante la instalación.
+
+Debería aparecer:
+
+\begin{verbatim}
+postgres=#
+\end{verbatim}
+
+\section{Paso 4: Crear la base de datos}
+
+Ejecutar:
+
+\begin{lstlisting}[language=SQL]
+CREATE DATABASE macrofinanzas;
+\end{lstlisting}
+
+Verificar:
+
+\begin{lstlisting}[language=SQL]
+\l
+\end{lstlisting}
+
+La nueva base deberá aparecer en la lista.
+
+Salir:
+
+\begin{lstlisting}[language=SQL]
+\q
+\end{lstlisting}
+
+\section{Paso 5: Conectarse a la nueva base}
+
+\begin{lstlisting}[language=bash]
+psql -U postgres -d macrofinanzas
+\end{lstlisting}
+
+Verificar:
+
+\begin{lstlisting}[language=SQL]
+SELECT current_database();
+\end{lstlisting}
+
+Resultado esperado:
+
+\begin{verbatim}
+macrofinanzas
+\end{verbatim}
+
+\section{Paso 6: Crear archivo .env}
+
+En la raíz del proyecto crear:
+
+\begin{verbatim}
+.env
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=macrofinanzas
+DB_USER=postgres
+DB_PASSWORD=tu_password
+\end{lstlisting}
+
+\textbf{Importante:}
+
+El archivo \texttt{.env} nunca debe enviarse a GitHub.
+
+\section{Paso 7: Actualizar .env.example}
+
+Crear una versión pública:
+
+\begin{verbatim}
+.env.example
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=macrofinanzas
+DB_USER=postgres
+DB_PASSWORD=your_password
+\end{lstlisting}
+
+Este archivo sí puede subirse al repositorio.
+
+\section{Paso 8: Crear módulo de conexión}
+
+Crear:
+
+\begin{verbatim}
+etl/db.py
+\end{verbatim}
+
+\begin{lstlisting}[language=Python]
+from sqlalchemy import create_engine
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+HOST = os.getenv("DB_HOST")
+PORT = os.getenv("DB_PORT")
+DB = os.getenv("DB_NAME")
+USER = os.getenv("DB_USER")
+PASSWORD = os.getenv("DB_PASSWORD")
+
+connection_string = (
+f"postgresql+psycopg2://"
+f"{USER}:{PASSWORD}@{HOST}:{PORT}/{DB}"
+)
+
+engine = create_engine(connection_string)
+
+print("Conexion creada correctamente.")
+\end{lstlisting}
+
+\section{Paso 9: Probar la conexión}
+
+Ejecutar:
+
+\begin{lstlisting}[language=bash]
+python etl/db.py
+\end{lstlisting}
+
+Salida esperada:
+
+\begin{verbatim}
+Conexión creada correctamente.
+\end{verbatim}
+
+\section{Paso 10: Realizar una consulta desde Python}
+
+Modificar temporalmente:
+
+\begin{lstlisting}[language=Python]
+from sqlalchemy import text
+
+with engine.connect() as conn:
+resultado = conn.execute(
+text("SELECT version();")
+)
+
+```
+for fila in resultado:
+    print(fila)
+```
+
+\end{lstlisting}
+
+Ejecutar nuevamente:
+
+\begin{lstlisting}[language=bash]
+python etl/db.py
+\end{lstlisting}
+
+Resultado esperado:
+
+\begin{verbatim}
+PostgreSQL 17.x ...
+\end{verbatim}
+
+\section{Paso 11: Instalar extensiones de VS Code}
+
+Instalar:
+
+\begin{itemize}
+\item PostgreSQL
+\item SQLTools
+\item SQLTools PostgreSQL Driver
+\end{itemize}
+
+Estas extensiones facilitarán la ejecución de consultas y exploración de objetos.
+
+\section{Paso 12: Crear primer script SQL}
+
+Crear:
+
+\begin{verbatim}
+sql/test_connection.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+SELECT current_database();
+
+SELECT current_user;
+
+SELECT version();
+\end{lstlisting}
+
+Ejecutarlo desde VS Code o psql.
+
+\section{Checklist de validación}
+
+Antes de continuar verificar:
+
+\begin{itemize}
+\item[$\Box$] PostgreSQL instalado.
+\item[$\Box$] Servicio iniciado.
+\item[$\Box$] Base de datos creada.
+\item[$\Box$] Archivo .env configurado.
+\item[$\Box$] Python conectado a PostgreSQL.
+\item[$\Box$] Consulta SQL ejecutada correctamente.
+\end{itemize}
+
+\section{Entregable}
+
+Al finalizar este hito el estudiante deberá disponer de:
+
+\begin{itemize}
+\item Base de datos \texttt{macrofinanzas}.
+\item Módulo de conexión Python.
+\item Variables de entorno configuradas.
+\item VS Code conectado a PostgreSQL.
+\item Primer script SQL ejecutado exitosamente.
+\end{itemize}
+
+\section{Próximo hito}
+
+En el Hito 3 construiremos la primera capa de datos:
+
+\begin{itemize}
+\item Diseño de las fuentes.
+\item Creación de datos simulados.
+\item Organización de carpetas \texttt{raw} y \texttt{processed}.
+\item Primera ingesta hacia PostgreSQL.
+\end{itemize}

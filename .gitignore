@@ -1,0 +1,14 @@
+.venv/
+.env
+
+**pycache**/
+
+*.pyc
+*.pyo
+
+.vscode/
+
+data/processed/
+
+.DS_Store
+Thumbs.db

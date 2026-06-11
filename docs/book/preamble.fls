@@ -1,0 +1,6 @@
+PWD c:/Users/t490/Documents/MacroPol/dwh_rd/dwh_macrofinanciero_rd/docs/book
+INPUT c:/texlive/2026/texmf.cnf
+INPUT c:/texlive/2026/texmf-dist/web2c/texmf.cnf
+INPUT c:/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT c:/Users/t490/Documents/MacroPol/dwh_rd/dwh_macrofinanciero_rd/docs/book/preamble.tex
+OUTPUT preamble.log

@@ -1,0 +1,400 @@
+\chapter{Hito 4: Diseño del Modelo Dimensional}
+
+\section{Objetivo}
+
+El objetivo de este hito es diseñar el modelo dimensional del Data Warehouse macrofinanciero.
+
+Al finalizar este hito el estudiante será capaz de:
+
+\begin{itemize}
+\item Identificar el grano de cada tabla de hechos.
+\item Diferenciar dimensiones y hechos.
+\item Diseñar un esquema estrella.
+\item Definir claves de negocio y claves subrogadas.
+\item Documentar el modelo antes de implementarlo en PostgreSQL.
+\end{itemize}
+
+\section{Resultado esperado}
+
+Al finalizar este hito tendremos definido el modelo lógico del Data Warehouse.
+
+El modelo estará compuesto por:
+
+\begin{itemize}
+\item \texttt{dim\_tiempo}
+\item \texttt{dim\_moneda}
+\item \texttt{dim\_entidad\_financiera}
+\item \texttt{fact\_tipo\_cambio}
+\item \texttt{fact\_balance\_mensual}
+\end{itemize}
+
+\section{Paso 1: Entender qué es un modelo dimensional}
+
+Un modelo dimensional organiza los datos para facilitar el análisis.
+
+Está compuesto por dos tipos principales de tablas:
+
+\begin{itemize}
+\item \textbf{Dimensiones}: describen el contexto del análisis.
+\item \textbf{Hechos}: contienen medidas numéricas que queremos analizar.
+\end{itemize}
+
+Ejemplo:
+
+\begin{itemize}
+\item La fecha es una dimensión.
+\item La entidad financiera es una dimensión.
+\item La moneda es una dimensión.
+\item La tasa de cambio es una medida.
+\item Los activos bancarios son una medida.
+\end{itemize}
+
+\section{Paso 2: Identificar los procesos de negocio}
+
+En este proyecto tendremos dos procesos de negocio principales:
+
+\begin{enumerate}
+\item Seguimiento del mercado cambiario.
+\item Seguimiento de balances bancarios mensuales.
+\end{enumerate}
+
+Cada proceso generará una tabla de hechos.
+
+\section{Paso 3: Definir el grano}
+
+El grano indica qué representa una fila de una tabla de hechos.
+
+Esta decisión es fundamental.
+
+\subsection{Grano de fact\_tipo\_cambio}
+
+\begin{quote}
+Una fila por fecha y moneda.
+\end{quote}
+
+Ejemplo:
+
+\begin{verbatim}
+2024-01-01 | USD
+2024-01-01 | EUR
+2024-01-02 | USD
+\end{verbatim}
+
+\subsection{Grano de fact\_balance\_mensual}
+
+\begin{quote}
+Una fila por mes y entidad financiera.
+\end{quote}
+
+Ejemplo:
+
+\begin{verbatim}
+2024-01-31 | B001
+2024-01-31 | B002
+2024-02-29 | B001
+\end{verbatim}
+
+\section{Paso 4: Definir dimensiones}
+
+\subsection{Dimensión tiempo}
+
+La dimensión tiempo será compartida por ambos hechos.
+
+Esto la convierte en una dimensión conformada.
+
+\begin{verbatim}
+dim\`_tiempo
+
+sk\_tiempo
+fecha
+anio
+mes
+anio\_mes
+nombre\_mes
+trimestre
+es\_fin\_de_mes
+\end{verbatim}
+
+\subsection{Dimensión moneda}
+
+Esta dimensión describe las monedas utilizadas en el mercado cambiario.
+
+\begin{verbatim}
+dim\_moneda
+
+sk\_moneda
+moneda\_cod
+moneda\_nombre
+\end{verbatim}
+
+\subsection{Dimensión entidad financiera}
+
+Esta dimensión describe las entidades financieras.
+
+\begin{verbatim}
+dim\_entidad\_financiera
+
+sk\_entidad
+entidad\_cod
+entidad\_nombre
+tipo\_entidad
+vigente\_desde
+vigente\_hasta
+es\_actual
+\end{verbatim}
+
+La dimensión entidad financiera se diseñará para soportar cambios históricos mediante SCD Tipo 2.
+
+\section{Paso 5: Definir tablas de hechos}
+
+\subsection{Hecho tipo de cambio}
+
+\begin{verbatim}
+fact\_tipo\_cambio
+
+sk\_tiempo
+sk\_moneda
+tasa_compra
+tasa_venta
+tasa_promedio
+spread
+\end{verbatim}
+
+Medidas:
+
+\begin{itemize}
+\item \texttt{tasa\_compra}
+\item \texttt{tasa\_venta}
+\item \texttt{tasa\_promedio}
+\item \texttt{spread}
+\end{itemize}
+
+\subsection{Hecho balance mensual}
+
+\begin{verbatim}
+fact\_balance\_mensual
+
+sk\_tiempo
+sk\_entidad
+activos\_totales
+cartera\_creditos
+depositos
+patrimonio
+resultado\_neto
+depositos\_me
+cartera\_me
+\end{verbatim}
+
+Medidas:
+
+\begin{itemize}
+\item \texttt{activos\_totales}
+\item \texttt{cartera\_creditos}
+\item \texttt{depositos}
+\item \texttt{patrimonio}
+\item \texttt{resultado\_neto}
+\item \texttt{depositos\_me}
+\item \texttt{cartera\_me}
+\end{itemize}
+
+\section{Paso 6: Definir claves}
+
+\subsection{Clave de negocio}
+
+La clave de negocio proviene de la fuente original.
+
+Ejemplos:
+
+\begin{itemize}
+\item \texttt{moneda\_cod}: USD, EUR.
+\item \texttt{entidad\_cod}: B001, B002.
+\item \texttt{fecha}\: 2024-01-31.
+\end{itemize}
+
+\subsection{Clave subrogada}
+
+La clave subrogada es creada por el Data Warehouse.
+
+Ejemplos:
+
+\begin{itemize}
+\item \texttt{sk\_tiempo}
+\item \texttt{sk\_moneda}
+\item \texttt{sk\_entidad}
+\end{itemize}
+
+Las tablas de hechos no deben depender directamente de las claves de negocio.
+
+Deben conectarse mediante claves subrogadas.
+
+\section{Paso 7: Diseñar el esquema estrella}
+
+El esquema estrella del proyecto será:
+
+\begin{verbatim}
+dim_tiempo
+|
+|
+dim_moneda ---- fact_tipo_cambio
+
+    dim_tiempo
+       |
+       |
+
+dim_entidad_financiera ---- fact_balance_mensual
+\end{verbatim}
+
+La dimensión \texttt{dim\_tiempo} conecta ambos hechos y permite análisis integrados.
+
+\section{Paso 8: Crear documento del modelo}
+
+Crear el archivo:
+
+\begin{verbatim}
+docs/modelo\_dimensional.md
+\end{verbatim}
+
+Contenido sugerido:
+
+\begin{verbatim}
+
+# Modelo Dimensional
+
+## Procesos de negocio
+
+1. Mercado cambiario
+2. Balances bancarios mensuales
+
+## Tablas de hechos
+
+### fact_tipo_cambio
+
+Grano:
+Una fila por fecha y moneda.
+
+Medidas:
+
+* tasa_compra
+* tasa_venta
+* tasa_promedio
+* spread
+
+### fact_balance_mensual
+
+Grano:
+Una fila por mes y entidad financiera.
+
+Medidas:
+
+* activos_totales
+* cartera_creditos
+* depositos
+* patrimonio
+* resultado_neto
+* depositos_me
+* cartera_me
+
+## Dimensiones
+
+* dim_tiempo
+* dim_moneda
+* dim_entidad_financiera
+  \end{verbatim}
+
+\section{Paso 9: Crear tabla de definición del modelo}
+
+Agregar al documento una tabla como la siguiente:
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Tabla & Tipo & Grano \\
+\midrule
+dim\_tiempo & Dimensión & Una fila por día \\
+dim\_moneda & Dimensión & Una fila por moneda \\
+dim\_entidad\_financiera & Dimensión & Una fila por versión de entidad \\
+fact\_tipo\_cambio & Hecho & Una fila por fecha y moneda \\
+fact\_balance\_mensual & Hecho & Una fila por mes y entidad \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Paso 10: Definir indicadores derivados}
+
+A partir de este modelo construiremos indicadores como:
+
+\begin{itemize}
+\item Tipo de cambio promedio.
+\item Spread cambiario.
+\item ROA.
+\item ROE.
+\item Dolarización de depósitos.
+\item Dolarización de cartera.
+\item Concentración bancaria.
+\end{itemize}
+
+Fórmulas principales:
+
+\begin{verbatim}
+tasa_promedio = (tasa_compra + tasa_venta) / 2
+
+spread = tasa_venta - tasa_compra
+
+ROA = resultado_neto / activos_totales
+
+ROE = resultado_neto / patrimonio
+
+dolarizacion_depositos = depositos_me / depositos
+
+dolarizacion_cartera = cartera_me / cartera_creditos
+\end{verbatim}
+
+\section{Paso 11: Validar el diseño}
+
+Antes de crear las tablas en PostgreSQL, responder:
+
+\begin{enumerate}
+\item ¿Cada tabla de hechos tiene un grano claro?
+\item ¿Cada medida pertenece al grano definido?
+\item ¿Las dimensiones describen correctamente los hechos?
+\item ¿La dimensión tiempo puede usarse en ambos hechos?
+\item ¿La entidad financiera requiere historia?
+\end{enumerate}
+
+\section{Checklist de validación}
+
+Antes de continuar verificar:
+
+\begin{itemize}
+\item[$\Box$] Procesos de negocio identificados.
+\item[$\Box$] Grano de cada hecho definido.
+\item[$\Box$] Dimensiones definidas.
+\item[$\Box$] Hechos definidos.
+\item[$\Box$] Claves de negocio identificadas.
+\item[$\Box$] Claves subrogadas definidas.
+\item[$\Box$] Documento \texttt{modelo\_dimensional.md} creado.
+\end{itemize}
+
+\section{Entregable}
+
+Al finalizar este hito el estudiante deberá disponer de:
+
+\begin{itemize}
+\item Diseño lógico del Data Warehouse.
+\item Documento del modelo dimensional.
+\item Definición de grano.
+\item Lista de dimensiones.
+\item Lista de hechos.
+\item Lista de indicadores derivados.
+\end{itemize}
+
+\section{Próximo hito}
+
+En el Hito 5 implementaremos la primera capa física del Data Warehouse:
+
+\begin{itemize}
+\item Creación de schemas.
+\item Creación de tablas staging.
+\item Preparación de la capa bronze.
+\item Primer script SQL del modelo.
+\end{itemize}

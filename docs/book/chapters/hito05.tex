@@ -1,0 +1,390 @@
+\chapter{Hito 5: Construcción de la Capa Staging (Bronze)}
+
+\section{Objetivo}
+
+El objetivo de este hito es construir la primera capa física del Data Warehouse.
+
+La capa staging será el punto de entrada de todos los datos al sistema.
+
+Al finalizar este hito el estudiante será capaz de:
+
+\begin{itemize}
+\item Crear schemas en PostgreSQL.
+\item Diseñar tablas de aterrizaje.
+\item Comprender la función de la capa Bronze.
+\item Implementar una estrategia de carga desacoplada de las transformaciones.
+\item Preparar el sistema para recibir datos desde Python.
+\end{itemize}
+
+\section{Resultado esperado}
+
+Al finalizar este hito deberá existir la siguiente estructura lógica:
+
+\begin{verbatim}
+PostgreSQL
+
++-- staging
+|
++-- core
+|
++-- mart
+\end{verbatim}
+
+Y dentro del schema staging:
+
+\begin{verbatim}
+staging.tipo_cambio_raw
+
+staging.balance_bancario_raw
+\end{verbatim}
+
+\section{¿Qué es la capa Staging?}
+
+La capa staging es el área donde aterrizan los datos provenientes de las fuentes externas.
+
+Su objetivo es almacenar los datos en su forma más cercana al origen.
+
+No se realizan:
+
+\begin{itemize}
+\item Cálculos.
+\item Transformaciones complejas.
+\item Generación de indicadores.
+\item Limpieza profunda.
+\end{itemize}
+
+La regla general es:
+
+\begin{quote}
+Cargar primero. Transformar después.
+\end{quote}
+
+\section{Arquitectura del Data Warehouse}
+
+La arquitectura que construiremos será:
+
+\begin{verbatim}
+Fuentes
+|
+V
+Staging (Bronze)
+|
+V
+Core (Silver)
+|
+V
+Mart (Gold)
+\end{verbatim}
+
+\section{Paso 1: Crear carpeta para scripts SQL}
+
+Verificar:
+
+\begin{verbatim}
+sql/
+\end{verbatim}
+
+Crear:
+
+\begin{verbatim}
+sql/01_create_schemas.sql
+\end{verbatim}
+
+\section{Paso 2: Crear los schemas}
+
+Agregar:
+
+\begin{lstlisting}[language=SQL]
+CREATE SCHEMA IF NOT EXISTS staging;
+
+CREATE SCHEMA IF NOT EXISTS core;
+
+CREATE SCHEMA IF NOT EXISTS mart;
+\end{lstlisting}
+
+Guardar.
+
+\section{Paso 3: Ejecutar el script}
+
+Desde psql:
+
+\begin{lstlisting}[language=SQL]
+\i sql/01_create_schemas.sql
+\end{lstlisting}
+
+Verificar:
+
+\begin{lstlisting}[language=SQL]
+SELECT schema_name
+FROM information_schema.schemata
+WHERE schema_name IN
+(
+'staging',
+'core',
+'mart'
+);
+\end{lstlisting}
+
+Resultado esperado:
+
+\begin{verbatim}
+staging
+core
+mart
+\end{verbatim}
+
+\section{Paso 4: Crear script de tablas staging}
+
+Crear:
+
+\begin{verbatim}
+sql/02\_staging\_ddl.sql
+\end{verbatim}
+
+\section{Paso 5: Diseñar tabla tipo\_cambio\accentedoperators                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             _raw}
+
+Agregar:
+
+\begin{lstlisting}[language=SQL]
+CREATE TABLE IF NOT EXISTS
+staging.tipo_cambio_raw
+(
+fecha TEXT,
+
+```
+moneda TEXT,
+
+tasa_compra TEXT,
+
+tasa_venta TEXT,
+
+archivo_origen TEXT,
+
+cargado_en TIMESTAMP
+    DEFAULT CURRENT_TIMESTAMP
+```
+
+);
+\end{lstlisting}
+
+\section{¿Por qué usamos TEXT?}
+
+Esta es una práctica común en Data Engineering.
+
+Ventajas:
+
+\begin{itemize}
+\item La carga nunca falla por formato.
+\item Se preserva el dato original.
+\item La validación ocurre posteriormente.
+\item Se facilita el diagnóstico de errores.
+\end{itemize}
+
+\section{Paso 6: Diseñar tabla balance_bancario_raw}
+
+Agregar:
+
+\begin{lstlisting}[language=SQL]
+CREATE TABLE IF NOT EXISTS
+staging.balance_bancario_raw
+(
+periodo TEXT,
+
+```
+entidad_cod TEXT,
+
+entidad_nombre TEXT,
+
+tipo_entidad TEXT,
+
+activos_totales TEXT,
+
+cartera_creditos TEXT,
+
+depositos TEXT,
+
+patrimonio TEXT,
+
+resultado_neto TEXT,
+
+depositos_me TEXT,
+
+cartera_me TEXT,
+
+archivo_origen TEXT,
+
+cargado_en TIMESTAMP
+    DEFAULT CURRENT_TIMESTAMP
+```
+
+);
+\end{lstlisting}
+
+\section{Paso 7: Ejecutar el DDL}
+
+Ejecutar:
+
+\begin{lstlisting}[language=SQL]
+\i sql/02_staging_ddl.sql
+\end{lstlisting}
+
+\section{Paso 8: Verificar tablas creadas}
+
+Consultar:
+
+\begin{lstlisting}[language=SQL]
+SELECT table_name
+FROM information_schema.tables
+WHERE table_schema='staging';
+\end{lstlisting}
+
+Resultado esperado:
+
+\begin{verbatim}
+tipo_cambio_raw
+
+balance_bancario_raw
+\end{verbatim}
+
+\section{Paso 9: Inspeccionar estructura}
+
+Consultar:
+
+\begin{lstlisting}[language=SQL]
+SELECT
+column_name,
+data_type
+FROM information_schema.columns
+WHERE table_schema='staging'
+AND table_name='tipo_cambio_raw';
+\end{lstlisting}
+
+Verificar que todas las columnas fueron creadas correctamente.
+
+\section{Paso 10: Crear script de prueba}
+
+Crear:
+
+\begin{verbatim}
+sql/test_staging.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+SELECT *
+FROM staging.tipo_cambio_raw;
+
+SELECT *
+FROM staging.balance_bancario_raw;
+\end{lstlisting}
+
+Actualmente ambas tablas deben estar vacías.
+
+\section{Paso 11: Documentar la capa staging}
+
+Crear:
+
+\begin{verbatim}
+docs/staging_design.md
+\end{verbatim}
+
+Documentar:
+
+\begin{itemize}
+\item Nombre de tabla.
+\item Fuente original.
+\item Frecuencia.
+\item Número esperado de columnas.
+\item Responsable de carga.
+\end{itemize}
+
+Ejemplo:
+
+\begin{verbatim}
+Tabla:
+staging.tipo_cambio_raw
+
+Fuente:
+Banco Central
+
+Frecuencia:
+Diaria
+
+Objetivo:
+Almacenar datos crudos del mercado cambiario.
+\end{verbatim}
+
+\section{Paso 12: Crear consulta de monitoreo}
+
+Crear:
+
+\begin{verbatim}
+sql/monitor_staging.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+SELECT
+COUNT(*) AS total_filas
+FROM staging.tipo_cambio_raw;
+
+SELECT
+COUNT(*) AS total_filas
+FROM staging.balance_bancario_raw;
+\end{lstlisting}
+
+Esta consulta se utilizará para monitorear futuras cargas.
+
+\section{Buenas prácticas}
+
+Durante este proyecto seguiremos las siguientes reglas:
+
+\begin{enumerate}
+\item Nunca modificar datos manualmente en staging.
+\item Mantener los datos lo más cercanos posible a la fuente.
+\item No realizar cálculos en staging.
+\item Todas las transformaciones ocurren en la capa core.
+\item Conservar metadatos de carga.
+\end{enumerate}
+
+\section{Checklist de validación}
+
+Antes de continuar verificar:
+
+\begin{itemize}
+\item[$\Box$] Schema staging creado.
+\item[$\Box$] Schema core creado.
+\item[$\Box$] Schema mart creado.
+\item[$\Box$] Tabla tipo_cambio_raw creada.
+\item[$\Box$] Tabla balance_bancario_raw creada.
+\item[$\Box$] Scripts SQL almacenados en la carpeta sql.
+\item[$\Box$] Consultas de validación ejecutadas.
+\end{itemize}
+
+\section{Entregable}
+
+Al finalizar este hito el estudiante deberá disponer de:
+
+\begin{itemize}
+\item Arquitectura física inicial del Data Warehouse.
+\item Schemas creados.
+\item Tablas staging creadas.
+\item Scripts SQL documentados.
+\item Capa Bronze lista para recibir datos.
+\end{itemize}
+
+\section{Próximo hito}
+
+En el Hito 6 construiremos el primer proceso ETL.
+
+Aprenderemos a:
+
+\begin{itemize}
+\item Leer archivos CSV desde Python.
+\item Conectarnos a PostgreSQL.
+\item Cargar información a staging.
+\item Automatizar la ingesta.
+\item Validar que los datos fueron cargados correctamente.
+\end{itemize}

@@ -1,0 +1,459 @@
+\chapter{Hito 6: Construcción del Primer Proceso ETL}
+
+\section{Objetivo}
+
+El objetivo de este hito es construir el primer flujo completo de carga de datos.
+
+Por primera vez conectaremos:
+
+\begin{verbatim}
+CSV
+|
+V
+Python
+|
+V
+PostgreSQL
+\end{verbatim}
+
+Al finalizar este hito el estudiante será capaz de:
+
+\begin{itemize}
+\item Leer archivos CSV mediante Python.
+\item Conectarse a PostgreSQL utilizando SQLAlchemy.
+\item Cargar información en la capa staging.
+\item Automatizar el proceso de carga.
+\item Validar que los datos fueron cargados correctamente.
+\end{itemize}
+
+\section{Resultado esperado}
+
+Al finalizar este hito los datos contenidos en:
+
+\begin{verbatim}
+data/raw/tipo_cambio.csv
+
+data/raw/balances.csv
+\end{verbatim}
+
+deberán encontrarse cargados en:
+
+\begin{verbatim}
+staging.tipo_cambio_raw
+
+staging.balance_bancario_raw
+\end{verbatim}
+
+\section{Arquitectura del proceso}
+
+El flujo que construiremos será:
+
+\begin{verbatim}
+CSV
+|
+V
+Pandas
+|
+V
+SQLAlchemy
+|
+V
+PostgreSQL
+\end{verbatim}
+
+\section{Paso 1: Verificar archivos fuente}
+
+Confirmar la existencia de:
+
+\begin{verbatim}
+data/raw/tipo_cambio.csv
+
+data/raw/balances.csv
+\end{verbatim}
+
+Verificar que pueden abrirse correctamente.
+
+\section{Paso 2: Crear módulo de conexión}
+
+Verificar el archivo:
+
+\begin{verbatim}
+etl/db.py
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=Python]
+from sqlalchemy import create_engine
+from dotenv import load_dotenv
+
+import os
+
+load_dotenv()
+
+HOST = os.getenv("DB_HOST")
+PORT = os.getenv("DB_PORT")
+DB = os.getenv("DB_NAME")
+USER = os.getenv("DB_USER")
+PASSWORD = os.getenv("DB_PASSWORD")
+
+connection_string = (
+f"postgresql+psycopg2://"
+f"{USER}:{PASSWORD}@{HOST}:{PORT}/{DB}"
+)
+
+engine = create_engine(
+connection_string
+)
+\end{lstlisting}
+
+\section{Paso 3: Crear script de carga}
+
+Crear:
+
+\begin{verbatim}
+etl/load_staging.py
+\end{verbatim}
+
+\section{Paso 4: Importar librerías}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+import pandas as pd
+
+from db import engine
+\end{lstlisting}
+
+\section{Paso 5: Leer tipo de cambio}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+fx = pd.read_csv(
+"data/raw/tipo_cambio.csv"
+)
+
+print(
+f"Filas tipo cambio: {len(fx)}"
+)
+\end{lstlisting}
+
+\section{Paso 6: Leer balances}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+balances = pd.read_csv(
+"data/raw/balances.csv"
+)
+
+print(
+f"Filas balances: {len(balances)}"
+)
+\end{lstlisting}
+
+\section{Paso 7: Agregar metadatos}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+fx["archivo_origen"] = (
+"tipo_cambio.csv"
+)
+
+balances["archivo_origen"] = (
+"balances.csv"
+)
+\end{lstlisting}
+
+Estos metadatos permiten rastrear el origen de cada carga.
+
+\section{Paso 8: Limpiar staging antes de cargar}
+
+Crear:
+
+\begin{verbatim}
+sql/truncate_staging.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+TRUNCATE TABLE
+staging.tipo_cambio_raw;
+
+TRUNCATE TABLE
+staging.balance_bancario_raw;
+\end{lstlisting}
+
+Esta estrategia garantiza idempotencia.
+
+\section{Paso 9: Ejecutar truncado desde Python}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+from sqlalchemy import text
+
+with engine.begin() as conn:
+
+```
+conn.execute(
+    text(
+        """
+        TRUNCATE TABLE
+        staging.tipo_cambio_raw;
+
+        TRUNCATE TABLE
+        staging.balance_bancario_raw;
+        """
+    )
+)
+```
+
+\end{lstlisting}
+
+\section{Paso 10: Cargar tipo de cambio}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+fx.to_sql(
+"tipo_cambio_raw",
+con=engine,
+schema="staging",
+if_exists="append",
+index=False
+)
+\end{lstlisting}
+
+\section{Paso 11: Cargar balances}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+balances.to_sql(
+"balance_bancario_raw",
+con=engine,
+schema="staging",
+if_exists="append",
+index=False
+)
+\end{lstlisting}
+
+\section{Paso 12: Confirmar carga}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+print(
+"Carga completada."
+)
+\end{lstlisting}
+
+\section{Versión completa del script}
+
+El archivo completo debe verse así:
+
+\begin{lstlisting}[language=Python]
+import pandas as pd
+
+from sqlalchemy import text
+
+from db import engine
+
+fx = pd.read_csv(
+"data/raw/tipo_cambio.csv"
+)
+
+balances = pd.read_csv(
+"data/raw/balances.csv"
+)
+
+fx["archivo_origen"] = (
+"tipo_cambio.csv"
+)
+
+balances["archivo_origen"] = (
+"balances.csv"
+)
+
+with engine.begin() as conn:
+
+```
+conn.execute(
+    text(
+        """
+        TRUNCATE TABLE
+        staging.tipo_cambio_raw;
+
+        TRUNCATE TABLE
+        staging.balance_bancario_raw;
+        """
+    )
+)
+```
+
+fx.to_sql(
+"tipo_cambio_raw",
+con=engine,
+schema="staging",
+if_exists="append",
+index=False
+)
+
+balances.to_sql(
+"balance_bancario_raw",
+con=engine,
+schema="staging",
+if_exists="append",
+index=False
+)
+
+print("Carga completada.")
+\end{lstlisting}
+
+\section{Paso 13: Ejecutar ETL}
+
+Desde terminal:
+
+\begin{lstlisting}[language=bash]
+python etl/load_staging.py
+\end{lstlisting}
+
+Salida esperada:
+
+\begin{verbatim}
+Carga completada.
+\end{verbatim}
+
+\section{Paso 14: Verificar en PostgreSQL}
+
+Consultar:
+
+\begin{lstlisting}[language=SQL]
+SELECT COUNT(*)
+FROM staging.tipo_cambio_raw;
+\end{lstlisting}
+
+Consultar:
+
+\begin{lstlisting}[language=SQL]
+SELECT COUNT(*)
+FROM staging.balance_bancario_raw;
+\end{lstlisting}
+
+Los conteos deben coincidir con los CSV.
+
+\section{Paso 15: Inspeccionar datos}
+
+Consultar:
+
+\begin{lstlisting}[language=SQL]
+SELECT *
+FROM staging.tipo_cambio_raw
+LIMIT 10;
+\end{lstlisting}
+
+Consultar:
+
+\begin{lstlisting}[language=SQL]
+SELECT *
+FROM staging.balance_bancario_raw
+LIMIT 10;
+\end{lstlisting}
+
+\section{Paso 16: Crear script de validación}
+
+Crear:
+
+\begin{verbatim}
+sql/check_load.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+SELECT
+COUNT(*) AS total_fx
+FROM staging.tipo_cambio_raw;
+
+SELECT
+COUNT(*) AS total_balances
+FROM staging.balance_bancario_raw;
+\end{lstlisting}
+
+\section{Paso 17: Crear orquestador}
+
+Crear:
+
+\begin{verbatim}
+etl/run_pipeline.py
+\end{verbatim}
+
+Contenido inicial:
+
+\begin{lstlisting}[language=Python]
+import subprocess
+
+subprocess.run(
+[
+"python",
+"etl/load_staging.py"
+]
+)
+\end{lstlisting}
+
+Este archivo será el punto de entrada de todo el pipeline.
+
+\section{Buenas prácticas}
+
+Durante este proyecto seguiremos las siguientes reglas:
+
+\begin{enumerate}
+\item El ETL debe ser reproducible.
+\item La carga debe ser idempotente.
+\item No modificar datos manualmente.
+\item Validar cada carga.
+\item Mantener trazabilidad mediante metadatos.
+\end{enumerate}
+
+\section{Checklist de validación}
+
+Antes de continuar verificar:
+
+\begin{itemize}
+\item[$\Box$] Python puede leer ambos CSV.
+\item[$\Box$] Python puede conectarse a PostgreSQL.
+\item[$\Box$] Staging se limpia correctamente.
+\item[$\Box$] Los datos son cargados.
+\item[$\Box$] Los conteos coinciden.
+\item[$\Box$] El script puede ejecutarse múltiples veces.
+\end{itemize}
+
+\section{Entregable}
+
+Al finalizar este hito el estudiante deberá disponer de:
+
+\begin{itemize}
+\item Script de carga funcional.
+\item Datos cargados en staging.
+\item Validaciones básicas.
+\item Pipeline reproducible.
+\item Primer flujo ETL completo.
+\end{itemize}
+
+\section{Próximo hito}
+
+En el Hito 7 construiremos la capa Core.
+
+Crearemos:
+
+\begin{itemize}
+\item Dimensión Tiempo.
+\item Dimensión Moneda.
+\item Dimensión Entidad Financiera.
+\item Claves subrogadas.
+\item Primera transformación desde staging hacia el modelo dimensional.
+\end{itemize}

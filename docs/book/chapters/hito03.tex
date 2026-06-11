@@ -1,0 +1,360 @@
+\chapter{Hito 3: Diseño de las Fuentes de Datos e Ingesta Inicial}
+
+\section{Objetivo}
+
+El objetivo de este hito es construir la primera capa del flujo de datos.
+
+Al finalizar este hito el estudiante será capaz de:
+
+\begin{itemize}
+\item Comprender las fuentes de información del proyecto.
+\item Diseñar datasets alineados con las necesidades de negocio.
+\item Organizar correctamente las carpetas de datos.
+\item Crear archivos CSV simulados.
+\item Leer datos desde Python.
+\item Realizar validaciones básicas antes de cargar a PostgreSQL.
+\end{itemize}
+
+\section{¿Por qué comenzamos con archivos CSV?}
+
+En proyectos reales los datos suelen provenir de:
+
+\begin{itemize}
+\item APIs.
+\item Bases de datos.
+\item Excel.
+\item CSV.
+\item Servicios web.
+\item Plataformas regulatorias.
+\end{itemize}
+
+Sin embargo, durante las primeras etapas del proyecto es recomendable trabajar con archivos CSV.
+
+Esto permite:
+
+\begin{itemize}
+\item Diseñar el modelo de datos.
+\item Construir el ETL.
+\item Validar la arquitectura.
+\item Evitar complejidad innecesaria.
+\end{itemize}
+
+Una vez validado el proceso, sustituiremos los CSV por fuentes reales.
+
+\section{Arquitectura de la ingesta}
+
+El flujo de trabajo será:
+
+\begin{verbatim}
+Fuente CSV
+|
+V
+data/raw
+|
+V
+Python
+|
+V
+Validación
+|
+V
+data/processed
+|
+V
+PostgreSQL
+\end{verbatim}
+
+\section{Fuentes utilizadas}
+
+El proyecto utilizará dos fuentes principales.
+
+\subsection{Fuente 1: Tipo de Cambio}
+
+Representa información similar a la publicada por el Banco Central.
+
+Grano:
+
+\begin{quote}
+Una observación por fecha y moneda.
+\end{quote}
+
+Variables:
+
+\begin{itemize}
+\item fecha
+\item moneda
+\item tasa\_compra
+\item tasa\_venta
+\end{itemize}
+
+Ejemplo:
+
+\begin{verbatim}
+fecha,moneda,tasa_compra,tasa_venta
+2024-01-01,USD,58.50,58.80
+2024-01-01,EUR,63.10,63.60
+\end{verbatim}
+
+\subsection{Fuente 2: Balances Bancarios}
+
+Representa información similar a la publicada por la Superintendencia de Bancos.
+
+Grano:
+
+\begin{quote}
+Una observación por mes y entidad.
+\end{quote}
+
+Variables:
+
+\begin{itemize}
+\item periodo
+\item entidad\_cod
+\item entidad\_nombre
+\item tipo\_entidad
+\item activos\_totales
+\item cartera\_creditos
+\item depositos
+\item patrimonio
+\item resultado\_neto
+\item depositos\_me
+\item cartera\_me
+\end{itemize}
+
+Ejemplo:
+
+\begin{verbatim}
+periodo,entidad_cod,activos_totales
+202401,B001,120000000
+\end{verbatim}
+
+\section{Paso 1: Crear estructura de almacenamiento}
+
+Verificar que existe:
+
+\begin{verbatim}
+data/
+
++-- raw/
++-- processed/
+\end{verbatim}
+
+\texttt{raw} contendrá los datos originales.
+
+\texttt{processed} contendrá los datos validados.
+
+\section{Paso 2: Crear archivo tipo\_cambio.csv}
+
+Crear:
+
+\begin{verbatim}
+data/raw/tipo_cambio.csv
+\end{verbatim}
+
+Contenido mínimo:
+
+\begin{verbatim}
+fecha,moneda,tasa_compra,tasa_venta
+2024-01-01,USD,58.50,58.80
+2024-01-02,USD,58.55,58.85
+2024-01-03,USD,58.60,58.90
+2024-01-01,EUR,63.10,63.60
+2024-01-02,EUR,63.20,63.70
+\end{verbatim}
+
+\section{Paso 3: Crear archivo balances.csv}
+
+Crear:
+
+\begin{verbatim}
+data/raw/balances.csv
+\end{verbatim}
+
+Contenido mínimo:
+
+\begin{verbatim}
+periodo,entidad_cod,entidad_nombre,
+tipo_entidad,activos_totales,
+cartera_creditos,depositos,
+patrimonio,resultado_neto,
+depositos_me,cartera_me
+
+202401,B001,Banco Alfa,
+Banco Multiple,120000000,
+85000000,95000000,
+15000000,1200000,
+25000000,18000000
+\end{verbatim}
+
+\section{Paso 4: Crear script de exploración}
+
+Crear:
+
+\begin{verbatim}
+etl/explore_sources.py
+\end{verbatim}
+
+\begin{lstlisting}[language=Python]
+import pandas as pd
+
+fx = pd.read_csv(
+"data/raw/tipo_cambio.csv"
+)
+
+balances = pd.read_csv(
+"data/raw/balances.csv"
+)
+
+print("\nTipo de Cambio")
+print(fx.head())
+
+print("\nBalances")
+print(balances.head())
+\end{lstlisting}
+
+\section{Paso 5: Ejecutar exploración}
+
+Ejecutar:
+
+\begin{lstlisting}[language=bash]
+python etl/explore_sources.py
+\end{lstlisting}
+
+Resultado esperado:
+
+\begin{itemize}
+\item Visualización de las primeras filas.
+\item Confirmación de lectura correcta.
+\end{itemize}
+
+\section{Paso 6: Verificar estructura}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+print(fx.info())
+
+print(balances.info())
+\end{lstlisting}
+
+Analizar:
+
+\begin{itemize}
+\item Número de filas.
+\item Número de columnas.
+\item Tipos de datos.
+\item Valores faltantes.
+\end{itemize}
+
+\section{Paso 7: Validaciones básicas}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+print(
+fx.isnull().sum()
+)
+
+print(
+balances.isnull().sum()
+)
+\end{lstlisting}
+
+Verificar:
+
+\begin{itemize}
+\item Valores nulos.
+\item Fechas inválidas.
+\item Tasas negativas.
+\end{itemize}
+
+\section{Paso 8: Crear capa processed}
+
+Convertir tipos de datos:
+
+\begin{lstlisting}[language=Python]
+fx["fecha"] = pd.to_datetime(
+fx["fecha"]
+)
+
+fx["tasa_compra"] = (
+fx["tasa_compra"]
+.astype(float)
+)
+
+fx["tasa_venta"] = (
+fx["tasa_venta"]
+.astype(float)
+)
+\end{lstlisting}
+
+\section{Paso 9: Guardar datos procesados}
+
+\begin{lstlisting}[language=Python]
+fx.to_csv(
+"data/processed/tipo_cambio.csv",
+index=False
+)
+
+balances.to_csv(
+"data/processed/balances.csv",
+index=False
+)
+\end{lstlisting}
+
+\section{Paso 10: Documentar las fuentes}
+
+Crear:
+
+\begin{verbatim}
+docs/data_dictionary.md
+\end{verbatim}
+
+Documentar:
+
+\begin{itemize}
+\item Nombre de variable.
+\item Descripción.
+\item Tipo de dato.
+\item Fuente.
+\item Frecuencia.
+\end{itemize}
+
+\section{Entregables}
+
+Al finalizar este hito deberá existir:
+
+\begin{itemize}
+\item Archivos CSV en raw.
+\item Archivos validados en processed.
+\item Script de exploración.
+\item Diccionario de datos.
+\item Validaciones básicas implementadas.
+\end{itemize}
+
+\section{Checklist de validación}
+
+\begin{itemize}
+\item[$\Box$] Existe carpeta raw.
+\item[$\Box$] Existe carpeta processed.
+\item[$\Box$] tipo\_cambio.csv creado.
+\item[$\Box$] balances.csv creado.
+\item[$\Box$] Python puede leer ambos archivos.
+\item[$\Box$] Validaciones ejecutadas.
+\item[$\Box$] Archivos procesados generados.
+\end{itemize}
+
+\section{Próximo hito}
+
+En el Hito 4 diseñaremos el modelo dimensional.
+
+Construiremos:
+
+\begin{itemize}
+\item Dimensión Tiempo.
+\item Dimensión Moneda.
+\item Dimensión Entidad Financiera.
+\item Hecho Tipo de Cambio.
+\item Hecho Balance Bancario.
+\item Primer esquema estrella.
+\end{itemize}

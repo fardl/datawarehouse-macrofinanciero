@@ -1,0 +1,304 @@
+\chapter{Hito 1: Creación del Proyecto}
+
+\section{Objetivo}
+
+El objetivo de este hito es construir la estructura inicial del proyecto y preparar el entorno de desarrollo que utilizaremos durante todo el manual.
+
+Al finalizar este hito el estudiante tendrá:
+
+\begin{itemize}
+\item Un repositorio Git inicializado.
+\item Una estructura de carpetas profesional.
+\item Un entorno virtual de Python.
+\item Dependencias básicas instaladas.
+\item El primer commit del proyecto.
+\end{itemize}
+
+\section{Resultado esperado}
+
+Al finalizar este hito, la estructura del proyecto deberá lucir de la siguiente forma:
+
+\begin{verbatim}
+dwh_macrofinanciero_rd/
+
++-- data/
+|   +-- raw/
+|   \-- processed/
+
++-- sql/
++-- etl/
++-- app/
++-- docs/
++-- tests/
+
++-- README.md
++-- requirements.txt
++-- .gitignore
+\end{verbatim}
+
+\section{Paso 1: Crear la carpeta del proyecto}
+
+Abrir PowerShell y navegar al directorio donde se almacenará el proyecto.
+
+Por ejemplo:
+
+\begin{lstlisting}[language=bash]
+cd C:\Users\t490\Documents\MacroPol
+\end{lstlisting}
+
+Crear la carpeta principal:
+
+\begin{lstlisting}[language=bash]
+mkdir dwh_macrofinanciero_rd
+cd dwh_macrofinanciero_rd
+\end{lstlisting}
+
+Verificar la ubicación actual:
+
+\begin{lstlisting}[language=bash]
+pwd
+\end{lstlisting}
+
+\section{Paso 2: Abrir el proyecto en VS Code}
+
+Desde la terminal:
+
+\begin{lstlisting}[language=bash]
+code .
+\end{lstlisting}
+
+VS Code deberá abrir la carpeta recién creada.
+
+\section{Paso 3: Inicializar Git}
+
+Abrir la terminal integrada de VS Code y ejecutar:
+
+\begin{lstlisting}[language=bash]
+git init
+\end{lstlisting}
+
+Salida esperada:
+
+\begin{verbatim}
+Initialized empty Git repository
+\end{verbatim}
+
+Verificar el estado:
+
+\begin{lstlisting}[language=bash]
+git status
+\end{lstlisting}
+
+\section{Paso 4: Crear la estructura de carpetas}
+
+Crear las carpetas principales:
+
+\begin{lstlisting}[language=bash]
+mkdir data
+mkdir sql
+mkdir etl
+mkdir app
+mkdir docs
+mkdir tests
+\end{lstlisting}
+
+Crear las subcarpetas para almacenamiento de datos:
+
+\begin{lstlisting}[language=bash]
+mkdir data\raw
+mkdir data\processed
+\end{lstlisting}
+
+\section{Paso 5: Crear los archivos iniciales}
+
+Crear los siguientes archivos:
+
+\begin{itemize}
+\item README.md
+\item requirements.txt
+\item .gitignore
+\item .env.example
+\end{itemize}
+
+La estructura del proyecto deberá verse así:
+
+\begin{verbatim}
+dwh_macrofinanciero_rd/
+|
++-- data/
++-- sql/
++-- etl/
++-- app/
++-- docs/
++-- tests/
+|
++-- README.md
++-- requirements.txt
++-- .gitignore
++-- .env.example
+\end{verbatim}
+
+\section{Paso 6: Configurar el archivo .gitignore}
+
+Crear el archivo:
+
+\begin{verbatim}
+.gitignore
+\end{verbatim}
+
+con el siguiente contenido:
+
+\begin{lstlisting}
+.venv/
+.env
+
+**pycache**/
+
+*.pyc
+*.pyo
+
+.vscode/
+
+data/processed/
+
+.DS_Store
+Thumbs.db
+\end{lstlisting}
+
+\section{Paso 7: Crear el README inicial}
+
+Archivo:
+
+\begin{verbatim}
+README.md
+\end{verbatim}
+
+Contenido sugerido:
+
+\begin{lstlisting}
+
+# Data Warehouse Macrofinanciero RD
+
+Proyecto practico para construir una plataforma
+de inteligencia macrofinanciera utilizando:
+
+* PostgreSQL
+* Python
+* Streamlit
+* GitHub
+
+Autor: Francisco Ramirez
+\end{lstlisting}
+
+\section{Paso 8: Crear el entorno virtual}
+
+Crear el entorno virtual:
+
+\begin{lstlisting}[language=bash]
+python -m venv .venv
+\end{lstlisting}
+
+Activarlo:
+
+Windows:
+
+\begin{lstlisting}[language=bash]
+.venv\Scripts\activate
+\end{lstlisting}
+
+Linux/Mac:
+
+\begin{lstlisting}[language=bash]
+source .venv/bin/activate
+\end{lstlisting}
+
+La terminal deberá mostrar:
+
+\begin{verbatim}
+(.venv)
+\end{verbatim}
+
+\section{Paso 9: Instalar dependencias mínimas}
+
+Instalar los paquetes necesarios:
+
+\begin{lstlisting}[language=bash]
+pip install pandas
+pip install sqlalchemy
+pip install psycopg2-binary
+pip install python-dotenv
+\end{lstlisting}
+
+Guardar las dependencias instaladas:
+
+\begin{lstlisting}[language=bash]
+pip freeze > requirements.txt
+\end{lstlisting}
+
+\section{Paso 10: Realizar el primer commit}
+
+Agregar todos los archivos al repositorio:
+
+\begin{lstlisting}[language=bash]
+git add .
+\end{lstlisting}
+
+Verificar:
+
+\begin{lstlisting}[language=bash]
+git status
+\end{lstlisting}
+
+Crear el primer commit:
+
+\begin{lstlisting}[language=bash]
+git commit -m "Initial project structure"
+\end{lstlisting}
+
+Consultar el historial:
+
+\begin{lstlisting}[language=bash]
+git log --oneline
+\end{lstlisting}
+
+Salida esperada:
+
+\begin{verbatim}
+3f2a9ab Initial project structure
+\end{verbatim}
+
+\section{Checklist de validación}
+
+Antes de continuar al siguiente hito, verificar:
+
+\begin{itemize}
+\item[$\square$] VS Code instalado y funcionando.
+\item[$\square$] Proyecto creado.
+\item[$\square$] Git inicializado.
+\item[$\square$] Estructura de carpetas creada.
+\item[$\square$] Entorno virtual activo.
+\item[$\square$] Dependencias instaladas.
+\item[$\square$] Primer commit realizado.
+\end{itemize}
+
+\section{Entregable}
+
+Al finalizar este hito el estudiante deberá disponer de:
+
+\begin{itemize}
+\item Un proyecto abierto en VS Code.
+\item Un repositorio Git funcional.
+\item Un entorno virtual configurado.
+\item Una estructura base lista para desarrollar el Data Warehouse.
+\end{itemize}
+
+\section{Próximo hito}
+
+En el Hito 2 construiremos la infraestructura de base de datos:
+
+\begin{itemize}
+\item Instalación de PostgreSQL.
+\item Creación de la base de datos.
+\item Configuración de variables de entorno.
+\item Primera conexión Python $\rightarrow$ PostgreSQL.
+\end{itemize}
