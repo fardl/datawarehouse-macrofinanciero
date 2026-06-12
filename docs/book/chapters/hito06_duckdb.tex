@@ -1,0 +1,537 @@
+\chapter{Hito 6: Construcción del Primer Proceso ETL con DuckDB}
+
+\section{Objetivo}
+
+El objetivo de este hito es construir el primer flujo completo de carga de datos utilizando DuckDB.
+
+Por primera vez conectaremos:
+
+\begin{verbatim}
+CSV
+|
+V
+Python
+|
+V
+DuckDB
+\end{verbatim}
+
+Al finalizar este hito el estudiante será capaz de:
+
+\begin{itemize}
+\item Leer archivos CSV mediante Pandas.
+\item Conectarse a DuckDB desde Python.
+\item Cargar información a la capa staging.
+\item Automatizar el proceso de carga.
+\item Validar que los datos fueron cargados correctamente.
+\end{itemize}
+
+\section{Resultado esperado}
+
+Al finalizar este hito los datos contenidos en:
+
+\begin{verbatim}
+data/raw/tipo_cambio.csv
+
+data/raw/balances.csv
+\end{verbatim}
+
+deberán encontrarse cargados en:
+
+\begin{verbatim}
+staging.tipo_cambio_raw
+
+staging.balance_bancario_raw
+\end{verbatim}
+
+dentro de DuckDB.
+
+\section{Arquitectura del proceso}
+
+El flujo construido será:
+
+\begin{verbatim}
+CSV
+|
+V
+Pandas
+|
+V
+DuckDB
+\end{verbatim}
+
+\section{Paso 1: Verificar archivos fuente}
+
+Confirmar la existencia de:
+
+\begin{verbatim}
+data/raw/tipo_cambio.csv
+
+data/raw/balances.csv
+\end{verbatim}
+
+\section{Paso 2: Verificar conexión}
+
+Verificar:
+
+\begin{verbatim}
+etl/db.py
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=Python]
+import duckdb
+
+DB_PATH = (
+"data/warehouse/"
+"macrofinanzas.duckdb"
+)
+
+def get_connection():
+
+```
+return duckdb.connect(
+    DB_PATH
+)
+```
+
+\end{lstlisting}
+
+\section{Paso 3: Crear script de carga}
+
+Crear:
+
+\begin{verbatim}
+etl/load_staging.py
+\end{verbatim}
+
+\section{Paso 4: Importar librerías}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+import pandas as pd
+
+from db import get_connection
+\end{lstlisting}
+
+\section{Paso 5: Leer tipo de cambio}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+fx = pd.read_csv(
+"data/raw/tipo_cambio.csv"
+)
+
+print(
+f"Filas FX: {len(fx)}"
+)
+\end{lstlisting}
+
+\section{Paso 6: Leer balances}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+balances = pd.read_csv(
+"data/raw/balances.csv"
+)
+
+print(
+f"Filas balances: {len(balances)}"
+)
+\end{lstlisting}
+
+\section{Paso 7: Agregar metadatos}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+fx["archivo_origen"] = (
+"tipo_cambio.csv"
+)
+
+balances["archivo_origen"] = (
+"balances.csv"
+)
+\end{lstlisting}
+
+Agregar timestamp:
+
+\begin{lstlisting}[language=Python]
+from datetime import datetime
+
+fx["cargado_en"] = (
+datetime.now()
+)
+
+balances["cargado_en"] = (
+datetime.now()
+)
+\end{lstlisting}
+
+\section{Paso 8: Conectarse a DuckDB}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+conn = get_connection()
+\end{lstlisting}
+
+\section{Paso 9: Limpiar staging}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+conn.execute(
+"""
+DELETE FROM
+staging.tipo_cambio_raw;
+"""
+)
+
+conn.execute(
+"""
+DELETE FROM
+staging.balance_bancario_raw;
+"""
+)
+\end{lstlisting}
+
+Esta estrategia garantiza que la carga sea reproducible.
+
+\section{Paso 10: Registrar DataFrames}
+
+DuckDB permite consultar directamente DataFrames.
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+conn.register(
+"fx_df",
+fx
+)
+
+conn.register(
+"balances_df",
+balances
+)
+\end{lstlisting}
+
+\section{Paso 11: Cargar tipo de cambio}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+conn.execute(
+"""
+INSERT INTO
+staging.tipo_cambio_raw
+
+SELECT *
+FROM fx_df;
+"""
+)
+\end{lstlisting}
+
+\section{Paso 12: Cargar balances}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+conn.execute(
+"""
+INSERT INTO
+staging.balance_bancario_raw
+
+SELECT *
+FROM balances_df;
+"""
+)
+\end{lstlisting}
+
+\section{Paso 13: Verificar conteos}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+result_fx = conn.execute(
+"""
+SELECT COUNT(*)
+FROM staging.tipo_cambio_raw
+"""
+).fetchone()[0]
+
+result_balances = conn.execute(
+"""
+SELECT COUNT(*)
+FROM staging.balance_bancario_raw
+"""
+).fetchone()[0]
+
+print(
+f"Filas staging FX: {result_fx}"
+)
+
+print(
+f"Filas staging balances: {result_balances}"
+)
+\end{lstlisting}
+
+\section{Paso 14: Cerrar conexión}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+conn.close()
+\end{lstlisting}
+
+\section{Versión completa del script}
+
+\begin{lstlisting}[language=Python]
+import pandas as pd
+
+from datetime import datetime
+
+from db import get_connection
+
+fx = pd.read_csv(
+"data/raw/tipo_cambio.csv"
+)
+
+balances = pd.read_csv(
+"data/raw/balances.csv"
+)
+
+fx["archivo_origen"] = (
+"tipo_cambio.csv"
+)
+
+balances["archivo_origen"] = (
+"balances.csv"
+)
+
+fx["cargado_en"] = (
+datetime.now()
+)
+
+balances["cargado_en"] = (
+datetime.now()
+)
+
+conn = get_connection()
+
+conn.execute(
+"""
+DELETE FROM
+staging.tipo_cambio_raw;
+"""
+)
+
+conn.execute(
+"""
+DELETE FROM
+staging.balance_bancario_raw;
+"""
+)
+
+conn.register(
+"fx_df",
+fx
+)
+
+conn.register(
+"balances_df",
+balances
+)
+
+conn.execute(
+"""
+INSERT INTO
+staging.tipo_cambio_raw
+
+SELECT *
+FROM fx_df;
+"""
+)
+
+conn.execute(
+"""
+INSERT INTO
+staging.balance_bancario_raw
+
+SELECT *
+FROM balances_df;
+"""
+)
+
+result_fx = conn.execute(
+"""
+SELECT COUNT(*)
+FROM staging.tipo_cambio_raw
+"""
+).fetchone()[0]
+
+result_balances = conn.execute(
+"""
+SELECT COUNT(*)
+FROM staging.balance_bancario_raw
+"""
+).fetchone()[0]
+
+print(
+f"Filas staging FX: {result_fx}"
+)
+
+print(
+f"Filas staging balances: {result_balances}"
+)
+
+conn.close()
+
+print("Carga completada.")
+\end{lstlisting}
+
+\section{Paso 15: Ejecutar ETL}
+
+Desde terminal:
+
+\begin{lstlisting}[language=bash]
+python etl/load_staging.py
+\end{lstlisting}
+
+Salida esperada:
+
+\begin{verbatim}
+Filas FX: 100
+Filas balances: 50
+
+Filas staging FX: 100
+Filas staging balances: 50
+
+Carga completada.
+\end{verbatim}
+
+\section{Paso 16: Crear consulta de monitoreo}
+
+Crear:
+
+\begin{verbatim}
+sql/monitor_staging.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+SELECT
+'tipo_cambio_raw' AS tabla,
+COUNT(*) AS total_filas
+FROM staging.tipo_cambio_raw
+
+UNION ALL
+
+SELECT
+'balance_bancario_raw' AS tabla,
+COUNT(*) AS total_filas
+FROM staging.balance_bancario_raw;
+\end{lstlisting}
+
+\section{Paso 17: Ejecutar consulta}
+
+Desde Python:
+
+\begin{lstlisting}[language=Python]
+result = conn.execute(
+open(
+"sql/monitor_staging.sql"
+).read()
+).fetchdf()
+
+print(result)
+\end{lstlisting}
+
+Resultado esperado:
+
+\begin{verbatim}
+tabla  total_filas
+0      tipo_cambio_raw          100
+1  balance_bancario_raw           50
+\end{verbatim}
+
+\section{Paso 18: Crear orquestador}
+
+Crear:
+
+\begin{verbatim}
+etl/run_pipeline.py
+\end{verbatim}
+
+Contenido inicial:
+
+\begin{lstlisting}[language=Python]
+import subprocess
+
+subprocess.run(
+[
+"python",
+"etl/load_staging.py"
+],
+check=True
+)
+
+print(
+"Pipeline ejecutado correctamente."
+)
+\end{lstlisting}
+
+\section{Buenas prácticas}
+
+Durante este hito seguiremos las siguientes reglas:
+
+\begin{enumerate}
+\item Todas las cargas deben ser reproducibles.
+\item No modificar tablas staging manualmente.
+\item Mantener metadatos de carga.
+\item Validar conteos después de cada carga.
+\item Cerrar conexiones al finalizar.
+\end{enumerate}
+
+\section{Checklist de validación}
+
+\begin{itemize}
+\item[$\Box$] CSV leídos correctamente.
+\item[$\Box$] Conexión DuckDB funcional.
+\item[$\Box$] Tablas staging limpiadas.
+\item[$\Box$] Datos cargados.
+\item[$\Box$] Conteos validados.
+\item[$\Box$] Script monitor_staging.sql ejecutado.
+\item[$\Box$] Pipeline reproducible.
+\end{itemize}
+
+\section{Entregable}
+
+Al finalizar este hito el estudiante deberá disponer de:
+
+\begin{itemize}
+\item Primer proceso ETL funcional.
+\item Datos cargados en staging.
+\item Consulta de monitoreo.
+\item Orquestador inicial.
+\item Flujo completo CSV → Python → DuckDB.
+\end{itemize}
+
+\section{Próximo hito}
+
+En el Hito 7 construiremos la capa Core.
+
+Crearemos:
+
+\begin{itemize}
+\item Dimensión Tiempo.
+\item Dimensión Moneda.
+\item Dimensión Entidad Financiera.
+\item Claves subrogadas.
+\item Primera transformación desde staging hacia el modelo dimensional.
+\end{itemize}

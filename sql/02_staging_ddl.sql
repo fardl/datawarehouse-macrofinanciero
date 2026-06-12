@@ -1,11 +1,13 @@
+DROP TABLE IF EXISTS staging.tipo_cambio_raw;
+
 CREATE TABLE IF NOT EXISTS 
 staging.tipo_cambio_raw 
 (
     fecha TEXT,
     moneda TEXT,
     tasa_compra TEXT,
-    archivo_origen TEXT,
-    
+    tasa_venta TEXT,
+    archivo_origen TEXT,    
     cargado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
 );

@@ -1,0 +1,553 @@
+\chapter{Hito 7: Construcción de la Capa Core y Dimensiones en DuckDB}
+
+\section{Objetivo}
+
+El objetivo de este hito es construir la capa \texttt{core} del Data Warehouse.
+
+En esta capa comenzaremos a transformar los datos crudos almacenados en \texttt{staging} en estructuras analíticas organizadas siguiendo principios de modelado dimensional.
+
+Al finalizar este hito el estudiante será capaz de:
+
+\begin{itemize}
+\item Crear dimensiones en DuckDB.
+\item Comprender el uso de claves subrogadas.
+\item Construir una dimensión tiempo.
+\item Construir una dimensión moneda.
+\item Construir una dimensión entidad financiera.
+\item Poblar dimensiones a partir de los datos de staging.
+\item Preparar la base para construir las tablas de hechos.
+\end{itemize}
+
+\section{Resultado esperado}
+
+Al finalizar este hito deberán existir:
+
+\begin{verbatim}
+core.dim_tiempo
+
+core.dim_moneda
+
+core.dim_entidad_financiera
+\end{verbatim}
+
+Estas dimensiones serán utilizadas posteriormente por las tablas de hechos.
+
+\section{Arquitectura del hito}
+
+El flujo de transformación será:
+
+\begin{verbatim}
+staging
+|
+V
+core.dim_tiempo
+
+core.dim_moneda
+
+core.dim_entidad_financiera
+\end{verbatim}
+
+\section{Paso 1: Crear script de dimensiones}
+
+Crear:
+
+\begin{verbatim}
+sql/03_dimensions_ddl.sql
+\end{verbatim}
+
+\section{Paso 2: Crear dimensión tiempo}
+
+Agregar:
+
+\begin{lstlisting}[language=SQL]
+CREATE TABLE IF NOT EXISTS core.dim_tiempo
+(
+sk_tiempo INTEGER PRIMARY KEY,
+
+```
+fecha DATE NOT NULL,
+
+anio INTEGER,
+
+mes INTEGER,
+
+trimestre INTEGER,
+
+anio_mes INTEGER,
+
+nombre_mes VARCHAR,
+
+es_fin_de_mes BOOLEAN
+```
+
+);
+\end{lstlisting}
+
+\section{Paso 3: Crear dimensión moneda}
+
+Agregar:
+
+\begin{lstlisting}[language=SQL]
+CREATE TABLE IF NOT EXISTS core.dim_moneda
+(
+sk_moneda INTEGER PRIMARY KEY,
+
+```
+moneda_cod VARCHAR,
+
+moneda_nombre VARCHAR
+```
+
+);
+\end{lstlisting}
+
+\section{Paso 4: Crear dimensión entidad financiera}
+
+Agregar:
+
+\begin{lstlisting}[language=SQL]
+CREATE TABLE IF NOT EXISTS
+core.dim_entidad_financiera
+(
+sk_entidad INTEGER PRIMARY KEY,
+
+```
+entidad_cod VARCHAR,
+
+entidad_nombre VARCHAR,
+
+tipo_entidad VARCHAR,
+
+vigente_desde DATE,
+
+vigente_hasta DATE,
+
+es_actual BOOLEAN
+```
+
+);
+\end{lstlisting}
+
+\section{Paso 5: Ejecutar DDL}
+
+Desde Python:
+
+\begin{lstlisting}[language=Python]
+from db import get_connection
+
+conn = get_connection()
+
+with open(
+"sql/03_dimensions_ddl.sql",
+"r",
+encoding="utf-8"
+) as file:
+
+```
+conn.execute(
+    file.read()
+)
+```
+
+conn.close()
+\end{lstlisting}
+
+\section{Paso 6: Crear script de carga}
+
+Crear:
+
+\begin{verbatim}
+sql/04_load_dimensions.sql
+\end{verbatim}
+
+\section{Paso 7: Limpiar dimensiones}
+
+Agregar:
+
+\begin{lstlisting}[language=SQL]
+DELETE FROM
+core.dim_entidad_financiera;
+
+DELETE FROM
+core.dim_moneda;
+
+DELETE FROM
+core.dim_tiempo;
+\end{lstlisting}
+
+\section{Paso 8: Poblar dimensión tiempo}
+
+Agregar:
+
+\begin{lstlisting}[language=SQL]
+INSERT INTO core.dim_tiempo
+
+SELECT
+
+```
+CAST(
+    strftime(
+        fecha,
+        '%Y%m%d'
+    ) AS INTEGER
+) AS sk_tiempo,
+
+fecha,
+
+year(fecha) AS anio,
+
+month(fecha) AS mes,
+
+quarter(fecha) AS trimestre,
+
+CAST(
+    strftime(
+        fecha,
+        '%Y%m'
+    ) AS INTEGER
+) AS anio_mes,
+
+monthname(fecha)
+    AS nombre_mes,
+
+fecha =
+last_day(fecha)
+    AS es_fin_de_mes
+```
+
+FROM generate_series(
+DATE '2022-01-01',
+DATE '2024-12-31',
+INTERVAL 1 DAY
+) t(fecha);
+\end{lstlisting}
+
+\section{Explicación}
+
+DuckDB posee una función muy útil:
+
+\begin{lstlisting}[language=SQL]
+generate_series()
+\end{lstlisting}
+
+que permite generar calendarios completos sin necesidad de archivos externos.
+
+\section{Paso 9: Poblar dimensión moneda}
+
+Agregar:
+
+\begin{lstlisting}[language=SQL]
+INSERT INTO core.dim_moneda
+
+SELECT
+
+```
+ROW_NUMBER()
+OVER(
+    ORDER BY moneda
+) AS sk_moneda,
+
+moneda AS moneda_cod,
+
+CASE
+
+    WHEN moneda='USD'
+    THEN 'Dolar estadounidense'
+
+    WHEN moneda='EUR'
+    THEN 'Euro'
+
+    ELSE moneda
+
+END AS moneda_nombre
+```
+
+FROM
+(
+SELECT DISTINCT
+moneda
+FROM staging.tipo_cambio_raw
+) x;
+\end{lstlisting}
+
+\section{Paso 10: Poblar dimensión entidad financiera}
+
+Agregar:
+
+\begin{lstlisting}[language=SQL]
+INSERT INTO
+core.dim_entidad_financiera
+
+SELECT
+
+```
+ROW_NUMBER()
+OVER(
+    ORDER BY entidad_cod
+) AS sk_entidad,
+
+entidad_cod,
+
+entidad_nombre,
+
+tipo_entidad,
+
+DATE '2022-01-01'
+    AS vigente_desde,
+
+DATE '9999-12-31'
+    AS vigente_hasta,
+
+TRUE
+    AS es_actual
+```
+
+FROM
+(
+SELECT DISTINCT
+
+```
+    entidad_cod,
+
+    entidad_nombre,
+
+    tipo_entidad
+
+FROM
+    staging.balance_bancario_raw
+```
+
+) x;
+\end{lstlisting}
+
+\section{Nota sobre SCD Tipo 2}
+
+En esta primera versión no implementaremos todavía una dimensión histórica completa.
+
+La lógica será:
+
+\begin{itemize}
+\item Una fila por entidad.
+\item Una sola versión vigente.
+\item Sin cambios históricos.
+\end{itemize}
+
+En una versión posterior agregaremos:
+
+\begin{itemize}
+\item Versionamiento.
+\item Fechas de vigencia.
+\item SCD Tipo 2 completo.
+\end{itemize}
+
+\section{Paso 11: Ejecutar carga}
+
+Crear:
+
+\begin{verbatim}
+etl/load_dimensions.py
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=Python]
+from db import get_connection
+
+conn = get_connection()
+
+with open(
+"sql/04_load_dimensions.sql",
+"r",
+encoding="utf-8"
+) as file:
+
+```
+sql = file.read()
+```
+
+conn.execute(sql)
+
+conn.close()
+
+print(
+"Dimensiones cargadas."
+)
+\end{lstlisting}
+
+\section{Paso 12: Verificar dimensión tiempo}
+
+Crear:
+
+\begin{verbatim}
+sql/check_dim_tiempo.sql
+\end{verbatim}
+
+\begin{lstlisting}[language=SQL]
+SELECT *
+FROM core.dim_tiempo
+LIMIT 10;
+\end{lstlisting}
+
+\section{Paso 13: Verificar dimensión moneda}
+
+\begin{lstlisting}[language=SQL]
+SELECT *
+FROM core.dim_moneda;
+\end{lstlisting}
+
+Resultado esperado:
+
+\begin{verbatim}
+USD
+EUR
+\end{verbatim}
+
+\section{Paso 14: Verificar dimensión entidad financiera}
+
+\begin{lstlisting}[language=SQL]
+SELECT *
+FROM core.dim_entidad_financiera;
+\end{lstlisting}
+
+\section{Paso 15: Crear consulta de monitoreo}
+
+Crear:
+
+\begin{verbatim}
+sql/check_dimensions.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+SELECT
+
+```
+'dim_tiempo' AS tabla,
+
+COUNT(*) AS total_filas
+```
+
+FROM core.dim_tiempo
+
+UNION ALL
+
+SELECT
+
+```
+'dim_moneda',
+
+COUNT(*)
+```
+
+FROM core.dim_moneda
+
+UNION ALL
+
+SELECT
+
+```
+'dim_entidad_financiera',
+
+COUNT(*)
+```
+
+FROM core.dim_entidad_financiera;
+\end{lstlisting}
+
+\section{Paso 16: Ejecutar monitoreo}
+
+Resultado esperado:
+
+\begin{verbatim}
+dim_tiempo
+
+dim_moneda
+
+dim_entidad_financiera
+\end{verbatim}
+
+con conteos positivos.
+
+\section{Paso 17: Integrar al pipeline}
+
+Actualizar:
+
+\begin{verbatim}
+etl/run_pipeline.py
+\end{verbatim}
+
+\begin{lstlisting}[language=Python]
+import subprocess
+
+subprocess.run(
+[
+"python",
+"etl/load_staging.py"
+],
+check=True
+)
+
+subprocess.run(
+[
+"python",
+"etl/load_dimensions.py"
+],
+check=True
+)
+
+print(
+"Pipeline ejecutado correctamente."
+)
+\end{lstlisting}
+
+\section{Buenas prácticas}
+
+Durante este hito seguiremos las siguientes reglas:
+
+\begin{enumerate}
+\item Las dimensiones siempre se construyen desde staging.
+\item Las claves subrogadas pertenecen al Data Warehouse.
+\item La dimensión tiempo debe ser reutilizable.
+\item La dimensión entidad debe ser preparada para soportar SCD.
+\item Las cargas deben ser reproducibles.
+\end{enumerate}
+
+\section{Checklist de validación}
+
+\begin{itemize}
+\item[$\Box$] Dimensión tiempo creada.
+\item[$\Box$] Dimensión moneda creada.
+\item[$\Box$] Dimensión entidad creada.
+\item[$\Box$] Dimensión tiempo poblada.
+\item[$\Box$] Dimensión moneda poblada.
+\item[$\Box$] Dimensión entidad poblada.
+\item[$\Box$] Script de monitoreo creado.
+\item[$\Box$] Pipeline actualizado.
+\end{itemize}
+
+\section{Entregable}
+
+Al finalizar este hito el estudiante deberá disponer de:
+
+\begin{itemize}
+\item Tres dimensiones pobladas.
+\item Scripts SQL documentados.
+\item Script de carga automatizado.
+\item Pipeline funcional.
+\item Capa Core parcialmente construida.
+\end{itemize}
+
+\section{Próximo hito}
+
+En el Hito 8 construiremos las tablas de hechos.
+
+Aprenderemos a:
+
+\begin{itemize}
+\item Resolver claves subrogadas.
+\item Crear fact_tipo_cambio.
+\item Crear fact_balance_mensual.
+\item Calcular medidas derivadas.
+\item Validar el grano de cada hecho.
+\end{itemize}
