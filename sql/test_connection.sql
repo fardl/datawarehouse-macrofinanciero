@@ -1,3 +1,3 @@
-SELECT current_database() ;
-SELECT current_user;
-SELECT version();
+SELECT
+'DuckDB' AS motor,
+current_database() AS base_actual;

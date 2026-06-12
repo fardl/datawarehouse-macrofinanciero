@@ -1,0 +1,440 @@
+\chapter{Hito 2: Configuración de DuckDB como Base de Datos Analítica Local}
+
+\section{Objetivo}
+
+El objetivo de este hito es preparar la base de datos analítica que servirá como núcleo del proyecto.
+
+A diferencia de PostgreSQL, DuckDB no requiere instalación como servicio ni privilegios de administrador. La base de datos se almacena como un archivo local dentro del proyecto, lo cual la convierte en una excelente opción para trabajar en laptops corporativas con restricciones de instalación.
+
+Al finalizar este hito el estudiante será capaz de:
+
+\begin{itemize}
+\item Instalar DuckDB desde Python.
+\item Crear una base de datos local en formato \texttt{.duckdb}.
+\item Conectarse a DuckDB desde Python.
+\item Ejecutar consultas SQL básicas.
+\item Crear un módulo reutilizable de conexión.
+\item Verificar que el proyecto puede operar sin PostgreSQL.
+\end{itemize}
+
+\section{Resultado esperado}
+
+Al finalizar este hito deberá existir una base de datos local:
+
+\begin{verbatim}
+data/warehouse/macrofinanzas.duckdb
+\end{verbatim}
+
+y un archivo de conexión:
+
+\begin{verbatim}
+etl/db.py
+\end{verbatim}
+
+capaz de abrir la base de datos desde Python.
+
+\section{¿Por qué DuckDB?}
+
+DuckDB es una base de datos analítica embebida.
+
+Esto significa que:
+
+\begin{itemize}
+\item No requiere servidor.
+\item No requiere instalación con privilegios de administrador.
+\item No necesita usuarios ni contraseñas.
+\item Puede vivir como un archivo dentro del proyecto.
+\item Se integra directamente con Python, Pandas y Streamlit.
+\item Es muy eficiente para consultas analíticas.
+\end{itemize}
+
+En este proyecto utilizaremos DuckDB como motor local para construir el Data Warehouse macrofinanciero.
+
+\section{Arquitectura del hito}
+
+La nueva arquitectura será:
+
+\begin{verbatim}
+CSV
+|
+V
+Python
+|
+V
+DuckDB
+|
+V
+Streamlit
+\end{verbatim}
+
+La base quedará almacenada como archivo:
+
+\begin{verbatim}
+macrofinanzas.duckdb
+\end{verbatim}
+
+\section{Paso 1: Actualizar la estructura del proyecto}
+
+Dentro del proyecto crear la carpeta:
+
+\begin{verbatim}
+data/warehouse
+\end{verbatim}
+
+En PowerShell:
+
+\begin{lstlisting}[language=bash]
+mkdir data\warehouse
+\end{lstlisting}
+
+La estructura deberá quedar así:
+
+\begin{verbatim}
+dwh_macrofinanciero_rd/
+
++-- data/
+|   +-- raw/
+|   +-- processed/
+|   -- warehouse/
+
++-- sql/
++-- etl/
++-- app/
++-- docs/
++-- tests/
+\end{verbatim}
+
+\section{Paso 2: Instalar DuckDB}
+
+Con el entorno virtual activo:
+
+\begin{lstlisting}[language=bash]
+pip install duckdb
+\end{lstlisting}
+
+También instalaremos paquetes que utilizaremos en el proyecto:
+
+\begin{lstlisting}[language=bash]
+pip install pandas
+pip install python-dotenv
+\end{lstlisting}
+
+Guardar dependencias:
+
+\begin{lstlisting}[language=bash]
+pip freeze > requirements.txt
+\end{lstlisting}
+
+\section{Paso 3: Verificar instalación}
+
+Ejecutar:
+
+\begin{lstlisting}[language=bash]
+python
+\end{lstlisting}
+
+Dentro de Python:
+
+\begin{lstlisting}[language=Python]
+import duckdb
+
+print(duckdb.**version**)
+\end{lstlisting}
+
+Salir:
+
+\begin{lstlisting}[language=Python]
+exit()
+\end{lstlisting}
+
+Si se imprime la versión, DuckDB está correctamente instalado.
+
+\section{Paso 4: Crear archivo de configuración}
+
+Aunque DuckDB no requiere usuario ni contraseña, utilizaremos un archivo \texttt{.env} para mantener centralizada la ruta de la base.
+
+Crear:
+
+\begin{verbatim}
+.env
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}
+DUCKDB_PATH=data/warehouse/macrofinanzas.duckdb
+\end{lstlisting}
+
+\textbf{Importante:} el archivo \texttt{.env} no debe subirse a GitHub.
+
+\section{Paso 5: Actualizar .env.example}
+
+Crear o actualizar:
+
+\begin{verbatim}
+.env.example
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}
+DUCKDB_PATH=data/warehouse/macrofinanzas.duckdb
+\end{lstlisting}
+
+Este archivo sí puede subirse al repositorio.
+
+\section{Paso 6: Crear módulo de conexión}
+
+Crear:
+
+\begin{verbatim}
+etl/db.py
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=Python]
+import os
+import duckdb
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+DB_PATH = os.getenv(
+"DUCKDB_PATH",
+"data/warehouse/macrofinanzas.duckdb"
+)
+
+def get_connection():
+conn = duckdb.connect(DB_PATH)
+return conn
+
+if **name** == "**main**":
+conn = get_connection()
+
+```
+result = conn.execute(
+    "SELECT 'DuckDB conectado correctamente' AS mensaje;"
+).fetchdf()
+
+print(result)
+
+conn.close()
+```
+
+\end{lstlisting}
+
+\section{Paso 7: Ejecutar prueba de conexión}
+
+Desde la terminal:
+
+\begin{lstlisting}[language=bash]
+python etl/db.py
+\end{lstlisting}
+
+Salida esperada:
+
+\begin{verbatim}
+mensaje
+0  DuckDB conectado correctamente
+\end{verbatim}
+
+Al ejecutar este script, DuckDB creará automáticamente el archivo:
+
+\begin{verbatim}
+data/warehouse/macrofinanzas.duckdb
+\end{verbatim}
+
+\section{Paso 8: Verificar archivo de base de datos}
+
+Confirmar que existe:
+
+\begin{verbatim}
+data/warehouse/macrofinanzas.duckdb
+\end{verbatim}
+
+En PowerShell:
+
+\begin{lstlisting}[language=bash]
+dir data\warehouse
+\end{lstlisting}
+
+Deberá aparecer el archivo \texttt{macrofinanzas.duckdb}.
+
+\section{Paso 9: Crear primer script SQL}
+
+Crear:
+
+\begin{verbatim}
+sql/test_connection.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+SELECT
+'DuckDB' AS motor,
+current_database() AS base_actual;
+\end{lstlisting}
+
+\section{Paso 10: Ejecutar SQL desde Python}
+
+Crear:
+
+\begin{verbatim}
+etl/run_sql_file.py
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=Python]
+from db import get_connection
+
+def run_sql_file(path):
+conn = get_connection()
+
+```
+with open(path, "r", encoding="utf-8") as file:
+    sql = file.read()
+
+result = conn.execute(sql).fetchdf()
+
+print(result)
+
+conn.close()
+```
+
+if **name** == "**main**":
+run_sql_file(
+"sql/test_connection.sql"
+)
+\end{lstlisting}
+
+Ejecutar:
+
+\begin{lstlisting}[language=bash]
+python etl/run_sql_file.py
+\end{lstlisting}
+
+Salida esperada:
+
+\begin{verbatim}
+motor             base_actual
+0  DuckDB  macrofinanzas
+\end{verbatim}
+
+\section{Paso 11: Instalar extensión recomendada en VS Code}
+
+Buscar e instalar en VS Code:
+
+\begin{itemize}
+\item DuckDB SQL Tools
+\item Python
+\end{itemize}
+
+Esto permitirá explorar archivos DuckDB y ejecutar consultas desde el editor.
+
+\section{Paso 12: Crear consulta de prueba}
+
+Crear:
+
+\begin{verbatim}
+sql/check_duckdb.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+SELECT
+1 AS prueba,
+'ok' AS estado;
+\end{lstlisting}
+
+Modificar temporalmente $etl/run_sql_file.py$ \\
+para ejecutar este archivo o reutilizar la función:
+
+\begin{lstlisting}[language=Python]
+run_sql_file(
+"sql/check_duckdb.sql"
+)
+\end{lstlisting}
+
+\section{Diferencias importantes frente a PostgreSQL}
+
+Al usar DuckDB, algunas cosas cambian:
+
+\begin{itemize}
+\item No necesitamos servidor.
+\item No necesitamos usuarios.
+\item No usamos contraseñas.
+\item No dependemos del puerto \texttt{5432}.
+\item La base vive en un archivo.
+\item El proyecto es más portable.
+\end{itemize}
+
+Sin embargo, mantendremos la lógica conceptual del Data Warehouse:
+
+\begin{verbatim}
+staging -> core -> mart
+\end{verbatim}
+
+DuckDB soporta schemas, por lo que seguiremos trabajando con:
+
+\begin{itemize}
+\item \texttt{staging}
+\item \texttt{core}
+\item \texttt{mart}
+\end{itemize}
+
+\section{Buenas prácticas}
+
+Durante este proyecto seguiremos estas reglas:
+
+\begin{enumerate}
+\item La base DuckDB se guardará en \texttt{data/warehouse}.
+\item El archivo \texttt{.env} guardará la ruta local.
+\item El archivo \texttt{.env.example} documentará la configuración.
+\item El módulo \texttt{etl/db.py} será el único responsable de abrir conexiones.
+\item Cada script cerrará la conexión al finalizar.
+\end{enumerate}
+
+\section{Checklist de validación}
+
+Antes de continuar verificar:
+
+\begin{itemize}
+\item[$\Box$] Carpeta \texttt{data/warehouse} creada.
+\item[$\Box$] DuckDB instalado.
+\item[$\Box$] Archivo \texttt{.env} creado.
+\item[$\Box$] Archivo \texttt{.env.example} actualizado.
+\item[$\Box$] Módulo \texttt{etl/db.py} creado.
+\item[$\Box$] Script \texttt{etl/db.py} ejecutado correctamente.
+\item[$\Box$] Archivo \texttt{macrofinanzas.duckdb} generado.
+\item[$\Box$] Script SQL de prueba ejecutado.
+\end{itemize}
+
+\section{Entregable}
+
+Al finalizar este hito el estudiante deberá disponer de:
+
+\begin{itemize}
+\item Una base DuckDB local.
+\item Un módulo de conexión reutilizable.
+\item Una carpeta \texttt{data/warehouse}.
+\item Un archivo \texttt{.env.example}.
+\item Un mecanismo básico para ejecutar SQL desde Python.
+\end{itemize}
+
+\section{Próximo hito}
+
+En el Hito 3 trabajaremos con las primeras fuentes de datos del proyecto.
+
+Construiremos:
+
+\begin{itemize}
+\item Archivos CSV iniciales.
+\item Lectura desde Python.
+\item Validaciones básicas.
+\item Organización de datos crudos y procesados.
+\end{itemize}

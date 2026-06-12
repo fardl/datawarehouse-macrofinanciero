@@ -1,0 +1,414 @@
+\chapter{Hito 5: Construcción de la Capa Staging en DuckDB}
+
+\section{Objetivo}
+
+El objetivo de este hito es construir la primera capa física del Data Warehouse utilizando DuckDB.
+
+La capa \texttt{staging} será el punto de entrada de todos los datos al sistema. En esta capa almacenaremos los datos provenientes de archivos CSV en una forma cercana a la fuente original.
+
+Al finalizar este hito el estudiante será capaz de:
+
+\begin{itemize}
+\item Crear schemas en DuckDB.
+\item Crear tablas de aterrizaje para datos crudos.
+\item Ejecutar scripts SQL desde Python.
+\item Preparar la base local para recibir datos desde archivos CSV.
+\item Mantener la arquitectura \texttt{staging -> core -> mart}.
+\end{itemize}
+
+\section{Resultado esperado}
+
+Al finalizar este hito deberán existir tres schemas:
+
+\begin{verbatim}
+staging
+core
+mart
+\end{verbatim}
+
+y dos tablas en la capa \texttt{staging}:
+
+\begin{verbatim}
+staging.tipo_cambio_raw
+
+staging.balance_bancario_raw
+\end{verbatim}
+
+\section{Paso 1: Crear script de schemas}
+
+Crear el archivo:
+
+\begin{verbatim}
+sql/01_create_schemas.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+CREATE SCHEMA IF NOT EXISTS staging;
+
+CREATE SCHEMA IF NOT EXISTS core;
+
+CREATE SCHEMA IF NOT EXISTS mart;
+\end{lstlisting}
+
+\section{Paso 2: Crear script para ejecutar SQL}
+
+Crear o verificar el archivo:
+
+\begin{verbatim}
+etl/run_sql_file.py
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=Python]
+from db import get_connection
+
+def run_sql_file(path):
+
+```
+conn = get_connection()
+
+with open(path, "r", encoding="utf-8") as file:
+    sql = file.read()
+
+conn.execute(sql)
+
+conn.close()
+```
+
+if **name** == "**main**":
+
+```
+run_sql_file(
+    "sql/01_create_schemas.sql"
+)
+
+print("Script SQL ejecutado correctamente.")
+```
+
+\end{lstlisting}
+
+\section{Paso 3: Ejecutar creación de schemas}
+
+Desde la terminal:
+
+\begin{lstlisting}[language=bash]
+python etl/run_sql_file.py
+\end{lstlisting}
+
+Salida esperada:
+
+\begin{verbatim}
+Script SQL ejecutado correctamente.
+\end{verbatim}
+
+\section{Paso 4: Verificar schemas}
+
+Crear el archivo:
+
+\begin{verbatim}
+sql/check_schemas.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+SELECT schema_name
+FROM information_schema.schemata
+WHERE schema_name IN
+(
+'staging',
+'core',
+'mart'
+)
+ORDER BY schema_name;
+\end{lstlisting}
+
+Modificar temporalmente \texttt{etl/run_sql_file.py} para ejecutar:
+
+\begin{lstlisting}[language=Python]
+run_sql_file(
+"sql/check_schemas.sql"
+)
+\end{lstlisting}
+
+Resultado esperado:
+
+\begin{verbatim}
+core
+mart
+staging
+\end{verbatim}
+
+\section{Paso 5: Crear script de tablas staging}
+
+Crear:
+
+\begin{verbatim}
+sql/02_staging_ddl.sql
+\end{verbatim}
+
+\section{Paso 6: Crear tabla tipo_cambio_raw}
+
+Agregar:
+
+\begin{lstlisting}[language=SQL]
+CREATE TABLE IF NOT EXISTS staging.tipo_cambio_raw
+(
+fecha TEXT,
+
+```
+moneda TEXT,
+
+tasa_compra TEXT,
+
+tasa_venta TEXT,
+
+archivo_origen TEXT,
+
+cargado_en TIMESTAMP
+```
+
+);
+\end{lstlisting}
+
+\section{Paso 7: Crear tabla balance_bancario_raw}
+
+Agregar:
+
+\begin{lstlisting}[language=SQL]
+CREATE TABLE IF NOT EXISTS staging.balance_bancario_raw
+(
+periodo TEXT,
+
+```
+entidad_cod TEXT,
+
+entidad_nombre TEXT,
+
+tipo_entidad TEXT,
+
+activos_totales TEXT,
+
+cartera_creditos TEXT,
+
+depositos TEXT,
+
+patrimonio TEXT,
+
+resultado_neto TEXT,
+
+depositos_me TEXT,
+
+cartera_me TEXT,
+
+archivo_origen TEXT,
+
+cargado_en TIMESTAMP
+```
+
+);
+\end{lstlisting}
+
+\section{Nota sobre tipos de datos}
+
+En \texttt{staging} usaremos columnas tipo \texttt{TEXT}.
+
+La idea es cargar primero los datos crudos y validar después.
+
+Esta decisión permite:
+
+\begin{itemize}
+\item Evitar fallos tempranos por formatos incorrectos.
+\item Conservar el dato original.
+\item Separar carga de transformación.
+\item Diagnosticar errores con mayor facilidad.
+\end{itemize}
+
+\section{Paso 8: Ejecutar DDL de staging}
+
+Modificar temporalmente:
+
+\begin{verbatim}
+etl/run_sql_file.py
+\end{verbatim}
+
+para ejecutar:
+
+\begin{lstlisting}[language=Python]
+run_sql_file(
+"sql/02_staging_ddl.sql"
+)
+\end{lstlisting}
+
+Luego ejecutar:
+
+\begin{lstlisting}[language=bash]
+python etl/run_sql_file.py
+\end{lstlisting}
+
+\section{Paso 9: Verificar tablas creadas}
+
+Crear:
+
+\begin{verbatim}
+sql/check_staging_tables.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+SELECT table_schema,
+table_name
+FROM information_schema.tables
+WHERE table_schema = 'staging'
+ORDER BY table_name;
+\end{lstlisting}
+
+Resultado esperado:
+
+\begin{verbatim}
+staging    balance_bancario_raw
+staging    tipo_cambio_raw
+\end{verbatim}
+
+\section{Paso 10: Crear script general para inicializar la base}
+
+Crear:
+
+\begin{verbatim}
+etl/init_database.py
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=Python]
+from db import get_connection
+
+def run_sql(path, conn):
+
+```
+with open(path, "r", encoding="utf-8") as file:
+    sql = file.read()
+
+conn.execute(sql)
+```
+
+def main():
+
+```
+conn = get_connection()
+
+run_sql(
+    "sql/01_create_schemas.sql",
+    conn
+)
+
+run_sql(
+    "sql/02_staging_ddl.sql",
+    conn
+)
+
+conn.close()
+
+print("Base DuckDB inicializada correctamente.")
+```
+
+if **name** == "**main**":
+main()
+\end{lstlisting}
+
+\section{Paso 11: Ejecutar inicialización completa}
+
+Desde la terminal:
+
+\begin{lstlisting}[language=bash]
+python etl/init_database.py
+\end{lstlisting}
+
+Salida esperada:
+
+\begin{verbatim}
+Base DuckDB inicializada correctamente.
+\end{verbatim}
+
+\section{Paso 12: Crear consulta de monitoreo}
+
+Crear:
+
+\begin{verbatim}
+sql/monitor_staging.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+SELECT
+'tipo_cambio_raw' AS tabla,
+COUNT(*) AS total_filas
+FROM staging.tipo_cambio_raw
+
+UNION ALL
+
+SELECT
+'balance_bancario_raw' AS tabla,
+COUNT(*) AS total_filas
+FROM staging.balance_bancario_raw;
+\end{lstlisting}
+
+Inicialmente ambas tablas deberán tener cero filas.
+
+\section{Buenas prácticas}
+
+Durante este hito seguiremos estas reglas:
+
+\begin{enumerate}
+\item La base DuckDB vive en \texttt{data/warehouse}.
+\item Los schemas separan las capas del Data Warehouse.
+\item La capa \texttt{staging} recibe datos crudos.
+\item Las transformaciones ocurrirán en \texttt{core}.
+\item Las vistas para análisis se construirán en \texttt{mart}.
+\end{enumerate}
+
+\section{Checklist de validación}
+
+Antes de continuar verificar:
+
+\begin{itemize}
+\item[$\Box$] Archivo \texttt{macrofinanzas.duckdb} existe.
+\item[$\Box$] Schema \texttt{staging} creado.
+\item[$\Box$] Schema \texttt{core} creado.
+\item[$\Box$] Schema \texttt{mart} creado.
+\item[$\Box$] Tabla \texttt{tipo_cambio_raw} creada.
+\item[$\Box$] Tabla \texttt{balance_bancario_raw} creada.
+\item[$\Box$] Script \texttt{init_database.py} ejecutado.
+\item[$\Box$] Consulta de monitoreo creada.
+\end{itemize}
+
+\section{Entregable}
+
+Al finalizar este hito el estudiante deberá disponer de:
+
+\begin{itemize}
+\item Base DuckDB inicializada.
+\item Schemas creados.
+\item Tablas staging creadas.
+\item Script de inicialización.
+\item Capa Bronze lista para recibir datos.
+\end{itemize}
+
+\section{Próximo hito}
+
+En el Hito 6 construiremos el proceso ETL de carga.
+
+Aprenderemos a:
+
+\begin{itemize}
+\item Leer archivos CSV.
+\item Cargar datos hacia DuckDB.
+\item Limpiar la capa staging antes de cada carga.
+\item Automatizar el flujo de ingesta.
+\item Verificar conteos de registros cargados.
+\end{itemize}

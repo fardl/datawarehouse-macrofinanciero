@@ -1,7 +1,11 @@
 SELECT
-COUNT(*)
-FROM staging.tipo_cambio_raw;
+'tipo_cambio_raw' AS tabla,
+COUNT(*) AS total_filas
+FROM staging.tipo_cambio_raw
+
+UNION ALL
 
 SELECT
-COUNT(*)
+'balance_bancario_raw' AS tabla,
+COUNT(*) AS total_filas
 FROM staging.balance_bancario_raw;

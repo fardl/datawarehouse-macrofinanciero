@@ -1,0 +1,171 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\numberline {1}Hito 1: Creación del Proyecto}{6}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Objetivo}{6}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Resultado esperado}{6}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Paso 1: Crear la carpeta del proyecto}{7}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Paso 2: Abrir el proyecto en VS Code}{7}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Paso 3: Inicializar Git}{7}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Paso 4: Crear la estructura de carpetas}{8}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Paso 5: Crear los archivos iniciales}{8}{section.1.7}%
+\contentsline {section}{\numberline {1.8}Paso 6: Configurar el archivo .gitignore}{9}{section.1.8}%
+\contentsline {section}{\numberline {1.9}Paso 7: Crear el README inicial}{9}{section.1.9}%
+\contentsline {section}{\numberline {1.10}Paso 8: Crear el entorno virtual}{10}{section.1.10}%
+\contentsline {section}{\numberline {1.11}Paso 9: Instalar dependencias mínimas}{10}{section.1.11}%
+\contentsline {section}{\numberline {1.12}Paso 10: Realizar el primer commit}{10}{section.1.12}%
+\contentsline {section}{\numberline {1.13}Checklist de validación}{11}{section.1.13}%
+\contentsline {section}{\numberline {1.14}Entregable}{11}{section.1.14}%
+\contentsline {section}{\numberline {1.15}Próximo hito}{12}{section.1.15}%
+\contentsline {chapter}{\numberline {2}Hito 2: Instalación y Configuración de PostgreSQL}{13}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Objetivo}{13}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Resultado esperado}{13}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Paso 1: Verificar instalación de PostgreSQL}{14}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Paso 2: Iniciar PostgreSQL}{14}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Paso 3: Conectarse al servidor}{14}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Paso 4: Crear la base de datos}{15}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Paso 5: Conectarse a la nueva base}{15}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Paso 6: Crear archivo .env}{15}{section.2.8}%
+\contentsline {section}{\numberline {2.9}Paso 7: Actualizar .env.example}{16}{section.2.9}%
+\contentsline {section}{\numberline {2.10}Paso 8: Crear módulo de conexión}{16}{section.2.10}%
+\contentsline {section}{\numberline {2.11}Paso 9: Probar la conexión}{17}{section.2.11}%
+\contentsline {section}{\numberline {2.12}Paso 10: Realizar una consulta desde Python}{17}{section.2.12}%
+\contentsline {section}{\numberline {2.13}Paso 11: Instalar extensiones de VS Code}{17}{section.2.13}%
+\contentsline {section}{\numberline {2.14}Paso 12: Crear primer script SQL}{18}{section.2.14}%
+\contentsline {section}{\numberline {2.15}Checklist de validación}{18}{section.2.15}%
+\contentsline {section}{\numberline {2.16}Entregable}{18}{section.2.16}%
+\contentsline {section}{\numberline {2.17}Próximo hito}{19}{section.2.17}%
+\contentsline {chapter}{\numberline {3}Hito 2: Configuración de DuckDB como Base de Datos Analítica Local}{20}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Objetivo}{20}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Resultado esperado}{21}{section.3.2}%
+\contentsline {section}{\numberline {3.3}¿Por qué DuckDB?}{21}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Arquitectura del hito}{21}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Paso 1: Actualizar la estructura del proyecto}{22}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Paso 2: Instalar DuckDB}{22}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Paso 3: Verificar instalación}{23}{section.3.7}%
+\contentsline {section}{\numberline {3.8}Paso 4: Crear archivo de configuración}{23}{section.3.8}%
+\contentsline {section}{\numberline {3.9}Paso 5: Actualizar .env.example}{23}{section.3.9}%
+\contentsline {section}{\numberline {3.10}Paso 6: Crear módulo de conexión}{24}{section.3.10}%
+\contentsline {section}{\numberline {3.11}Paso 7: Ejecutar prueba de conexión}{25}{section.3.11}%
+\contentsline {section}{\numberline {3.12}Paso 8: Verificar archivo de base de datos}{25}{section.3.12}%
+\contentsline {section}{\numberline {3.13}Paso 9: Crear primer script SQL}{25}{section.3.13}%
+\contentsline {section}{\numberline {3.14}Paso 10: Ejecutar SQL desde Python}{26}{section.3.14}%
+\contentsline {section}{\numberline {3.15}Paso 11: Instalar extensión recomendada en VS Code}{26}{section.3.15}%
+\contentsline {section}{\numberline {3.16}Paso 12: Crear consulta de prueba}{27}{section.3.16}%
+\contentsline {section}{\numberline {3.17}Diferencias importantes frente a PostgreSQL}{27}{section.3.17}%
+\contentsline {section}{\numberline {3.18}Buenas prácticas}{28}{section.3.18}%
+\contentsline {section}{\numberline {3.19}Checklist de validación}{28}{section.3.19}%
+\contentsline {section}{\numberline {3.20}Entregable}{29}{section.3.20}%
+\contentsline {section}{\numberline {3.21}Próximo hito}{29}{section.3.21}%
+\contentsline {chapter}{\numberline {4}Hito 3: Diseño de las Fuentes de Datos e Ingesta Inicial}{30}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Objetivo}{30}{section.4.1}%
+\contentsline {section}{\numberline {4.2}¿Por qué comenzamos con archivos CSV?}{30}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Arquitectura de la ingesta}{31}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Fuentes utilizadas}{32}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Fuente 1: Tipo de Cambio}{32}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Fuente 2: Balances Bancarios}{32}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}Paso 1: Crear estructura de almacenamiento}{33}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Paso 2: Crear archivo tipo\_cambio.csv}{33}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Paso 3: Crear archivo balances.csv}{34}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Paso 4: Crear script de exploración}{34}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Paso 5: Ejecutar exploración}{35}{section.4.9}%
+\contentsline {section}{\numberline {4.10}Paso 6: Verificar estructura}{35}{section.4.10}%
+\contentsline {section}{\numberline {4.11}Paso 7: Validaciones básicas}{35}{section.4.11}%
+\contentsline {section}{\numberline {4.12}Paso 8: Crear capa processed}{36}{section.4.12}%
+\contentsline {section}{\numberline {4.13}Paso 9: Guardar datos procesados}{36}{section.4.13}%
+\contentsline {section}{\numberline {4.14}Paso 10: Documentar las fuentes}{36}{section.4.14}%
+\contentsline {section}{\numberline {4.15}Entregables}{37}{section.4.15}%
+\contentsline {section}{\numberline {4.16}Checklist de validación}{37}{section.4.16}%
+\contentsline {section}{\numberline {4.17}Próximo hito}{38}{section.4.17}%
+\contentsline {chapter}{\numberline {5}Hito 4: Diseño del Modelo Dimensional}{39}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Objetivo}{39}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Resultado esperado}{39}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Paso 1: Entender qué es un modelo dimensional}{40}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Paso 2: Identificar los procesos de negocio}{40}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Paso 3: Definir el grano}{40}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Grano de fact\_tipo\_cambio}{41}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Grano de fact\_balance\_mensual}{41}{subsection.5.5.2}%
+\contentsline {section}{\numberline {5.6}Paso 4: Definir dimensiones}{41}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Dimensión tiempo}{41}{subsection.5.6.1}%
+\contentsline {subsection}{\numberline {5.6.2}Dimensión moneda}{42}{subsection.5.6.2}%
+\contentsline {subsection}{\numberline {5.6.3}Dimensión entidad financiera}{42}{subsection.5.6.3}%
+\contentsline {section}{\numberline {5.7}Paso 5: Definir tablas de hechos}{42}{section.5.7}%
+\contentsline {subsection}{\numberline {5.7.1}Hecho tipo de cambio}{42}{subsection.5.7.1}%
+\contentsline {subsection}{\numberline {5.7.2}Hecho balance mensual}{43}{subsection.5.7.2}%
+\contentsline {section}{\numberline {5.8}Paso 6: Definir claves}{43}{section.5.8}%
+\contentsline {subsection}{\numberline {5.8.1}Clave de negocio}{43}{subsection.5.8.1}%
+\contentsline {subsection}{\numberline {5.8.2}Clave subrogada}{44}{subsection.5.8.2}%
+\contentsline {section}{\numberline {5.9}Paso 7: Diseñar el esquema estrella}{44}{section.5.9}%
+\contentsline {section}{\numberline {5.10}Paso 8: Crear documento del modelo}{45}{section.5.10}%
+\contentsline {section}{\numberline {5.11}Paso 9: Crear tabla de definición del modelo}{46}{section.5.11}%
+\contentsline {section}{\numberline {5.12}Paso 10: Definir indicadores derivados}{46}{section.5.12}%
+\contentsline {section}{\numberline {5.13}Paso 11: Validar el diseño}{47}{section.5.13}%
+\contentsline {section}{\numberline {5.14}Checklist de validación}{47}{section.5.14}%
+\contentsline {section}{\numberline {5.15}Entregable}{48}{section.5.15}%
+\contentsline {section}{\numberline {5.16}Próximo hito}{48}{section.5.16}%
+\contentsline {chapter}{\numberline {6}Hito 5: Construcción de la Capa Staging (Bronze)}{49}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Objetivo}{49}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Resultado esperado}{49}{section.6.2}%
+\contentsline {section}{\numberline {6.3}¿Qué es la capa Staging?}{50}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Arquitectura del Data Warehouse}{50}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Paso 1: Crear carpeta para scripts SQL}{51}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Paso 2: Crear los schemas}{51}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Paso 3: Ejecutar el script}{51}{section.6.7}%
+\contentsline {section}{\numberline {6.8}Paso 4: Crear script de tablas staging}{52}{section.6.8}%
+\contentsline {section}{\numberline {6.9}Paso 5: Diseñar tabla tipo\_cambio\_raw}{52}{section.6.9}%
+\contentsline {section}{\numberline {6.10}¿Por qué usamos TEXT?}{52}{section.6.10}%
+\contentsline {section}{\numberline {6.11}Paso 6: Diseñar tabla balance\_bancario\_raw}{53}{section.6.11}%
+\contentsline {section}{\numberline {6.12}Paso 7: Ejecutar el DDL}{54}{section.6.12}%
+\contentsline {section}{\numberline {6.13}Paso 8: Verificar tablas creadas}{54}{section.6.13}%
+\contentsline {section}{\numberline {6.14}Paso 9: Inspeccionar estructura}{54}{section.6.14}%
+\contentsline {section}{\numberline {6.15}Paso 10: Crear script de prueba}{54}{section.6.15}%
+\contentsline {section}{\numberline {6.16}Paso 11: Documentar la capa staging}{55}{section.6.16}%
+\contentsline {section}{\numberline {6.17}Paso 12: Crear consulta de monitoreo}{56}{section.6.17}%
+\contentsline {section}{\numberline {6.18}Buenas prácticas}{56}{section.6.18}%
+\contentsline {section}{\numberline {6.19}Checklist de validación}{56}{section.6.19}%
+\contentsline {section}{\numberline {6.20}Entregable}{57}{section.6.20}%
+\contentsline {section}{\numberline {6.21}Próximo hito}{57}{section.6.21}%
+\contentsline {chapter}{\numberline {7}Hito 5: Construcción de la Capa Staging en DuckDB}{58}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Objetivo}{58}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Resultado esperado}{58}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Paso 1: Crear script de schemas}{59}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Paso 2: Crear script para ejecutar SQL}{59}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Paso 3: Ejecutar creación de schemas}{60}{section.7.5}%
+\contentsline {section}{\numberline {7.6}Paso 4: Verificar schemas}{60}{section.7.6}%
+\contentsline {section}{\numberline {7.7}Paso 5: Crear script de tablas staging}{61}{section.7.7}%
+\contentsline {section}{\numberline {7.8}Paso 6: Crear tabla tipo_cambio_raw}{61}{section.7.8}%
+\contentsline {section}{\numberline {7.9}Paso 7: Crear tabla balance_bancario_raw}{62}{section.7.9}%
+\contentsline {section}{\numberline {7.10}Nota sobre tipos de datos}{62}{section.7.10}%
+\contentsline {section}{\numberline {7.11}Paso 8: Ejecutar DDL de staging}{63}{section.7.11}%
+\contentsline {section}{\numberline {7.12}Paso 9: Verificar tablas creadas}{63}{section.7.12}%
+\contentsline {section}{\numberline {7.13}Paso 10: Crear script general para inicializar la base}{64}{section.7.13}%
+\contentsline {section}{\numberline {7.14}Paso 11: Ejecutar inicialización completa}{65}{section.7.14}%
+\contentsline {section}{\numberline {7.15}Paso 12: Crear consulta de monitoreo}{65}{section.7.15}%
+\contentsline {section}{\numberline {7.16}Buenas prácticas}{65}{section.7.16}%
+\contentsline {section}{\numberline {7.17}Checklist de validación}{66}{section.7.17}%
+\contentsline {section}{\numberline {7.18}Entregable}{66}{section.7.18}%
+\contentsline {section}{\numberline {7.19}Próximo hito}{67}{section.7.19}%
+\contentsline {chapter}{\numberline {8}Hito 6: Construcción del Primer Proceso ETL}{68}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Objetivo}{68}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Resultado esperado}{69}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Arquitectura del proceso}{69}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Paso 1: Verificar archivos fuente}{69}{section.8.4}%
+\contentsline {section}{\numberline {8.5}Paso 2: Crear módulo de conexión}{70}{section.8.5}%
+\contentsline {section}{\numberline {8.6}Paso 3: Crear script de carga}{70}{section.8.6}%
+\contentsline {section}{\numberline {8.7}Paso 4: Importar librerías}{70}{section.8.7}%
+\contentsline {section}{\numberline {8.8}Paso 5: Leer tipo de cambio}{71}{section.8.8}%
+\contentsline {section}{\numberline {8.9}Paso 6: Leer balances}{71}{section.8.9}%
+\contentsline {section}{\numberline {8.10}Paso 7: Agregar metadatos}{71}{section.8.10}%
+\contentsline {section}{\numberline {8.11}Paso 8: Limpiar staging antes de cargar}{72}{section.8.11}%
+\contentsline {section}{\numberline {8.12}Paso 9: Ejecutar truncado desde Python}{72}{section.8.12}%
+\contentsline {section}{\numberline {8.13}Paso 10: Cargar tipo de cambio}{72}{section.8.13}%
+\contentsline {section}{\numberline {8.14}Paso 11: Cargar balances}{73}{section.8.14}%
+\contentsline {section}{\numberline {8.15}Paso 12: Confirmar carga}{73}{section.8.15}%
+\contentsline {section}{\numberline {8.16}Versión completa del script}{73}{section.8.16}%
+\contentsline {section}{\numberline {8.17}Paso 13: Ejecutar ETL}{75}{section.8.17}%
+\contentsline {section}{\numberline {8.18}Paso 14: Verificar en PostgreSQL}{75}{section.8.18}%
+\contentsline {section}{\numberline {8.19}Paso 15: Inspeccionar datos}{75}{section.8.19}%
+\contentsline {section}{\numberline {8.20}Paso 16: Crear script de validación}{76}{section.8.20}%
+\contentsline {section}{\numberline {8.21}Paso 17: Crear orquestador}{76}{section.8.21}%
+\contentsline {section}{\numberline {8.22}Buenas prácticas}{77}{section.8.22}%
+\contentsline {section}{\numberline {8.23}Checklist de validación}{77}{section.8.23}%
+\contentsline {section}{\numberline {8.24}Entregable}{77}{section.8.24}%
+\contentsline {section}{\numberline {8.25}Próximo hito}{78}{section.8.25}%

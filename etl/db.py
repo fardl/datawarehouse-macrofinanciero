@@ -1,27 +1,24 @@
-from sqlalchemy import create_engine
-from dotenv import load_dotenv
 import os
+import duckdb
+from dotenv import load_dotenv
 
 load_dotenv()
 
-HOST = os.getenv("DB_HOST")
-PORT = os.getenv("DB_PORT")
-DB = os.getenv("DB_NAME")
-USER = os.getenv("DB_USER") 
-PASSWORD = os.getenv("DB_PASSWORD")
+DUCKDB_PATH = os.getenv(
+    "DUCKDB_PATH",
+    "./data/warehouse/macrofinanzas.duckdb"
+    )
 
-connection_string = f"postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB}"
-engine = create_engine(connection_string)   
+def get_connection():
+    conn = duckdb.connect(DUCKDB_PATH)
+    return conn
 
-print("Database connection established successfully.")
+if __name__ == "__main__":
+    conn = get_connection()
+    result = conn.execute(
+        "SELECT 'DuckDB conectado correctamente' AS mensaje;"
+    ).fetchdf()
 
+    print(result)
+    conn.close()
 
-
-from sqlalchemy import text
-
-with engine.connect() as connection:
-    resultado = connection.execute(text("SELECT version();"))
-    
-
-for fila in resultado:
-    print(fila)
