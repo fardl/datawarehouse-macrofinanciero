@@ -22,6 +22,6 @@ def run_query(sql_file):
 
 print(
     run_query(
-        "sql/check_dim_tiempo.sql"
+        "sql/05_facts_ddl.sql"
     )
 )

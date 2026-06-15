@@ -1,0 +1,745 @@
+\chapter{Hito 8: Construcción de las Tablas de Hechos en DuckDB}
+
+\section{Objetivo}
+
+El objetivo de este hito es construir las tablas de hechos del Data Warehouse macrofinanciero utilizando DuckDB.
+
+Las tablas de hechos almacenan las medidas numéricas del modelo dimensional. En este proyecto construiremos dos hechos principales:
+
+\begin{itemize}
+\item \texttt{fact_tipo_cambio}
+\item \texttt{fact_balance_mensual}
+\end{itemize}
+
+Al finalizar este hito el estudiante será capaz de:
+
+\begin{itemize}
+\item Crear tablas de hechos en DuckDB.
+\item Cargar hechos desde la capa \texttt{staging}.
+\item Resolver claves subrogadas utilizando las dimensiones.
+\item Calcular medidas derivadas.
+\item Validar el grano de cada tabla de hechos.
+\item Preparar la información para construir data marts.
+\end{itemize}
+
+\section{Resultado esperado}
+
+Al finalizar este hito deberán existir:
+
+\begin{verbatim}
+core.fact_tipo_cambio
+
+core.fact_balance_mensual
+\end{verbatim}
+
+Estas tablas deberán estar conectadas lógicamente con:
+
+\begin{verbatim}
+core.dim_tiempo
+
+core.dim_moneda
+
+core.dim_entidad_financiera
+\end{verbatim}
+
+\section{Arquitectura del hito}
+
+El flujo será:
+
+\begin{verbatim}
+staging.tipo_cambio_raw
+|
+V
+core.fact_tipo_cambio
+
+staging.balance_bancario_raw
+|
+V
+core.fact_balance_mensual
+\end{verbatim}
+
+\section{Paso 1: Crear script DDL de hechos}
+
+Crear:
+
+\begin{verbatim}
+sql/05_facts_ddl.sql
+\end{verbatim}
+
+\section{Paso 2: Crear tabla fact_tipo_cambio}
+
+Agregar:
+
+\begin{lstlisting}[language=SQL]
+CREATE TABLE IF NOT EXISTS core.fact_tipo_cambio
+(
+sk_tiempo INTEGER,
+
+```
+sk_moneda INTEGER,
+
+tasa_compra DOUBLE,
+
+tasa_venta DOUBLE,
+
+tasa_promedio DOUBLE,
+
+spread DOUBLE
+```
+
+);
+\end{lstlisting}
+
+\section{Paso 3: Crear tabla fact_balance_mensual}
+
+Agregar:
+
+\begin{lstlisting}[language=SQL]
+CREATE TABLE IF NOT EXISTS core.fact_balance_mensual
+(
+sk_tiempo INTEGER,
+
+```
+sk_entidad INTEGER,
+
+activos_totales DOUBLE,
+
+cartera_creditos DOUBLE,
+
+depositos DOUBLE,
+
+patrimonio DOUBLE,
+
+resultado_neto DOUBLE,
+
+depositos_me DOUBLE,
+
+cartera_me DOUBLE
+```
+
+);
+\end{lstlisting}
+
+\section{Nota sobre restricciones}
+
+DuckDB permite definir llaves primarias y restricciones, pero para este primer proyecto mantendremos el diseño simple.
+
+La validación del grano se realizará mediante consultas de control.
+
+\section{Paso 4: Crear script de carga de hechos}
+
+Crear:
+
+\begin{verbatim}
+sql/06_load_facts.sql
+\end{verbatim}
+
+\section{Paso 5: Limpiar hechos}
+
+Agregar:
+
+\begin{lstlisting}[language=SQL]
+DELETE FROM core.fact_tipo_cambio;
+
+DELETE FROM core.fact_balance_mensual;
+\end{lstlisting}
+
+\section{Paso 6: Cargar fact_tipo_cambio}
+
+Agregar:
+
+\begin{lstlisting}[language=SQL]
+INSERT INTO core.fact_tipo_cambio
+(
+sk_tiempo,
+sk_moneda,
+tasa_compra,
+tasa_venta,
+tasa_promedio,
+spread
+)
+
+SELECT
+
+```
+t.sk_tiempo,
+
+m.sk_moneda,
+
+CAST(r.tasa_compra AS DOUBLE)
+    AS tasa_compra,
+
+CAST(r.tasa_venta AS DOUBLE)
+    AS tasa_venta,
+
+(
+    CAST(r.tasa_compra AS DOUBLE)
+    +
+    CAST(r.tasa_venta AS DOUBLE)
+) / 2
+    AS tasa_promedio,
+
+(
+    CAST(r.tasa_venta AS DOUBLE)
+    -
+    CAST(r.tasa_compra AS DOUBLE)
+)
+    AS spread
+```
+
+FROM staging.tipo_cambio_raw r
+
+JOIN core.dim_tiempo t
+ON t.fecha = CAST(r.fecha AS DATE)
+
+JOIN core.dim_moneda m
+ON m.moneda_cod = r.moneda
+
+WHERE r.fecha IS NOT NULL
+AND r.moneda IS NOT NULL
+AND CAST(r.tasa_compra AS DOUBLE) > 0
+AND CAST(r.tasa_venta AS DOUBLE) > 0;
+\end{lstlisting}
+
+\section{Explicación}
+
+En esta transformación:
+
+\begin{itemize}
+\item Se convierte la fecha desde texto hacia \texttt{DATE}.
+\item Se convierten las tasas desde texto hacia \texttt{DOUBLE}.
+\item Se resuelve la clave \texttt{sk_tiempo}.
+\item Se resuelve la clave \texttt{sk_moneda}.
+\item Se calcula \texttt{tasa_promedio}.
+\item Se calcula \texttt{spread}.
+\end{itemize}
+
+\section{Paso 7: Cargar fact_balance_mensual}
+
+Agregar:
+
+\begin{lstlisting}[language=SQL]
+INSERT INTO core.fact_balance_mensual
+(
+sk_tiempo,
+sk_entidad,
+activos_totales,
+cartera_creditos,
+depositos,
+patrimonio,
+resultado_neto,
+depositos_me,
+cartera_me
+)
+
+SELECT
+
+```
+t.sk_tiempo,
+
+e.sk_entidad,
+
+CAST(r.activos_totales AS DOUBLE)
+    AS activos_totales,
+
+CAST(r.cartera_creditos AS DOUBLE)
+    AS cartera_creditos,
+
+CAST(r.depositos AS DOUBLE)
+    AS depositos,
+
+CAST(r.patrimonio AS DOUBLE)
+    AS patrimonio,
+
+CAST(r.resultado_neto AS DOUBLE)
+    AS resultado_neto,
+
+CAST(r.depositos_me AS DOUBLE)
+    AS depositos_me,
+
+CAST(r.cartera_me AS DOUBLE)
+    AS cartera_me
+```
+
+FROM staging.balance_bancario_raw r
+
+JOIN core.dim_tiempo t
+ON t.fecha =
+last_day(
+CAST(
+r.periodo || '01'
+AS DATE
+)
+)
+
+JOIN core.dim_entidad_financiera e
+ON e.entidad_cod = r.entidad_cod
+
+WHERE r.periodo IS NOT NULL
+AND r.entidad_cod IS NOT NULL;
+\end{lstlisting}
+
+\section{Advertencia sobre fechas mensuales}
+
+Si el campo \texttt{periodo} viene con formato \texttt{YYYYMM}, DuckDB puede requerir una conversión explícita.
+
+Si el bloque anterior falla, utilizar esta versión alternativa:
+
+\begin{lstlisting}[language=SQL]
+STRPTIME(
+r.periodo || '01',
+'%Y%m%d'
+)::DATE
+\end{lstlisting}
+
+La unión con \texttt{dim_tiempo} quedaría:
+
+\begin{lstlisting}[language=SQL]
+JOIN core.dim_tiempo t
+ON t.fecha =
+last_day(
+STRPTIME(
+r.periodo || '01',
+'%Y%m%d'
+)::DATE
+)
+\end{lstlisting}
+
+\section{Paso 8: Crear script Python para cargar hechos}
+
+Crear:
+
+\begin{verbatim}
+etl/load_facts.py
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=Python]
+from db import get_connection
+
+def run_sql_file(path, conn):
+
+```
+with open(
+    path,
+    "r",
+    encoding="utf-8"
+) as file:
+
+    sql = file.read()
+
+conn.execute(sql)
+```
+
+def main():
+
+```
+conn = get_connection()
+
+run_sql_file(
+    "sql/05_facts_ddl.sql",
+    conn
+)
+
+run_sql_file(
+    "sql/06_load_facts.sql",
+    conn
+)
+
+conn.close()
+
+print(
+    "Hechos cargados correctamente."
+)
+```
+
+if **name** == "**main**":
+main()
+\end{lstlisting}
+
+\section{Paso 9: Ejecutar carga de hechos}
+
+Desde la terminal:
+
+\begin{lstlisting}[language=bash]
+python etl/load_facts.py
+\end{lstlisting}
+
+Salida esperada:
+
+\begin{verbatim}
+Hechos cargados correctamente.
+\end{verbatim}
+
+\section{Paso 10: Crear consulta de monitoreo}
+
+Crear:
+
+\begin{verbatim}
+sql/check_facts.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+SELECT
+'fact_tipo_cambio' AS tabla,
+COUNT(*) AS total_filas
+FROM core.fact_tipo_cambio
+
+UNION ALL
+
+SELECT
+'fact_balance_mensual' AS tabla,
+COUNT(*) AS total_filas
+FROM core.fact_balance_mensual;
+\end{lstlisting}
+
+\section{Paso 11: Crear script para revisar hechos}
+
+Crear:
+
+\begin{verbatim}
+etl/check_facts.py
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=Python]
+from db import get_connection
+
+conn = get_connection()
+
+with open(
+"sql/check_facts.sql",
+"r",
+encoding="utf-8"
+) as file:
+
+```
+sql = file.read()
+```
+
+result = conn.execute(sql).fetchdf()
+
+print(result)
+
+conn.close()
+\end{lstlisting}
+
+Ejecutar:
+
+\begin{lstlisting}[language=bash]
+python etl/check_facts.py
+\end{lstlisting}
+
+\section{Paso 12: Inspeccionar fact_tipo_cambio}
+
+Crear:
+
+\begin{verbatim}
+sql/inspect_fact_tipo_cambio.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+SELECT
+
+```
+t.fecha,
+
+m.moneda_cod,
+
+f.tasa_compra,
+
+f.tasa_venta,
+
+f.tasa_promedio,
+
+f.spread
+```
+
+FROM core.fact_tipo_cambio f
+
+JOIN core.dim_tiempo t
+ON t.sk_tiempo = f.sk_tiempo
+
+JOIN core.dim_moneda m
+ON m.sk_moneda = f.sk_moneda
+
+ORDER BY
+t.fecha,
+m.moneda_cod
+
+LIMIT 10;
+\end{lstlisting}
+
+\section{Paso 13: Inspeccionar fact_balance_mensual}
+
+Crear:
+
+\begin{verbatim}
+sql/inspect_fact_balance_mensual.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+SELECT
+
+```
+t.fecha,
+
+e.entidad_cod,
+
+e.entidad_nombre,
+
+f.activos_totales,
+
+f.depositos,
+
+f.patrimonio,
+
+f.resultado_neto
+```
+
+FROM core.fact_balance_mensual f
+
+JOIN core.dim_tiempo t
+ON t.sk_tiempo = f.sk_tiempo
+
+JOIN core.dim_entidad_financiera e
+ON e.sk_entidad = f.sk_entidad
+
+ORDER BY
+t.fecha,
+e.entidad_cod
+
+LIMIT 10;
+\end{lstlisting}
+
+\section{Paso 14: Validar el grano de tipo de cambio}
+
+Crear:
+
+\begin{verbatim}
+sql/check_grain_fx.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+SELECT
+
+```
+sk_tiempo,
+
+sk_moneda,
+
+COUNT(*) AS total
+```
+
+FROM core.fact_tipo_cambio
+
+GROUP BY
+sk_tiempo,
+sk_moneda
+
+HAVING COUNT(*) > 1;
+\end{lstlisting}
+
+Resultado esperado:
+
+\begin{verbatim}
+0 filas
+\end{verbatim}
+
+\section{Paso 15: Validar el grano de balance mensual}
+
+Crear:
+
+\begin{verbatim}
+sql/check_grain_balance.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+SELECT
+
+```
+sk_tiempo,
+
+sk_entidad,
+
+COUNT(*) AS total
+```
+
+FROM core.fact_balance_mensual
+
+GROUP BY
+sk_tiempo,
+sk_entidad
+
+HAVING COUNT(*) > 1;
+\end{lstlisting}
+
+Resultado esperado:
+
+\begin{verbatim}
+0 filas
+\end{verbatim}
+
+\section{Paso 16: Validar medidas derivadas}
+
+Crear:
+
+\begin{verbatim}
+sql/check_fx_measures.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+SELECT
+
+```
+tasa_compra,
+
+tasa_venta,
+
+tasa_promedio,
+
+spread,
+
+(tasa_compra + tasa_venta) / 2
+    AS tasa_promedio_recalculada,
+
+tasa_venta - tasa_compra
+    AS spread_recalculado
+```
+
+FROM core.fact_tipo_cambio
+
+LIMIT 10;
+\end{lstlisting}
+
+\section{Paso 17: Validar reglas de negocio}
+
+Crear:
+
+\begin{verbatim}
+sql/check_balance_business_rules.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+SELECT *
+FROM core.fact_balance_mensual
+WHERE depositos_me > depositos;
+
+SELECT *
+FROM core.fact_balance_mensual
+WHERE cartera_me > cartera_creditos;
+\end{lstlisting}
+
+Resultado esperado:
+
+\begin{verbatim}
+0 filas
+\end{verbatim}
+
+\section{Paso 18: Integrar al pipeline}
+
+Actualizar:
+
+\begin{verbatim}
+etl/run_pipeline.py
+\end{verbatim}
+
+Contenido recomendado:
+
+\begin{lstlisting}[language=Python]
+import sys
+
+import subprocess
+
+steps = [
+"etl/load_staging.py",
+"etl/load_dimensions.py",
+"etl/load_facts.py"
+]
+
+for step in steps:
+
+```
+print(
+    f"Ejecutando {step}..."
+)
+
+subprocess.run(
+    [
+        sys.executable,
+        step
+    ],
+    check=True
+)
+```
+
+print(
+"Pipeline ejecutado correctamente."
+)
+\end{lstlisting}
+
+\section{Buenas prácticas}
+
+Durante este hito seguiremos estas reglas:
+
+\begin{enumerate}
+\item Los hechos deben respetar el grano definido.
+\item Los hechos deben usar claves subrogadas.
+\item Las medidas derivadas deben calcularse de forma reproducible.
+\item Las validaciones deben ejecutarse después de cada carga.
+\item El pipeline debe poder ejecutarse de inicio a fin.
+\end{enumerate}
+
+\section{Checklist de validación}
+
+\begin{itemize}
+\item[$\Box$] Tabla \texttt{fact_tipo_cambio} creada.
+\item[$\Box$] Tabla \texttt{fact_balance_mensual} creada.
+\item[$\Box$] Hechos cargados.
+\item[$\Box$] Conteos revisados.
+\item[$\Box$] Grano de tipo de cambio validado.
+\item[$\Box$] Grano de balance mensual validado.
+\item[$\Box$] Medidas derivadas verificadas.
+\item[$\Box$] Pipeline actualizado.
+\end{itemize}
+
+\section{Entregable}
+
+Al finalizar este hito el estudiante deberá disponer de:
+
+\begin{itemize}
+\item Tablas de hechos en \texttt{core}.
+\item Scripts SQL de creación y carga.
+\item Consultas de inspección.
+\item Validaciones de grano.
+\item Modelo dimensional funcional.
+\end{itemize}
+
+\section{Próximo hito}
+
+En el Hito 9 construiremos la capa \texttt{mart}.
+
+Aprenderemos a:
+
+\begin{itemize}
+\item Crear vistas analíticas.
+\item Calcular indicadores macrofinancieros.
+\item Construir ROA, ROE, dolarización y HHI.
+\item Preparar datos listos para Streamlit.
+\end{itemize}

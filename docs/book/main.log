@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.12)  12 JUN 2026 12:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.12)  15 JUN 2026 15:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -270,7 +270,7 @@ LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
 (babel)             Reported on input line 11.
- (chapters/hito01.aux) (chapters/hito02.aux) (chapters/hito02_duckdb.aux) (chapters/hito03.aux) (chapters/hito04.aux) (chapters/hito05.aux) (chapters/hito05_duckdb.aux) (chapters/hito06.aux) (chapters/hito06_duckdb.aux) (chapters/hito07_duckdb.aux))
+ (chapters/hito01.aux) (chapters/hito02.aux) (chapters/hito02_duckdb.aux) (chapters/hito03.aux) (chapters/hito04.aux) (chapters/hito05.aux) (chapters/hito05_duckdb.aux) (chapters/hito06.aux) (chapters/hito06_duckdb.aux) (chapters/hito07_duckdb.aux) (chapters/hito08.aux) (chapters/hito09.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
@@ -335,7 +335,7 @@ LaTeX Info: Redefining \% on input line 1.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.31 ... extensiones de VS Code}{18}{section.2.13}
+l.31 ... extensiones de VS Code}{19}{section.2.13}
                                                   % [1
 
 ]
@@ -350,7 +350,7 @@ LaTeX Info: Redefining \% on input line 106.
 main.toc:134: Missing $ inserted.
 <inserted text> 
                 $
-l.134 ...r tabla tipo_cambio_raw}{62}{section.7.8}
+l.134 ...r tabla tipo_cambio_raw}{63}{section.7.8}
                                                   %
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -358,7 +358,7 @@ you left one out. Proceed, with fingers crossed.
 main.toc:134: Extra }, or forgotten $.
 <argument> ...Paso 6: Crear tabla tipo_cambio_raw}
                                                   \Hy@toclinkend 
-l.134 ...r tabla tipo_cambio_raw}{62}{section.7.8}
+l.134 ...r tabla tipo_cambio_raw}{63}{section.7.8}
                                                   %
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -369,7 +369,7 @@ deleted material, e.g., by typing `I$}'.
 main.toc:134: Missing $ inserted.
 <inserted text> 
                 $
-l.134 ...r tabla tipo_cambio_raw}{62}{section.7.8}
+l.134 ...r tabla tipo_cambio_raw}{63}{section.7.8}
                                                   %
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -380,7 +380,7 @@ my insertion and my current dilemma will both disappear.
 main.toc:134: Missing } inserted.
 <inserted text> 
                 }
-l.134 ...r tabla tipo_cambio_raw}{62}{section.7.8}
+l.134 ...r tabla tipo_cambio_raw}{63}{section.7.8}
                                                   %
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -391,7 +391,7 @@ my insertion and my current dilemma will both disappear.
 main.toc:135: Missing $ inserted.
 <inserted text> 
                 $
-l.135 ...la balance_bancario_raw}{63}{section.7.9}
+l.135 ...la balance_bancario_raw}{64}{section.7.9}
                                                   %
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -399,7 +399,7 @@ you left one out. Proceed, with fingers crossed.
 main.toc:135: Extra }, or forgotten $.
 <argument> ...7: Crear tabla balance_bancario_raw}
                                                   \Hy@toclinkend 
-l.135 ...la balance_bancario_raw}{63}{section.7.9}
+l.135 ...la balance_bancario_raw}{64}{section.7.9}
                                                   %
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -410,7 +410,7 @@ deleted material, e.g., by typing `I$}'.
 main.toc:135: Missing $ inserted.
 <inserted text> 
                 $
-l.135 ...la balance_bancario_raw}{63}{section.7.9}
+l.135 ...la balance_bancario_raw}{64}{section.7.9}
                                                   %
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -421,7 +421,7 @@ my insertion and my current dilemma will both disappear.
 main.toc:135: Missing } inserted.
 <inserted text> 
                 }
-l.135 ...la balance_bancario_raw}{63}{section.7.9}
+l.135 ...la balance_bancario_raw}{64}{section.7.9}
                                                   %
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -521,18 +521,441 @@ Overfull \hbox (2.7858pt too wide) detected at line 225
 \T1/cmr/m/n/10.95 10.26. 
  []
 
+main.toc:231: Missing $ inserted.
+<inserted text> 
+                $
+l.231 ...abla fact_tipo_cambio}{109}{section.11.5}
+                                                  %
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+main.toc:231: Extra }, or forgotten $.
+<argument> ...aso 2: Crear tabla fact_tipo_cambio}
+                                                  \Hy@toclinkend 
+l.231 ...abla fact_tipo_cambio}{109}{section.11.5}
+                                                  %
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+main.toc:231: Missing $ inserted.
+<inserted text> 
+                $
+l.231 ...abla fact_tipo_cambio}{109}{section.11.5}
+                                                  %
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+main.toc:231: Missing } inserted.
+<inserted text> 
+                }
+l.231 ...abla fact_tipo_cambio}{109}{section.11.5}
+                                                  %
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+main.toc:232: Missing $ inserted.
+<inserted text> 
+                $
+l.232 ... fact_balance_mensual}{110}{section.11.6}
+                                                  %
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+main.toc:232: Extra }, or forgotten $.
+<argument> ...3: Crear tabla fact_balance_mensual}
+                                                  \Hy@toclinkend 
+l.232 ... fact_balance_mensual}{110}{section.11.6}
+                                                  %
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+main.toc:232: Missing $ inserted.
+<inserted text> 
+                $
+l.232 ... fact_balance_mensual}{110}{section.11.6}
+                                                  %
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+main.toc:232: Missing } inserted.
+<inserted text> 
+                }
+l.232 ... fact_balance_mensual}{110}{section.11.6}
+                                                  %
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 236
+\T1/cmr/m/n/10.95 11.10. 
+ []
+
+main.toc:236: Missing $ inserted.
+<inserted text> 
+                $
+l.236 ...gar fact_tipo_cambio}{111}{section.11.10}
+                                                  %
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+main.toc:236: Extra }, or forgotten $.
+<argument> ....10}Paso 6: Cargar fact_tipo_cambio}
+                                                  \Hy@toclinkend 
+l.236 ...gar fact_tipo_cambio}{111}{section.11.10}
+                                                  %
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+main.toc:236: Missing $ inserted.
+<inserted text> 
+                $
+l.236 ...gar fact_tipo_cambio}{111}{section.11.10}
+                                                  %
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+main.toc:236: Missing } inserted.
+<inserted text> 
+                }
+l.236 ...gar fact_tipo_cambio}{111}{section.11.10}
+                                                  %
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 237
+\T1/cmr/m/n/10.95 11.11. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 238
+\T1/cmr/m/n/10.95 11.12. 
+ []
+
+main.toc:238: Missing $ inserted.
+<inserted text> 
+                $
+l.238 ...fact_balance_mensual}{113}{section.11.12}
+                                                  %
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+main.toc:238: Extra }, or forgotten $.
+<argument> ...Paso 7: Cargar fact_balance_mensual}
+                                                  \Hy@toclinkend 
+l.238 ...fact_balance_mensual}{113}{section.11.12}
+                                                  %
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+main.toc:238: Missing $ inserted.
+<inserted text> 
+                $
+l.238 ...fact_balance_mensual}{113}{section.11.12}
+                                                  %
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+main.toc:238: Missing } inserted.
+<inserted text> 
+                }
+l.238 ...fact_balance_mensual}{113}{section.11.12}
+                                                  %
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 239
+\T1/cmr/m/n/10.95 11.13. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 240
+\T1/cmr/m/n/10.95 11.14. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 241
+\T1/cmr/m/n/10.95 11.15. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 242
+\T1/cmr/m/n/10.95 11.16. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 243
+\T1/cmr/m/n/10.95 11.17. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 244
+\T1/cmr/m/n/10.95 11.18. 
+ []
+
+main.toc:244: Missing $ inserted.
+<inserted text> 
+                $
+l.244 ...nar fact_tipo_cambio}{118}{section.11.18}
+                                                  %
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+main.toc:244: Extra }, or forgotten $.
+<argument> ...o 12: Inspeccionar fact_tipo_cambio}
+                                                  \Hy@toclinkend 
+l.244 ...nar fact_tipo_cambio}{118}{section.11.18}
+                                                  %
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+main.toc:244: Missing $ inserted.
+<inserted text> 
+                $
+l.244 ...nar fact_tipo_cambio}{118}{section.11.18}
+                                                  %
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+main.toc:244: Missing } inserted.
+<inserted text> 
+                }
+l.244 ...nar fact_tipo_cambio}{118}{section.11.18}
+                                                  %
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 245
+\T1/cmr/m/n/10.95 11.19. 
+ []
+
+main.toc:245: Missing $ inserted.
+<inserted text> 
+                $
+l.245 ...fact_balance_mensual}{119}{section.11.19}
+                                                  %
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+main.toc:245: Extra }, or forgotten $.
+<argument> ...: Inspeccionar fact_balance_mensual}
+                                                  \Hy@toclinkend 
+l.245 ...fact_balance_mensual}{119}{section.11.19}
+                                                  %
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+main.toc:245: Missing $ inserted.
+<inserted text> 
+                $
+l.245 ...fact_balance_mensual}{119}{section.11.19}
+                                                  %
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+main.toc:245: Missing } inserted.
+<inserted text> 
+                }
+l.245 ...fact_balance_mensual}{119}{section.11.19}
+                                                  %
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 246
+\T1/cmr/m/n/10.95 11.20. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 247
+\T1/cmr/m/n/10.95 11.21. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 248
+\T1/cmr/m/n/10.95 11.22. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 249
+\T1/cmr/m/n/10.95 11.23. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 250
+\T1/cmr/m/n/10.95 11.24. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 251
+\T1/cmr/m/n/10.95 11.25. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 252
+\T1/cmr/m/n/10.95 11.26. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 253
+\T1/cmr/m/n/10.95 11.27. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 254
+\T1/cmr/m/n/10.95 11.28. 
+ []
+
+LaTeX Info: Redefining \. on input line 257.
+LaTeX Info: Redefining \% on input line 257.
+[7]
+Overfull \hbox (2.7858pt too wide) detected at line 265
+\T1/cmr/m/n/10.95 12.10. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 266
+\T1/cmr/m/n/10.95 12.11. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 267
+\T1/cmr/m/n/10.95 12.12. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 268
+\T1/cmr/m/n/10.95 12.13. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 269
+\T1/cmr/m/n/10.95 12.14. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 270
+\T1/cmr/m/n/10.95 12.15. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 271
+\T1/cmr/m/n/10.95 12.16. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 272
+\T1/cmr/m/n/10.95 12.17. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 273
+\T1/cmr/m/n/10.95 12.18. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 274
+\T1/cmr/m/n/10.95 12.19. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 275
+\T1/cmr/m/n/10.95 12.20. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 276
+\T1/cmr/m/n/10.95 12.21. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 277
+\T1/cmr/m/n/10.95 12.22. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 278
+\T1/cmr/m/n/10.95 12.23. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 279
+\T1/cmr/m/n/10.95 12.24. 
+ []
+
+
+Overfull \hbox (2.7858pt too wide) detected at line 280
+\T1/cmr/m/n/10.95 12.25. 
+ []
+
 )
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
- [7]
+ [8]
 \openout2 = `chapters/hito01.aux'.
 
  (chapters/hito01.tex
 Cap\'{\i }tulo 1.
-[8
+[9
 
 
 ] (C:\Users\2009138\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
@@ -542,27 +965,27 @@ File: lstlang1.sty 2025/11/14 1.11b listings language file
 )
 LaTeX Info: Redefining \. on input line 96.
 LaTeX Info: Redefining \% on input line 96.
- [9]
+ [10]
 LaTeX Info: Redefining \. on input line 145.
 LaTeX Info: Redefining \% on input line 145.
- [10]
+ [11]
 LaTeX Info: Redefining \. on input line 193.
 LaTeX Info: Redefining \% on input line 193.
- [11]
+ [12]
 LaTeX Info: Redefining \. on input line 260.
 LaTeX Info: Redefining \% on input line 260.
- [12]
+ [13]
 LaTeX Info: Redefining \. on input line 303.
 LaTeX Info: Redefining \% on input line 303.
- [13])
+ [14])
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
- [14]
+ [15]
 \openout2 = `chapters/hito02.aux'.
 
  (chapters/hito02.tex
 Cap\'{\i }tulo 2.
-[15
+[16
 
 
 
@@ -574,57 +997,57 @@ LaTeX Info: Redefining \. on input line 89.
 LaTeX Info: Redefining \% on input line 89.
 
 Overfull \hbox (48.47809pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 CAPÍTULO 2.  HITO 2: INSTALACIÓN Y CONFIGURACIÓN DE POSTGRESQL \T1/cmr/m/n/10.95 16
+\T1/cmr/m/sl/10.95 CAPÍTULO 2.  HITO 2: INSTALACIÓN Y CONFIGURACIÓN DE POSTGRESQL \T1/cmr/m/n/10.95 17
  []
 
-[16]
+[17]
 LaTeX Info: Redefining \. on input line 153.
 LaTeX Info: Redefining \% on input line 153.
 
 Overfull \hbox (48.47809pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 CAPÍTULO 2.  HITO 2: INSTALACIÓN Y CONFIGURACIÓN DE POSTGRESQL \T1/cmr/m/n/10.95 17
+\T1/cmr/m/sl/10.95 CAPÍTULO 2.  HITO 2: INSTALACIÓN Y CONFIGURACIÓN DE POSTGRESQL \T1/cmr/m/n/10.95 18
  []
 
-[17] (C:\Users\2009138\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+[18] (C:\Users\2009138\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2025/11/14 1.11b listings language file
 )
 LaTeX Info: Redefining \. on input line 202.
 LaTeX Info: Redefining \% on input line 202.
 
 Overfull \hbox (48.47809pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 CAPÍTULO 2.  HITO 2: INSTALACIÓN Y CONFIGURACIÓN DE POSTGRESQL \T1/cmr/m/n/10.95 18
- []
-
-[18]
-LaTeX Info: Redefining \. on input line 259.
-LaTeX Info: Redefining \% on input line 259.
-
-Overfull \hbox (48.47809pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 2.  HITO 2: INSTALACIÓN Y CONFIGURACIÓN DE POSTGRESQL \T1/cmr/m/n/10.95 19
  []
 
 [19]
-LaTeX Info: Redefining \. on input line 305.
-LaTeX Info: Redefining \% on input line 305.
+LaTeX Info: Redefining \. on input line 259.
+LaTeX Info: Redefining \% on input line 259.
 
 Overfull \hbox (48.47809pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 2.  HITO 2: INSTALACIÓN Y CONFIGURACIÓN DE POSTGRESQL \T1/cmr/m/n/10.95 20
  []
 
-[20])
-LaTeX Info: Redefining \. on input line 13.
-LaTeX Info: Redefining \% on input line 13.
+[20]
+LaTeX Info: Redefining \. on input line 305.
+LaTeX Info: Redefining \% on input line 305.
 
 Overfull \hbox (48.47809pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 2.  HITO 2: INSTALACIÓN Y CONFIGURACIÓN DE POSTGRESQL \T1/cmr/m/n/10.95 21
  []
 
-[21]
+[21])
+LaTeX Info: Redefining \. on input line 13.
+LaTeX Info: Redefining \% on input line 13.
+
+Overfull \hbox (48.47809pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 2.  HITO 2: INSTALACIÓN Y CONFIGURACIÓN DE POSTGRESQL \T1/cmr/m/n/10.95 22
+ []
+
+[22]
 \openout2 = `chapters/hito02_duckdb.aux'.
 
  (chapters/hito02_duckdb.tex
 Cap\'{\i }tulo 3.
-[22
+[23
 
 
 
@@ -634,26 +1057,26 @@ LaTeX Info: Redefining \. on input line 72.
 LaTeX Info: Redefining \% on input line 72.
 
 Overfull \hbox (166.00668pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 CAPÍTULO 3.  HITO 2: CONFIGURACIÓN DE DUCKDB COMO BASE DE DATOS ANALÍTICA LOCAL \T1/cmr/m/n/10.95 23
- []
-
-[23]
-LaTeX Info: Redefining \. on input line 126.
-LaTeX Info: Redefining \% on input line 126.
-
-Overfull \hbox (166.00668pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 3.  HITO 2: CONFIGURACIÓN DE DUCKDB COMO BASE DE DATOS ANALÍTICA LOCAL \T1/cmr/m/n/10.95 24
  []
 
 [24]
-LaTeX Info: Redefining \. on input line 186.
-LaTeX Info: Redefining \% on input line 186.
+LaTeX Info: Redefining \. on input line 126.
+LaTeX Info: Redefining \% on input line 126.
 
 Overfull \hbox (166.00668pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 3.  HITO 2: CONFIGURACIÓN DE DUCKDB COMO BASE DE DATOS ANALÍTICA LOCAL \T1/cmr/m/n/10.95 25
  []
 
 [25]
+LaTeX Info: Redefining \. on input line 186.
+LaTeX Info: Redefining \% on input line 186.
+
+Overfull \hbox (166.00668pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 3.  HITO 2: CONFIGURACIÓN DE DUCKDB COMO BASE DE DATOS ANALÍTICA LOCAL \T1/cmr/m/n/10.95 26
+ []
+
+[26]
 Overfull \hbox (12.3691pt too wide) in paragraph at lines 218--219
 [][][][][][][][][][][][][][][][][][][][] 
  []
@@ -662,55 +1085,55 @@ LaTeX Info: Redefining \. on input line 232.
 LaTeX Info: Redefining \% on input line 232.
 
 Overfull \hbox (166.00668pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 CAPÍTULO 3.  HITO 2: CONFIGURACIÓN DE DUCKDB COMO BASE DE DATOS ANALÍTICA LOCAL \T1/cmr/m/n/10.95 26
- []
-
-[26]
-LaTeX Info: Redefining \. on input line 294.
-LaTeX Info: Redefining \% on input line 294.
-
-Overfull \hbox (166.00668pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 3.  HITO 2: CONFIGURACIÓN DE DUCKDB COMO BASE DE DATOS ANALÍTICA LOCAL \T1/cmr/m/n/10.95 27
  []
 
 [27]
-LaTeX Info: Redefining \. on input line 334.
-LaTeX Info: Redefining \% on input line 334.
+LaTeX Info: Redefining \. on input line 294.
+LaTeX Info: Redefining \% on input line 294.
 
 Overfull \hbox (166.00668pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 3.  HITO 2: CONFIGURACIÓN DE DUCKDB COMO BASE DE DATOS ANALÍTICA LOCAL \T1/cmr/m/n/10.95 28
  []
 
 [28]
-LaTeX Info: Redefining \. on input line 386.
-LaTeX Info: Redefining \% on input line 386.
+LaTeX Info: Redefining \. on input line 334.
+LaTeX Info: Redefining \% on input line 334.
 
 Overfull \hbox (166.00668pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 3.  HITO 2: CONFIGURACIÓN DE DUCKDB COMO BASE DE DATOS ANALÍTICA LOCAL \T1/cmr/m/n/10.95 29
  []
 
 [29]
-LaTeX Info: Redefining \. on input line 423.
-LaTeX Info: Redefining \% on input line 423.
+LaTeX Info: Redefining \. on input line 386.
+LaTeX Info: Redefining \% on input line 386.
 
 Overfull \hbox (166.00668pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 3.  HITO 2: CONFIGURACIÓN DE DUCKDB COMO BASE DE DATOS ANALÍTICA LOCAL \T1/cmr/m/n/10.95 30
  []
 
-[30])
-LaTeX Info: Redefining \. on input line 14.
-LaTeX Info: Redefining \% on input line 14.
+[30]
+LaTeX Info: Redefining \. on input line 423.
+LaTeX Info: Redefining \% on input line 423.
 
 Overfull \hbox (166.00668pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 3.  HITO 2: CONFIGURACIÓN DE DUCKDB COMO BASE DE DATOS ANALÍTICA LOCAL \T1/cmr/m/n/10.95 31
  []
 
-[31]
+[31])
+LaTeX Info: Redefining \. on input line 14.
+LaTeX Info: Redefining \% on input line 14.
+
+Overfull \hbox (166.00668pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 3.  HITO 2: CONFIGURACIÓN DE DUCKDB COMO BASE DE DATOS ANALÍTICA LOCAL \T1/cmr/m/n/10.95 32
+ []
+
+[32]
 \openout2 = `chapters/hito03.aux'.
 
  (chapters/hito03.tex
 Cap\'{\i }tulo 4.
-[32
+[33
 
 
 
@@ -720,71 +1143,71 @@ LaTeX Info: Redefining \. on input line 75.
 LaTeX Info: Redefining \% on input line 75.
 
 Overfull \hbox (70.32626pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 CAPÍTULO 4.  HITO 3: DISEÑO DE LAS FUENTES DE DATOS E INGESTA INICIAL \T1/cmr/m/n/10.95 33
- []
-
-[33]
-LaTeX Info: Redefining \. on input line 118.
-LaTeX Info: Redefining \% on input line 118.
-
-Overfull \hbox (70.32626pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 4.  HITO 3: DISEÑO DE LAS FUENTES DE DATOS E INGESTA INICIAL \T1/cmr/m/n/10.95 34
  []
 
 [34]
-LaTeX Info: Redefining \. on input line 169.
-LaTeX Info: Redefining \% on input line 169.
+LaTeX Info: Redefining \. on input line 118.
+LaTeX Info: Redefining \% on input line 118.
 
 Overfull \hbox (70.32626pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 4.  HITO 3: DISEÑO DE LAS FUENTES DE DATOS E INGESTA INICIAL \T1/cmr/m/n/10.95 35
  []
 
 [35]
-LaTeX Info: Redefining \. on input line 219.
-LaTeX Info: Redefining \% on input line 219.
+LaTeX Info: Redefining \. on input line 169.
+LaTeX Info: Redefining \% on input line 169.
 
 Overfull \hbox (70.32626pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 4.  HITO 3: DISEÑO DE LAS FUENTES DE DATOS E INGESTA INICIAL \T1/cmr/m/n/10.95 36
  []
 
 [36]
-LaTeX Info: Redefining \. on input line 269.
-LaTeX Info: Redefining \% on input line 269.
+LaTeX Info: Redefining \. on input line 219.
+LaTeX Info: Redefining \% on input line 219.
 
 Overfull \hbox (70.32626pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 4.  HITO 3: DISEÑO DE LAS FUENTES DE DATOS E INGESTA INICIAL \T1/cmr/m/n/10.95 37
  []
 
 [37]
-LaTeX Info: Redefining \. on input line 316.
-LaTeX Info: Redefining \% on input line 316.
+LaTeX Info: Redefining \. on input line 269.
+LaTeX Info: Redefining \% on input line 269.
 
 Overfull \hbox (70.32626pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 4.  HITO 3: DISEÑO DE LAS FUENTES DE DATOS E INGESTA INICIAL \T1/cmr/m/n/10.95 38
  []
 
 [38]
-LaTeX Info: Redefining \. on input line 355.
-LaTeX Info: Redefining \% on input line 355.
+LaTeX Info: Redefining \. on input line 316.
+LaTeX Info: Redefining \% on input line 316.
 
 Overfull \hbox (70.32626pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 4.  HITO 3: DISEÑO DE LAS FUENTES DE DATOS E INGESTA INICIAL \T1/cmr/m/n/10.95 39
  []
 
-[39])
-LaTeX Info: Redefining \. on input line 15.
-LaTeX Info: Redefining \% on input line 15.
+[39]
+LaTeX Info: Redefining \. on input line 355.
+LaTeX Info: Redefining \% on input line 355.
 
 Overfull \hbox (70.32626pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 4.  HITO 3: DISEÑO DE LAS FUENTES DE DATOS E INGESTA INICIAL \T1/cmr/m/n/10.95 40
  []
 
-[40]
+[40])
+LaTeX Info: Redefining \. on input line 15.
+LaTeX Info: Redefining \% on input line 15.
+
+Overfull \hbox (70.32626pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 4.  HITO 3: DISEÑO DE LAS FUENTES DE DATOS E INGESTA INICIAL \T1/cmr/m/n/10.95 41
+ []
+
+[41]
 \openout2 = `chapters/hito04.aux'.
 
  (chapters/hito04.tex
 Cap\'{\i }tulo 5.
-[41
+[42
 
 
 
@@ -792,36 +1215,36 @@ Cap\'{\i }tulo 5.
 ]
 LaTeX Info: Redefining \. on input line 81.
 LaTeX Info: Redefining \% on input line 81.
- [42]
+ [43]
 LaTeX Info: Redefining \. on input line 128.
 LaTeX Info: Redefining \% on input line 128.
- [43]
+ [44]
 LaTeX Info: Redefining \. on input line 168.
 LaTeX Info: Redefining \% on input line 168.
- [44]
+ [45]
 LaTeX Info: Redefining \. on input line 211.
 LaTeX Info: Redefining \% on input line 211.
- [45]
+ [46]
 LaTeX Info: Redefining \. on input line 259.
 LaTeX Info: Redefining \% on input line 259.
- [46]
+ [47]
 LaTeX Info: Redefining \. on input line 302.
 LaTeX Info: Redefining \% on input line 302.
- [47]
+ [48]
 LaTeX Info: Redefining \. on input line 350.
 LaTeX Info: Redefining \% on input line 350.
- [48]
+ [49]
 LaTeX Info: Redefining \. on input line 383.
 LaTeX Info: Redefining \% on input line 383.
- [49])
+ [50])
 LaTeX Info: Redefining \. on input line 16.
 LaTeX Info: Redefining \% on input line 16.
- [50]
+ [51]
 \openout2 = `chapters/hito05.aux'.
 
  (chapters/hito05.tex
 Cap\'{\i }tulo 6.
-[51
+[52
 
 
 
@@ -831,71 +1254,71 @@ LaTeX Info: Redefining \. on input line 83.
 LaTeX Info: Redefining \% on input line 83.
 
 Overfull \hbox (35.63577pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 CAPÍTULO 6.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING (BRONZE) \T1/cmr/m/n/10.95 52
- []
-
-[52]
-LaTeX Info: Redefining \. on input line 140.
-LaTeX Info: Redefining \% on input line 140.
-
-Overfull \hbox (35.63577pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 6.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING (BRONZE) \T1/cmr/m/n/10.95 53
  []
 
 [53]
-LaTeX Info: Redefining \. on input line 187.
-LaTeX Info: Redefining \% on input line 187.
+LaTeX Info: Redefining \. on input line 140.
+LaTeX Info: Redefining \% on input line 140.
 
 Overfull \hbox (35.63577pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 6.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING (BRONZE) \T1/cmr/m/n/10.95 54
  []
 
 [54]
-LaTeX Info: Redefining \. on input line 227.
-LaTeX Info: Redefining \% on input line 227.
+LaTeX Info: Redefining \. on input line 187.
+LaTeX Info: Redefining \% on input line 187.
 
 Overfull \hbox (35.63577pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 6.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING (BRONZE) \T1/cmr/m/n/10.95 55
  []
 
 [55]
-LaTeX Info: Redefining \. on input line 280.
-LaTeX Info: Redefining \% on input line 280.
+LaTeX Info: Redefining \. on input line 227.
+LaTeX Info: Redefining \% on input line 227.
 
 Overfull \hbox (35.63577pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 6.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING (BRONZE) \T1/cmr/m/n/10.95 56
  []
 
 [56]
-LaTeX Info: Redefining \. on input line 328.
-LaTeX Info: Redefining \% on input line 328.
+LaTeX Info: Redefining \. on input line 280.
+LaTeX Info: Redefining \% on input line 280.
 
 Overfull \hbox (35.63577pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 6.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING (BRONZE) \T1/cmr/m/n/10.95 57
  []
 
 [57]
-LaTeX Info: Redefining \. on input line 364.
-LaTeX Info: Redefining \% on input line 364.
+LaTeX Info: Redefining \. on input line 328.
+LaTeX Info: Redefining \% on input line 328.
 
 Overfull \hbox (35.63577pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 6.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING (BRONZE) \T1/cmr/m/n/10.95 58
  []
 
-[58])
-LaTeX Info: Redefining \. on input line 17.
-LaTeX Info: Redefining \% on input line 17.
+[58]
+LaTeX Info: Redefining \. on input line 364.
+LaTeX Info: Redefining \% on input line 364.
 
 Overfull \hbox (35.63577pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 6.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING (BRONZE) \T1/cmr/m/n/10.95 59
  []
 
-[59]
+[59])
+LaTeX Info: Redefining \. on input line 17.
+LaTeX Info: Redefining \% on input line 17.
+
+Overfull \hbox (35.63577pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 6.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING (BRONZE) \T1/cmr/m/n/10.95 60
+ []
+
+[60]
 \openout2 = `chapters/hito05_duckdb.aux'.
 
  (chapters/hito05_duckdb.tex
 Cap\'{\i }tulo 7.
-[60
+[61
 
 
 
@@ -905,10 +1328,10 @@ LaTeX Info: Redefining \. on input line 83.
 LaTeX Info: Redefining \% on input line 83.
 
 Overfull \hbox (47.87128pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 CAPÍTULO 7.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING EN DUCKDB \T1/cmr/m/n/10.95 61
+\T1/cmr/m/sl/10.95 CAPÍTULO 7.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING EN DUCKDB \T1/cmr/m/n/10.95 62
  []
 
-[61]
+[62]
 chapters/hito05_duckdb.tex:129: Missing $ inserted.
 <inserted text> 
                 $
@@ -940,10 +1363,10 @@ LaTeX Info: Redefining \. on input line 135.
 LaTeX Info: Redefining \% on input line 135.
 
 Overfull \hbox (47.87128pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 CAPÍTULO 7.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING EN DUCKDB \T1/cmr/m/n/10.95 62
+\T1/cmr/m/sl/10.95 CAPÍTULO 7.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING EN DUCKDB \T1/cmr/m/n/10.95 63
  []
 
-[62]
+[63]
 chapters/hito05_duckdb.tex:153: Missing $ inserted.
 <inserted text> 
                 $
@@ -998,10 +1421,10 @@ LaTeX Info: Redefining \. on input line 181.
 LaTeX Info: Redefining \% on input line 181.
 
 Overfull \hbox (47.87128pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 CAPÍTULO 7.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING EN DUCKDB \T1/cmr/m/n/10.95 63
+\T1/cmr/m/sl/10.95 CAPÍTULO 7.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING EN DUCKDB \T1/cmr/m/n/10.95 64
  []
 
-[63]
+[64]
 Overfull \hbox (13.4555pt too wide) in paragraph at lines 182--183
 [][][][][][][][][][][][][][][][] 
  []
@@ -1015,34 +1438,34 @@ LaTeX Info: Redefining \. on input line 224.
 LaTeX Info: Redefining \% on input line 224.
 
 Overfull \hbox (47.87128pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 CAPÍTULO 7.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING EN DUCKDB \T1/cmr/m/n/10.95 64
- []
-
-[64]
-LaTeX Info: Redefining \. on input line 281.
-LaTeX Info: Redefining \% on input line 281.
-
-Overfull \hbox (47.87128pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 7.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING EN DUCKDB \T1/cmr/m/n/10.95 65
  []
 
 [65]
-LaTeX Info: Redefining \. on input line 321.
-LaTeX Info: Redefining \% on input line 321.
+LaTeX Info: Redefining \. on input line 281.
+LaTeX Info: Redefining \% on input line 281.
 
 Overfull \hbox (47.87128pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 7.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING EN DUCKDB \T1/cmr/m/n/10.95 66
  []
 
 [66]
-LaTeX Info: Redefining \. on input line 373.
-LaTeX Info: Redefining \% on input line 373.
+LaTeX Info: Redefining \. on input line 321.
+LaTeX Info: Redefining \% on input line 321.
 
 Overfull \hbox (47.87128pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 7.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING EN DUCKDB \T1/cmr/m/n/10.95 67
  []
 
 [67]
+LaTeX Info: Redefining \. on input line 373.
+LaTeX Info: Redefining \% on input line 373.
+
+Overfull \hbox (47.87128pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 7.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING EN DUCKDB \T1/cmr/m/n/10.95 68
+ []
+
+[68]
 chapters/hito05_duckdb.tex:384: Missing $ inserted.
 <inserted text> 
                 $
@@ -1197,18 +1620,18 @@ LaTeX Info: Redefining \. on input line 411.
 LaTeX Info: Redefining \% on input line 411.
 
 Overfull \hbox (47.87128pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 CAPÍTULO 7.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING EN DUCKDB \T1/cmr/m/n/10.95 68
+\T1/cmr/m/sl/10.95 CAPÍTULO 7.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING EN DUCKDB \T1/cmr/m/n/10.95 69
  []
 
-[68])
+[69])
 LaTeX Info: Redefining \. on input line 18.
 LaTeX Info: Redefining \% on input line 18.
 
 Overfull \hbox (47.87128pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 CAPÍTULO 7.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING EN DUCKDB \T1/cmr/m/n/10.95 69
+\T1/cmr/m/sl/10.95 CAPÍTULO 7.  HITO 5: CONSTRUCCIÓN DE LA CAPA STAGING EN DUCKDB \T1/cmr/m/n/10.95 70
  []
 
-[69]
+[70]
 \openout2 = `chapters/hito06.aux'.
 
  (chapters/hito06.tex
@@ -1218,7 +1641,7 @@ Overfull \hbox (7.819pt too wide) in paragraph at lines 5--6
 []\T1/cmtt/m/n/10.95 El objetivo de este hito es construir el primer flujo completo
  []
 
-[70
+[71
 
 
 
@@ -1228,74 +1651,74 @@ LaTeX Info: Redefining \. on input line 82.
 LaTeX Info: Redefining \% on input line 82.
 
 Overfull \hbox (9.93738pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 CAPÍTULO 8.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL \T1/cmr/m/n/10.95 71
- []
-
-[71]
-LaTeX Info: Redefining \. on input line 126.
-LaTeX Info: Redefining \% on input line 126.
-
-Overfull \hbox (9.93738pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 8.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL \T1/cmr/m/n/10.95 72
  []
 
 [72]
-LaTeX Info: Redefining \. on input line 176.
-LaTeX Info: Redefining \% on input line 176.
+LaTeX Info: Redefining \. on input line 126.
+LaTeX Info: Redefining \% on input line 126.
 
 Overfull \hbox (9.93738pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 8.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL \T1/cmr/m/n/10.95 73
  []
 
 [73]
-LaTeX Info: Redefining \. on input line 224.
-LaTeX Info: Redefining \% on input line 224.
+LaTeX Info: Redefining \. on input line 176.
+LaTeX Info: Redefining \% on input line 176.
 
 Overfull \hbox (9.93738pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 8.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL \T1/cmr/m/n/10.95 74
  []
 
 [74]
-LaTeX Info: Redefining \. on input line 270.
-LaTeX Info: Redefining \% on input line 270.
+LaTeX Info: Redefining \. on input line 224.
+LaTeX Info: Redefining \% on input line 224.
 
 Overfull \hbox (9.93738pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 8.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL \T1/cmr/m/n/10.95 75
  []
 
 [75]
-LaTeX Info: Redefining \. on input line 308.
-LaTeX Info: Redefining \% on input line 308.
+LaTeX Info: Redefining \. on input line 270.
+LaTeX Info: Redefining \% on input line 270.
 
 Overfull \hbox (9.93738pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 8.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL \T1/cmr/m/n/10.95 76
  []
 
 [76]
-LaTeX Info: Redefining \. on input line 365.
-LaTeX Info: Redefining \% on input line 365.
+LaTeX Info: Redefining \. on input line 308.
+LaTeX Info: Redefining \% on input line 308.
 
 Overfull \hbox (9.93738pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 8.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL \T1/cmr/m/n/10.95 77
  []
 
 [77]
-LaTeX Info: Redefining \. on input line 416.
-LaTeX Info: Redefining \% on input line 416.
+LaTeX Info: Redefining \. on input line 365.
+LaTeX Info: Redefining \% on input line 365.
 
 Overfull \hbox (9.93738pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 8.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL \T1/cmr/m/n/10.95 78
  []
 
 [78]
-LaTeX Info: Redefining \. on input line 454.
-LaTeX Info: Redefining \% on input line 454.
+LaTeX Info: Redefining \. on input line 416.
+LaTeX Info: Redefining \% on input line 416.
 
 Overfull \hbox (9.93738pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 8.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL \T1/cmr/m/n/10.95 79
  []
 
 [79]
+LaTeX Info: Redefining \. on input line 454.
+LaTeX Info: Redefining \% on input line 454.
+
+Overfull \hbox (9.93738pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 8.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL \T1/cmr/m/n/10.95 80
+ []
+
+[80]
 Overfull \hbox (35.16917pt too wide) in paragraph at lines 458--459
 []\T1/cmtt/m/n/10.95 Primera transformación desde staging hacia el modelo dimensional. 
  []
@@ -1305,10 +1728,10 @@ LaTeX Info: Redefining \. on input line 19.
 LaTeX Info: Redefining \% on input line 19.
 
 Overfull \hbox (9.93738pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 CAPÍTULO 8.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL \T1/cmr/m/n/10.95 80
+\T1/cmr/m/sl/10.95 CAPÍTULO 8.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL \T1/cmr/m/n/10.95 81
  []
 
-[80]
+[81]
 \openout2 = `chapters/hito06_duckdb.aux'.
 
  (chapters/hito06_duckdb.tex
@@ -1318,7 +1741,7 @@ Overfull \hbox (7.819pt too wide) in paragraph at lines 5--6
 []\T1/cmtt/m/n/10.95 El objetivo de este hito es construir el primer flujo completo
  []
 
-[81
+[82
 
 
 
@@ -1328,82 +1751,82 @@ LaTeX Info: Redefining \. on input line 86.
 LaTeX Info: Redefining \% on input line 86.
 
 Overfull \hbox (88.0898pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 CAPÍTULO 9.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL CON DUCKDB \T1/cmr/m/n/10.95 82
- []
-
-[82]
-LaTeX Info: Redefining \. on input line 129.
-LaTeX Info: Redefining \% on input line 129.
-
-Overfull \hbox (88.0898pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 9.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL CON DUCKDB \T1/cmr/m/n/10.95 83
  []
 
 [83]
-LaTeX Info: Redefining \. on input line 179.
-LaTeX Info: Redefining \% on input line 179.
+LaTeX Info: Redefining \. on input line 129.
+LaTeX Info: Redefining \% on input line 129.
 
 Overfull \hbox (88.0898pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 9.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL CON DUCKDB \T1/cmr/m/n/10.95 84
  []
 
 [84]
-LaTeX Info: Redefining \. on input line 227.
-LaTeX Info: Redefining \% on input line 227.
+LaTeX Info: Redefining \. on input line 179.
+LaTeX Info: Redefining \% on input line 179.
 
 Overfull \hbox (88.0898pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 9.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL CON DUCKDB \T1/cmr/m/n/10.95 85
  []
 
 [85]
-LaTeX Info: Redefining \. on input line 270.
-LaTeX Info: Redefining \% on input line 270.
+LaTeX Info: Redefining \. on input line 227.
+LaTeX Info: Redefining \% on input line 227.
 
 Overfull \hbox (88.0898pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 9.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL CON DUCKDB \T1/cmr/m/n/10.95 86
  []
 
 [86]
-LaTeX Info: Redefining \. on input line 312.
-LaTeX Info: Redefining \% on input line 312.
+LaTeX Info: Redefining \. on input line 270.
+LaTeX Info: Redefining \% on input line 270.
 
 Overfull \hbox (88.0898pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 9.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL CON DUCKDB \T1/cmr/m/n/10.95 87
  []
 
 [87]
-LaTeX Info: Redefining \. on input line 351.
-LaTeX Info: Redefining \% on input line 351.
+LaTeX Info: Redefining \. on input line 312.
+LaTeX Info: Redefining \% on input line 312.
 
 Overfull \hbox (88.0898pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 9.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL CON DUCKDB \T1/cmr/m/n/10.95 88
  []
 
 [88]
-LaTeX Info: Redefining \. on input line 392.
-LaTeX Info: Redefining \% on input line 392.
+LaTeX Info: Redefining \. on input line 351.
+LaTeX Info: Redefining \% on input line 351.
 
 Overfull \hbox (88.0898pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 9.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL CON DUCKDB \T1/cmr/m/n/10.95 89
  []
 
 [89]
-LaTeX Info: Redefining \. on input line 445.
-LaTeX Info: Redefining \% on input line 445.
+LaTeX Info: Redefining \. on input line 392.
+LaTeX Info: Redefining \% on input line 392.
 
 Overfull \hbox (88.0898pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 9.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL CON DUCKDB \T1/cmr/m/n/10.95 90
  []
 
 [90]
-LaTeX Info: Redefining \. on input line 495.
-LaTeX Info: Redefining \% on input line 495.
+LaTeX Info: Redefining \. on input line 445.
+LaTeX Info: Redefining \% on input line 445.
 
 Overfull \hbox (88.0898pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 9.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL CON DUCKDB \T1/cmr/m/n/10.95 91
  []
 
 [91]
+LaTeX Info: Redefining \. on input line 495.
+LaTeX Info: Redefining \% on input line 495.
+
+Overfull \hbox (88.0898pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 9.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL CON DUCKDB \T1/cmr/m/n/10.95 92
+ []
+
+[92]
 chapters/hito06_duckdb.tex:509: Missing $ inserted.
 <inserted text> 
                 $
@@ -1436,10 +1859,10 @@ LaTeX Info: Redefining \. on input line 532.
 LaTeX Info: Redefining \% on input line 532.
 
 Overfull \hbox (88.0898pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 CAPÍTULO 9.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL CON DUCKDB \T1/cmr/m/n/10.95 92
+\T1/cmr/m/sl/10.95 CAPÍTULO 9.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL CON DUCKDB \T1/cmr/m/n/10.95 93
  []
 
-[92]
+[93]
 Overfull \hbox (35.16917pt too wide) in paragraph at lines 536--537
 []\T1/cmtt/m/n/10.95 Primera transformación desde staging hacia el modelo dimensional. 
  []
@@ -1449,10 +1872,10 @@ LaTeX Info: Redefining \. on input line 20.
 LaTeX Info: Redefining \% on input line 20.
 
 Overfull \hbox (88.0898pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 CAPÍTULO 9.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL CON DUCKDB \T1/cmr/m/n/10.95 93
+\T1/cmr/m/sl/10.95 CAPÍTULO 9.  HITO 6: CONSTRUCCIÓN DEL PRIMER PROCESO ETL CON DUCKDB \T1/cmr/m/n/10.95 94
  []
 
-[93]
+[94]
 \openout2 = `chapters/hito07_duckdb.aux'.
 
  (chapters/hito07_duckdb.tex
@@ -1472,7 +1895,7 @@ Overfull \hbox (30.4276pt too wide) in paragraph at lines 7--8
 \T1/cmtt/m/n/10.95 en staging en estructuras analíticas organizadas siguiendo principios
  []
 
-[94
+[95
 
 
 
@@ -1486,34 +1909,34 @@ LaTeX Info: Redefining \. on input line 70.
 LaTeX Info: Redefining \% on input line 70.
 
 Overfull \hbox (125.8749pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 CAPÍTULO 10.  HITO 7: CONSTRUCCIÓN DE LA CAPA CORE Y DIMENSIONES EN DUCKDB \T1/cmr/m/n/10.95 95
- []
-
-[95]
-LaTeX Info: Redefining \. on input line 112.
-LaTeX Info: Redefining \% on input line 112.
-
-Overfull \hbox (125.8749pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 10.  HITO 7: CONSTRUCCIÓN DE LA CAPA CORE Y DIMENSIONES EN DUCKDB \T1/cmr/m/n/10.95 96
  []
 
 [96]
-LaTeX Info: Redefining \. on input line 153.
-LaTeX Info: Redefining \% on input line 153.
+LaTeX Info: Redefining \. on input line 112.
+LaTeX Info: Redefining \% on input line 112.
 
 Overfull \hbox (125.8749pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 10.  HITO 7: CONSTRUCCIÓN DE LA CAPA CORE Y DIMENSIONES EN DUCKDB \T1/cmr/m/n/10.95 97
  []
 
 [97]
-LaTeX Info: Redefining \. on input line 199.
-LaTeX Info: Redefining \% on input line 199.
+LaTeX Info: Redefining \. on input line 153.
+LaTeX Info: Redefining \% on input line 153.
 
 Overfull \hbox (125.8749pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 10.  HITO 7: CONSTRUCCIÓN DE LA CAPA CORE Y DIMENSIONES EN DUCKDB \T1/cmr/m/n/10.95 98
  []
 
 [98]
+LaTeX Info: Redefining \. on input line 199.
+LaTeX Info: Redefining \% on input line 199.
+
+Overfull \hbox (125.8749pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 10.  HITO 7: CONSTRUCCIÓN DE LA CAPA CORE Y DIMENSIONES EN DUCKDB \T1/cmr/m/n/10.95 99
+ []
+
+[99]
 Overfull \hbox (36.11086pt too wide) in paragraph at lines 233--234
 []\T1/cmtt/m/n/10.95 que permite generar calendarios completos sin necesidad de archivos
  []
@@ -1521,27 +1944,27 @@ Overfull \hbox (36.11086pt too wide) in paragraph at lines 233--234
 LaTeX Info: Redefining \. on input line 242.
 LaTeX Info: Redefining \% on input line 242.
 
-Overfull \hbox (125.8749pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 CAPÍTULO 10.  HITO 7: CONSTRUCCIÓN DE LA CAPA CORE Y DIMENSIONES EN DUCKDB \T1/cmr/m/n/10.95 99
- []
-
-[99]
-LaTeX Info: Redefining \. on input line 281.
-LaTeX Info: Redefining \% on input line 281.
-
 Overfull \hbox (131.31883pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 10.  HITO 7: CONSTRUCCIÓN DE LA CAPA CORE Y DIMENSIONES EN DUCKDB \T1/cmr/m/n/10.95 100
  []
 
 [100]
-LaTeX Info: Redefining \. on input line 321.
-LaTeX Info: Redefining \% on input line 321.
+LaTeX Info: Redefining \. on input line 281.
+LaTeX Info: Redefining \% on input line 281.
 
 Overfull \hbox (131.31883pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 10.  HITO 7: CONSTRUCCIÓN DE LA CAPA CORE Y DIMENSIONES EN DUCKDB \T1/cmr/m/n/10.95 101
  []
 
 [101]
+LaTeX Info: Redefining \. on input line 321.
+LaTeX Info: Redefining \% on input line 321.
+
+Overfull \hbox (131.31883pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 10.  HITO 7: CONSTRUCCIÓN DE LA CAPA CORE Y DIMENSIONES EN DUCKDB \T1/cmr/m/n/10.95 102
+ []
+
+[102]
 Overfull \hbox (19.13574pt too wide) in paragraph at lines 325--326
 []\T1/cmtt/m/n/10.95 En esta primera versión no implementaremos todavía una dimensión
  []
@@ -1550,42 +1973,42 @@ LaTeX Info: Redefining \. on input line 370.
 LaTeX Info: Redefining \% on input line 370.
 
 Overfull \hbox (131.31883pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 CAPÍTULO 10.  HITO 7: CONSTRUCCIÓN DE LA CAPA CORE Y DIMENSIONES EN DUCKDB \T1/cmr/m/n/10.95 102
- []
-
-[102]
-LaTeX Info: Redefining \. on input line 416.
-LaTeX Info: Redefining \% on input line 416.
-
-Overfull \hbox (131.31883pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 10.  HITO 7: CONSTRUCCIÓN DE LA CAPA CORE Y DIMENSIONES EN DUCKDB \T1/cmr/m/n/10.95 103
  []
 
 [103]
-LaTeX Info: Redefining \. on input line 462.
-LaTeX Info: Redefining \% on input line 462.
+LaTeX Info: Redefining \. on input line 416.
+LaTeX Info: Redefining \% on input line 416.
 
 Overfull \hbox (131.31883pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 10.  HITO 7: CONSTRUCCIÓN DE LA CAPA CORE Y DIMENSIONES EN DUCKDB \T1/cmr/m/n/10.95 104
  []
 
 [104]
-LaTeX Info: Redefining \. on input line 509.
-LaTeX Info: Redefining \% on input line 509.
+LaTeX Info: Redefining \. on input line 462.
+LaTeX Info: Redefining \% on input line 462.
 
 Overfull \hbox (131.31883pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 10.  HITO 7: CONSTRUCCIÓN DE LA CAPA CORE Y DIMENSIONES EN DUCKDB \T1/cmr/m/n/10.95 105
  []
 
 [105]
-LaTeX Info: Redefining \. on input line 545.
-LaTeX Info: Redefining \% on input line 545.
+LaTeX Info: Redefining \. on input line 509.
+LaTeX Info: Redefining \% on input line 509.
 
 Overfull \hbox (131.31883pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÍTULO 10.  HITO 7: CONSTRUCCIÓN DE LA CAPA CORE Y DIMENSIONES EN DUCKDB \T1/cmr/m/n/10.95 106
  []
 
 [106]
+LaTeX Info: Redefining \. on input line 545.
+LaTeX Info: Redefining \% on input line 545.
+
+Overfull \hbox (131.31883pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 10.  HITO 7: CONSTRUCCIÓN DE LA CAPA CORE Y DIMENSIONES EN DUCKDB \T1/cmr/m/n/10.95 107
+ []
+
+[107]
 chapters/hito07_duckdb.tex:549: Missing $ inserted.
 <inserted text> 
                 $
@@ -1647,36 +2070,1241 @@ LaTeX Info: Redefining \. on input line 21.
 LaTeX Info: Redefining \% on input line 21.
 
 Overfull \hbox (131.31883pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 CAPÍTULO 10.  HITO 7: CONSTRUCCIÓN DE LA CAPA CORE Y DIMENSIONES EN DUCKDB \T1/cmr/m/n/10.95 107
+\T1/cmr/m/sl/10.95 CAPÍTULO 10.  HITO 7: CONSTRUCCIÓN DE LA CAPA CORE Y DIMENSIONES EN DUCKDB \T1/cmr/m/n/10.95 108
  []
 
-[107] (main.aux
+[108]
+\openout2 = `chapters/hito08.aux'.
+
+ (chapters/hito08.tex
+Cap\'{\i }tulo 11.
+
+Overfull \hbox (7.819pt too wide) in paragraph at lines 5--6
+[]\T1/cmtt/m/n/10.95 El objetivo de este hito es construir las tablas de hechos del
+ []
+
+
+Overfull \hbox (13.47737pt too wide) in paragraph at lines 7--8
+[]\T1/cmtt/m/n/10.95 Las tablas de hechos almacenan las medidas numéricas del modelo
+ []
+
+
+Overfull \hbox (19.11086pt too wide) in paragraph at lines 7--8
+\T1/cmtt/m/n/10.95 dimensional. En este proyecto construiremos dos hechos principales: 
+ []
+
+chapters/hito08.tex:10: Missing $ inserted.
+<inserted text> 
+                $
+l.10 \item \texttt{fact_tipo_cambio}
+                                    
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito08.tex:10: Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.10 \item \texttt{fact_tipo_cambio}
+                                    
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+chapters/hito08.tex:11: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 \item
+           \texttt{fact_balance_mensual}
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+chapters/hito08.tex:11: Missing $ inserted.
+<inserted text> 
+                $
+l.11 \item \texttt
+                  {fact_balance_mensual}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito08.tex:11: Missing $ inserted.
+<inserted text> 
+                $
+l.11 \item \texttt{fact_balance_mensual}
+                                        
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito08.tex:11: Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.11 \item \texttt{fact_balance_mensual}
+                                        
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+chapters/hito08.tex:12: LaTeX Error: Command \end{itemize} invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 \end{itemize}
+                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+chapters/hito08.tex:12: Missing $ inserted.
+<inserted text> 
+                $
+l.12 \end{itemize}
+                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito08.tex:12: Missing } inserted.
+<inserted text> 
+                }
+l.12 \end{itemize}
+                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+chapters/hito08.tex:12: Missing } inserted.
+<inserted text> 
+                }
+l.12 \end{itemize}
+                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+[109
+
+
+
+
+]
+chapters/hito08.tex:69: Missing $ inserted.
+<inserted text> 
+                $
+l.69 ...tion{Paso 2: Crear tabla fact_tipo_cambio}
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito08.tex:69: Missing $ inserted.
+<inserted text> 
+                $
+l.69 ...tion{Paso 2: Crear tabla fact_tipo_cambio}
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 69.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 69.
+
+LaTeX Info: Redefining \. on input line 78.
+LaTeX Info: Redefining \% on input line 78.
+
+Overfull \hbox (92.17186pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 11.  HITO 8: CONSTRUCCIÓN DE LAS TABLAS DE HECHOS EN DUCKDB \T1/cmr/m/n/10.95 110
+ []
+
+[110]
+chapters/hito08.tex:93: Missing $ inserted.
+<inserted text> 
+                $
+l.93 ...{Paso 3: Crear tabla fact_balance_mensual}
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito08.tex:93: Missing $ inserted.
+<inserted text> 
+                $
+l.93 ...{Paso 3: Crear tabla fact_balance_mensual}
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 93.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 93.
+
+LaTeX Info: Redefining \. on input line 117.
+LaTeX Info: Redefining \% on input line 117.
+
+Overfull \hbox (92.17186pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 11.  HITO 8: CONSTRUCCIÓN DE LAS TABLAS DE HECHOS EN DUCKDB \T1/cmr/m/n/10.95 111
+ []
+
+[111]
+Overfull \hbox (2.16063pt too wide) in paragraph at lines 125--126
+[]\T1/cmtt/m/n/10.95 DuckDB permite definir llaves primarias y restricciones, pero
+ []
+
+
+Overfull \hbox (36.11086pt too wide) in paragraph at lines 127--128
+[]\T1/cmtt/m/n/10.95 La validación del grano se realizará mediante consultas de control. 
+ []
+
+chapters/hito08.tex:147: Missing $ inserted.
+<inserted text> 
+                $
+l.147 \section{Paso 6: Cargar fact_tipo_cambio}
+                                               
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito08.tex:147: Missing $ inserted.
+<inserted text> 
+                $
+l.147 \section{Paso 6: Cargar fact_tipo_cambio}
+                                               
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 147.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 147.
+
+LaTeX Info: Redefining \. on input line 164.
+LaTeX Info: Redefining \% on input line 164.
+
+Overfull \hbox (92.17186pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 11.  HITO 8: CONSTRUCCIÓN DE LAS TABLAS DE HECHOS EN DUCKDB \T1/cmr/m/n/10.95 112
+ []
+
+[112]
+LaTeX Info: Redefining \. on input line 202.
+LaTeX Info: Redefining \% on input line 202.
+
+Overfull \hbox (92.17186pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 11.  HITO 8: CONSTRUCCIÓN DE LAS TABLAS DE HECHOS EN DUCKDB \T1/cmr/m/n/10.95 113
+ []
+
+[113]
+chapters/hito08.tex:211: Missing $ inserted.
+<inserted text> 
+                $
+l.211 ...m Se resuelve la clave \texttt{sk_tiempo}
+                                                  .
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito08.tex:211: Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.211 ...m Se resuelve la clave \texttt{sk_tiempo}
+                                                  .
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+chapters/hito08.tex:212: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.212 \item
+            Se resuelve la clave \texttt{sk_moneda}.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+chapters/hito08.tex:212: Missing $ inserted.
+<inserted text> 
+                $
+l.212 \item S
+             e resuelve la clave \texttt{sk_moneda}.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito08.tex:212: Missing $ inserted.
+<inserted text> 
+                $
+l.212 ...m Se resuelve la clave \texttt{sk_moneda}
+                                                  .
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito08.tex:212: Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.212 ...m Se resuelve la clave \texttt{sk_moneda}
+                                                  .
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+chapters/hito08.tex:213: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.213 \item
+            Se calcula \texttt{tasa_promedio}.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+chapters/hito08.tex:213: Missing $ inserted.
+<inserted text> 
+                $
+l.213 \item S
+             e calcula \texttt{tasa_promedio}.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito08.tex:213: Missing $ inserted.
+<inserted text> 
+                $
+l.213 \item Se calcula \texttt{tasa_promedio}
+                                             .
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito08.tex:213: Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.213 \item Se calcula \texttt{tasa_promedio}
+                                             .
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+chapters/hito08.tex:214: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.214 \item
+            Se calcula \texttt{spread}.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+chapters/hito08.tex:214: Missing $ inserted.
+<inserted text> 
+                $
+l.214 \item S
+             e calcula \texttt{spread}.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito08.tex:215: Missing } inserted.
+<inserted text> 
+                }
+l.215 \end{itemize}
+                   
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+chapters/hito08.tex:215: Missing } inserted.
+<inserted text> 
+                }
+l.215 \end{itemize}
+                   
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+chapters/hito08.tex:215: Missing } inserted.
+<inserted text> 
+                }
+l.215 \end{itemize}
+                   
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+chapters/hito08.tex:217: Missing $ inserted.
+<inserted text> 
+                $
+l.217 ...tion{Paso 7: Cargar fact_balance_mensual}
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito08.tex:217: Missing $ inserted.
+<inserted text> 
+                $
+l.217 ...tion{Paso 7: Cargar fact_balance_mensual}
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 217.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 217.
+
+LaTeX Info: Redefining \. on input line 243.
+LaTeX Info: Redefining \% on input line 243.
+
+Overfull \hbox (92.17186pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 11.  HITO 8: CONSTRUCCIÓN DE LAS TABLAS DE HECHOS EN DUCKDB \T1/cmr/m/n/10.95 114
+ []
+
+[114]
+Overfull \hbox (36.11086pt too wide) in paragraph at lines 284--285
+[]\T1/cmtt/m/n/10.95 Si el campo periodo viene con formato YYYYMM, DuckDB puede requerir
+ []
+
+LaTeX Info: Redefining \. on input line 286.
+LaTeX Info: Redefining \% on input line 286.
+
+Overfull \hbox (92.17186pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 11.  HITO 8: CONSTRUCCIÓN DE LAS TABLAS DE HECHOS EN DUCKDB \T1/cmr/m/n/10.95 115
+ []
+
+[115]
+Overfull \hbox (13.47737pt too wide) in paragraph at lines 286--287
+[]\T1/cmtt/m/n/10.95 Si el bloque anterior falla, utilizar esta versión alternativa: 
+ []
+
+chapters/hito08.tex:295: Missing $ inserted.
+<inserted text> 
+                $
+l.295 La uniÃ³n con \texttt{dim_tiempo}
+                                        quedarÃ­a:
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito08.tex:295: Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.295 La uniÃ³n con \texttt{dim_tiempo}
+                                        quedarÃ­a:
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 295.
+
+chapters/hito08.tex:296: Missing $ inserted.
+<inserted text> 
+                $
+l.296 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+Missing character: There is no í in font cmr10!
+LaTeX Info: Redefining \. on input line 332.
+LaTeX Info: Redefining \% on input line 332.
+
+Overfull \hbox (92.17186pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 11.  HITO 8: CONSTRUCCIÓN DE LAS TABLAS DE HECHOS EN DUCKDB \T1/cmr/m/n/10.95 116
+ []
+
+[116]
+LaTeX Info: Redefining \. on input line 379.
+LaTeX Info: Redefining \% on input line 379.
+
+Overfull \hbox (92.17186pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 11.  HITO 8: CONSTRUCCIÓN DE LAS TABLAS DE HECHOS EN DUCKDB \T1/cmr/m/n/10.95 117
+ []
+
+[117]
+LaTeX Info: Redefining \. on input line 426.
+LaTeX Info: Redefining \% on input line 426.
+
+Overfull \hbox (92.17186pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 11.  HITO 8: CONSTRUCCIÓN DE LAS TABLAS DE HECHOS EN DUCKDB \T1/cmr/m/n/10.95 118
+ []
+
+[118]
+chapters/hito08.tex:437: Missing $ inserted.
+<inserted text> 
+                $
+l.437 ...n{Paso 12: Inspeccionar fact_tipo_cambio}
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito08.tex:437: Missing $ inserted.
+<inserted text> 
+                $
+l.437 ...n{Paso 12: Inspeccionar fact_tipo_cambio}
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 437.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 437.
+
+LaTeX Info: Redefining \. on input line 472.
+LaTeX Info: Redefining \% on input line 472.
+
+Overfull \hbox (92.17186pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 11.  HITO 8: CONSTRUCCIÓN DE LAS TABLAS DE HECHOS EN DUCKDB \T1/cmr/m/n/10.95 119
+ []
+
+[119]
+chapters/hito08.tex:479: Missing $ inserted.
+<inserted text> 
+                $
+l.479 ...so 13: Inspeccionar fact_balance_mensual}
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito08.tex:479: Missing $ inserted.
+<inserted text> 
+                $
+l.479 ...so 13: Inspeccionar fact_balance_mensual}
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 479.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 479.
+
+LaTeX Info: Redefining \. on input line 516.
+LaTeX Info: Redefining \% on input line 516.
+
+Overfull \hbox (92.17186pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 11.  HITO 8: CONSTRUCCIÓN DE LAS TABLAS DE HECHOS EN DUCKDB \T1/cmr/m/n/10.95 120
+ []
+
+[120]
+LaTeX Info: Redefining \. on input line 565.
+LaTeX Info: Redefining \% on input line 565.
+
+Overfull \hbox (92.17186pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 11.  HITO 8: CONSTRUCCIÓN DE LAS TABLAS DE HECHOS EN DUCKDB \T1/cmr/m/n/10.95 121
+ []
+
+[121]
+LaTeX Info: Redefining \. on input line 617.
+LaTeX Info: Redefining \% on input line 617.
+
+Overfull \hbox (92.17186pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 11.  HITO 8: CONSTRUCCIÓN DE LAS TABLAS DE HECHOS EN DUCKDB \T1/cmr/m/n/10.95 122
+ []
+
+[122]
+LaTeX Info: Redefining \. on input line 670.
+LaTeX Info: Redefining \% on input line 670.
+
+Overfull \hbox (92.17186pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 11.  HITO 8: CONSTRUCCIÓN DE LAS TABLAS DE HECHOS EN DUCKDB \T1/cmr/m/n/10.95 123
+ []
+
+[123]
+Overfull \hbox (12.53569pt too wide) in paragraph at lines 704--705
+[]\T1/cmtt/m/n/10.95 Las medidas derivadas deben calcularse de forma reproducible. 
+ []
+
+LaTeX Info: Redefining \. on input line 707.
+LaTeX Info: Redefining \% on input line 707.
+
+Overfull \hbox (92.17186pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 11.  HITO 8: CONSTRUCCIÓN DE LAS TABLAS DE HECHOS EN DUCKDB \T1/cmr/m/n/10.95 124
+ []
+
+[124]
+chapters/hito08.tex:712: Missing $ inserted.
+<inserted text> 
+                $
+l.712 ...m[$\Box$] Tabla \texttt{fact_tipo_cambio}
+                                                   creada.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito08.tex:712: Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.712 ...m[$\Box$] Tabla \texttt{fact_tipo_cambio}
+                                                   creada.
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+chapters/hito08.tex:713: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.713 \item
+           [$\Box$] Tabla \texttt{fact_balance_mensual} creada.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+chapters/hito08.tex:713: Missing $ inserted.
+<inserted text> 
+                $
+l.713 \item[$\Box$]
+                    Tabla \texttt{fact_balance_mensual} creada.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito08.tex:713: Missing $ inserted.
+<inserted text> 
+                $
+l.713 ...Box$] Tabla \texttt{fact_balance_mensual}
+                                                   creada.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito08.tex:713: Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.713 ...Box$] Tabla \texttt{fact_balance_mensual}
+                                                   creada.
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+chapters/hito08.tex:714: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.714 \item
+           [$\Box$] Hechos cargados.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+chapters/hito08.tex:714: Missing $ inserted.
+<inserted text> 
+                $
+l.714 \item[$\Box$]
+                    Hechos cargados.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito08.tex:720: Missing } inserted.
+<inserted text> 
+                }
+l.720 \end{itemize}
+                   
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+chapters/hito08.tex:720: Missing } inserted.
+<inserted text> 
+                }
+l.720 \end{itemize}
+                   
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+LaTeX Info: Redefining \. on input line 745.
+LaTeX Info: Redefining \% on input line 745.
+
+Overfull \hbox (92.17186pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 11.  HITO 8: CONSTRUCCIÓN DE LAS TABLAS DE HECHOS EN DUCKDB \T1/cmr/m/n/10.95 125
+ []
+
+[125])
+LaTeX Info: Redefining \. on input line 22.
+LaTeX Info: Redefining \% on input line 22.
+
+Overfull \hbox (92.17186pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 11.  HITO 8: CONSTRUCCIÓN DE LAS TABLAS DE HECHOS EN DUCKDB \T1/cmr/m/n/10.95 126
+ []
+
+[126]
+\openout2 = `chapters/hito09.aux'.
+
+ (chapters/hito09.tex
+Cap\'{\i }tulo 12.
+
+Overfull \hbox (47.4276pt too wide) in paragraph at lines 5--6
+[]\T1/cmtt/m/n/10.95 El objetivo de este hito es construir la capa mart del Data Warehouse
+ []
+
+
+Overfull \hbox (30.45248pt too wide) in paragraph at lines 7--8
+[]\T1/cmtt/m/n/10.95 La capa mart contiene vistas analíticas listas para ser consumidas
+ []
+
+
+Overfull \hbox (30.4276pt too wide) in paragraph at lines 7--8
+\T1/cmtt/m/n/10.95 por usuarios finales, reportes y dashboards. A diferencia de staging,
+ []
+
+
+Overfull \hbox (36.08597pt too wide) in paragraph at lines 7--8
+\T1/cmtt/m/n/10.95 que almacena datos crudos, y core, que contiene el modelo dimensional,
+ []
+
+
+Overfull \hbox (40.82755pt too wide) in paragraph at lines 14--15
+[]\T1/cmtt/m/n/10.95 Construir métricas como ROA, ROE, dolarización y spread cambiario. 
+ []
+
+
+Overfull \hbox (2.16063pt too wide) in paragraph at lines 21--22
+[]\T1/cmtt/m/n/10.95 Al finalizar este hito deberán existir las siguientes vistas: 
+ []
+
+[127
+
+
+
+
+]
+LaTeX Info: Redefining \. on input line 73.
+LaTeX Info: Redefining \% on input line 73.
+
+Overfull \hbox (204.48119pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 12.  HITO 9: CONSTRUCCIÓN DE LA CAPA MART E INDICADORES ANALÍTICOS EN DUCKDB \T1/cmr/m/n/10.95 128
+ []
+
+[128]
+Overfull \hbox (13.47737pt too wide) in paragraph at lines 104--105
+[]\T1/cmtt/m/n/10.95 Esta vista transforma la tabla de hechos cambiaria en una tabla
+ []
+
+LaTeX Info: Redefining \. on input line 111.
+LaTeX Info: Redefining \% on input line 111.
+
+Overfull \hbox (204.48119pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 12.  HITO 9: CONSTRUCCIÓN DE LA CAPA MART E INDICADORES ANALÍTICOS EN DUCKDB \T1/cmr/m/n/10.95 129
+ []
+
+[129]
+LaTeX Info: Redefining \. on input line 156.
+LaTeX Info: Redefining \% on input line 156.
+
+Overfull \hbox (204.48119pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 12.  HITO 9: CONSTRUCCIÓN DE LA CAPA MART E INDICADORES ANALÍTICOS EN DUCKDB \T1/cmr/m/n/10.95 130
+ []
+
+[130]
+chapters/hito09.tex:193: Missing $ inserted.
+<inserted text> 
+                $
+l.193 \item \texttt{dolarizacion_depositos}
+                                           : proporciÃ³n de depÃ³sitos en mo...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito09.tex:193: Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.193 \item \texttt{dolarizacion_depositos}
+                                           : proporciÃ³n de depÃ³sitos en mo...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 193.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 193.
+
+
+chapters/hito09.tex:194: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.194 \item
+            \texttt{dolarizacion_cartera}: proporciÃ³n de cartera en moneda ...
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+chapters/hito09.tex:194: Missing $ inserted.
+<inserted text> 
+                $
+l.194 \item \texttt
+                   {dolarizacion_cartera}: proporciÃ³n de cartera en moneda ...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+Missing character: There is no ó in font cmr10!
+Missing character: There is no ó in font cmr10!
+chapters/hito09.tex:194: Missing $ inserted.
+<inserted text> 
+                $
+l.194 \item \texttt{dolarizacion_cartera}
+                                         : proporciÃ³n de cartera en moneda ...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito09.tex:194: Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.194 \item \texttt{dolarizacion_cartera}
+                                         : proporciÃ³n de cartera en moneda ...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 194.
+
+
+chapters/hito09.tex:195: LaTeX Error: Command \end{itemize} invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.195 \end{itemize}
+                   
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+chapters/hito09.tex:195: Missing $ inserted.
+<inserted text> 
+                $
+l.195 \end{itemize}
+                   
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+Missing character: There is no ó in font cmr10!
+chapters/hito09.tex:195: Missing } inserted.
+<inserted text> 
+                }
+l.195 \end{itemize}
+                   
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+chapters/hito09.tex:195: Missing } inserted.
+<inserted text> 
+                }
+l.195 \end{itemize}
+                   
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+LaTeX Info: Redefining \. on input line 196.
+LaTeX Info: Redefining \% on input line 196.
+
+Overfull \hbox (204.48119pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 12.  HITO 9: CONSTRUCCIÓN DE LA CAPA MART E INDICADORES ANALÍTICOS EN DUCKDB \T1/cmr/m/n/10.95 131
+ []
+
+[131]
+LaTeX Info: Redefining \. on input line 237.
+LaTeX Info: Redefining \% on input line 237.
+
+Overfull \hbox (204.48119pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 12.  HITO 9: CONSTRUCCIÓN DE LA CAPA MART E INDICADORES ANALÍTICOS EN DUCKDB \T1/cmr/m/n/10.95 132
+ []
+
+[132]
+Overfull \hbox (13.47737pt too wide) in paragraph at lines 268--269
+[]\T1/cmtt/m/n/10.95 En este proyecto lo calculamos usando participación en activos. 
+ []
+
+
+Overfull \hbox (27.0357pt too wide) in paragraph at lines 275--277
+[][][][][][][][][][][][][][][][] 
+ []
+
+LaTeX Info: Redefining \. on input line 282.
+LaTeX Info: Redefining \% on input line 282.
+
+Overfull \hbox (204.48119pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 12.  HITO 9: CONSTRUCCIÓN DE LA CAPA MART E INDICADORES ANALÍTICOS EN DUCKDB \T1/cmr/m/n/10.95 133
+ []
+
+[133]
+LaTeX Info: Redefining \. on input line 321.
+LaTeX Info: Redefining \% on input line 321.
+
+Overfull \hbox (204.48119pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 12.  HITO 9: CONSTRUCCIÓN DE LA CAPA MART E INDICADORES ANALÍTICOS EN DUCKDB \T1/cmr/m/n/10.95 134
+ []
+
+[134]
+Overfull \hbox (7.819pt too wide) in paragraph at lines 354--355
+[]\T1/cmtt/m/n/10.95 Esta vista integra información cambiaria y bancaria en un solo
+ []
+
+LaTeX Info: Redefining \. on input line 362.
+LaTeX Info: Redefining \% on input line 362.
+
+Overfull \hbox (204.48119pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 12.  HITO 9: CONSTRUCCIÓN DE LA CAPA MART E INDICADORES ANALÍTICOS EN DUCKDB \T1/cmr/m/n/10.95 135
+ []
+
+[135]
+LaTeX Info: Redefining \. on input line 402.
+LaTeX Info: Redefining \% on input line 402.
+
+Overfull \hbox (204.48119pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 12.  HITO 9: CONSTRUCCIÓN DE LA CAPA MART E INDICADORES ANALÍTICOS EN DUCKDB \T1/cmr/m/n/10.95 136
+ []
+
+[136]
+Overfull \hbox (4.28047pt too wide) in paragraph at lines 420--420
+[]\T1/cmr/bx/n/14.4 Paso 8: Crear con-sul-ta de mo-ni-to-reo de marts 
+ []
+
+LaTeX Info: Redefining \. on input line 459.
+LaTeX Info: Redefining \% on input line 459.
+
+Overfull \hbox (204.48119pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 12.  HITO 9: CONSTRUCCIÓN DE LA CAPA MART E INDICADORES ANALÍTICOS EN DUCKDB \T1/cmr/m/n/10.95 137
+ []
+
+[137]
+LaTeX Info: Redefining \. on input line 507.
+LaTeX Info: Redefining \% on input line 507.
+
+Overfull \hbox (204.48119pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 12.  HITO 9: CONSTRUCCIÓN DE LA CAPA MART E INDICADORES ANALÍTICOS EN DUCKDB \T1/cmr/m/n/10.95 138
+ []
+
+[138]
+LaTeX Info: Redefining \. on input line 558.
+LaTeX Info: Redefining \% on input line 558.
+
+Overfull \hbox (204.48119pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 12.  HITO 9: CONSTRUCCIÓN DE LA CAPA MART E INDICADORES ANALÍTICOS EN DUCKDB \T1/cmr/m/n/10.95 139
+ []
+
+[139]
+LaTeX Info: Redefining \. on input line 606.
+LaTeX Info: Redefining \% on input line 606.
+
+Overfull \hbox (204.48119pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 12.  HITO 9: CONSTRUCCIÓN DE LA CAPA MART E INDICADORES ANALÍTICOS EN DUCKDB \T1/cmr/m/n/10.95 140
+ []
+
+[140]
+Overfull \hbox (18.19406pt too wide) in paragraph at lines 606--607
+[]\T1/cmtt/m/n/10.95 El dashboard deberá conectarse a la capa mart, no directamente
+ []
+
+chapters/hito09.tex:616: Missing $ inserted.
+<inserted text> 
+                $
+l.616 ...ox$] Vista \texttt{vw_tipo_cambio_diario}
+                                                   creada.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito09.tex:616: Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.616 ...ox$] Vista \texttt{vw_tipo_cambio_diario}
+                                                   creada.
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+chapters/hito09.tex:617: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.617 \item
+           [$\Box$] Vista \texttt{vw_indicadores_banca} creada.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+chapters/hito09.tex:617: Missing $ inserted.
+<inserted text> 
+                $
+l.617 \item[$\Box$]
+                    Vista \texttt{vw_indicadores_banca} creada.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito09.tex:617: Missing $ inserted.
+<inserted text> 
+                $
+l.617 ...Box$] Vista \texttt{vw_indicadores_banca}
+                                                   creada.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito09.tex:617: Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.617 ...Box$] Vista \texttt{vw_indicadores_banca}
+                                                   creada.
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+chapters/hito09.tex:618: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.618 \item
+           [$\Box$] Vista \texttt{vw_hhi_bancario} creada.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+chapters/hito09.tex:618: Missing $ inserted.
+<inserted text> 
+                $
+l.618 \item[$\Box$]
+                    Vista \texttt{vw_hhi_bancario} creada.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito09.tex:618: Missing $ inserted.
+<inserted text> 
+                $
+l.618 \item[$\Box$] Vista \texttt{vw_hhi_bancario}
+                                                   creada.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito09.tex:618: Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.618 \item[$\Box$] Vista \texttt{vw_hhi_bancario}
+                                                   creada.
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+chapters/hito09.tex:619: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.619 \item
+           [$\Box$] Vista \texttt{vw_resumen_macrofinanciero} creada.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+chapters/hito09.tex:619: Missing $ inserted.
+<inserted text> 
+                $
+l.619 \item[$\Box$]
+                    Vista \texttt{vw_resumen_macrofinanciero} creada.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito09.tex:619: Missing $ inserted.
+<inserted text> 
+                $
+l.619 ...Vista \texttt{vw_resumen_macrofinanciero}
+                                                   creada.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito09.tex:619: Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.619 ...Vista \texttt{vw_resumen_macrofinanciero}
+                                                   creada.
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+chapters/hito09.tex:620: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.620 \item
+           [$\Box$] Indicadores bancarios calculados.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+chapters/hito09.tex:620: Missing $ inserted.
+<inserted text> 
+                $
+l.620 \item[$\Box$]
+                    Indicadores bancarios calculados.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+chapters/hito09.tex:623: Missing } inserted.
+<inserted text> 
+                }
+l.623 \end{itemize}
+                   
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+chapters/hito09.tex:623: Missing } inserted.
+<inserted text> 
+                }
+l.623 \end{itemize}
+                   
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+chapters/hito09.tex:623: Missing } inserted.
+<inserted text> 
+                }
+l.623 \end{itemize}
+                   
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+chapters/hito09.tex:623: Missing } inserted.
+<inserted text> 
+                }
+l.623 \end{itemize}
+                   
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+LaTeX Info: Redefining \. on input line 641.
+LaTeX Info: Redefining \% on input line 641.
+
+Overfull \hbox (204.48119pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 12.  HITO 9: CONSTRUCCIÓN DE LA CAPA MART E INDICADORES ANALÍTICOS EN DUCKDB \T1/cmr/m/n/10.95 141
+ []
+
+[141])
+LaTeX Info: Redefining \. on input line 23.
+LaTeX Info: Redefining \% on input line 23.
+
+Overfull \hbox (204.48119pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÍTULO 12.  HITO 9: CONSTRUCCIÓN DE LA CAPA MART E INDICADORES ANALÍTICOS EN DUCKDB \T1/cmr/m/n/10.95 142
+ []
+
+[142] (main.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
- (chapters/hito01.aux) (chapters/hito02.aux) (chapters/hito02_duckdb.aux) (chapters/hito03.aux) (chapters/hito04.aux) (chapters/hito05.aux) (chapters/hito05_duckdb.aux) (chapters/hito06.aux) (chapters/hito06_duckdb.aux) (chapters/hito07_duckdb.aux))
+ (chapters/hito01.aux) (chapters/hito02.aux) (chapters/hito02_duckdb.aux) (chapters/hito03.aux) (chapters/hito04.aux) (chapters/hito05.aux) (chapters/hito05_duckdb.aux) (chapters/hito06.aux) (chapters/hito06_duckdb.aux) (chapters/hito07_duckdb.aux) (chapters/hito08.aux) (chapters/hito09.aux))
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: C4A03B7ED3D957E79F62224901B13C8E;45836.
+(rerunfilecheck)             Checksum: 021CB16949F1CDAA030021B1FB4E333B;58062.
  )
-(\end occurred inside a group at level 1)
+(\end occurred inside a group at level 2)
 
+### simple group (level 2) entered at line 295 ({)
 ### simple group (level 1) entered at line 129 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 15656 strings out of 467871
- 242840 string characters out of 5417408
- 830146 words of memory out of 5000000
- 42656 multiletter control sequences out of 15000+600000
+ 16663 strings out of 467871
+ 260048 string characters out of 5417408
+ 832938 words of memory out of 5000000
+ 42795 multiletter control sequences out of 15000+600000
  647131 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 80i,6n,82p,536b,2212s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 80i,6n,82p,567b,2435s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\2009138\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1095.pk> <C:\Users\2009138\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\2009138\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk> <C:\Users\2009138\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\2009138\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\2009138\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk> <C:\Users\2009138\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsl1095.pk> <C:\Users\2009138\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\2009138\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\2009138\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\Users\2009138\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\2009138\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1728.pk> <C:\Users\2009138\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk><C:/Users/2009138/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/2009138/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/2009138/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/2009138/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/2009138/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/2009138/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on main.pdf (108 pages, 741959 bytes).
+Output written on main.pdf (143 pages, 945845 bytes).
 PDF statistics:
- 3812 PDF objects out of 4296 (max. 8388607)
- 1647 named destinations out of 1728 (max. 500000)
- 1793 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 5177 PDF objects out of 6186 (max. 8388607)
+ 2501 named destinations out of 2984 (max. 500000)
+ 2233 words of extra memory for PDF output out of 10000 (max. 10000000)
 

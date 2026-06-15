@@ -1,0 +1,649 @@
+\chapter{Hito 9: Construcción de la Capa Mart e Indicadores Analíticos en DuckDB}
+
+\section{Objetivo}
+
+El objetivo de este hito es construir la capa \texttt{mart} del Data Warehouse macrofinanciero.
+
+La capa \texttt{mart} contiene vistas analíticas listas para ser consumidas por usuarios finales, reportes y dashboards. A diferencia de \texttt{staging}, que almacena datos crudos, y \texttt{core}, que contiene el modelo dimensional, la capa \texttt{mart} entrega indicadores directamente interpretables.
+
+Al finalizar este hito el estudiante será capaz de:
+
+\begin{itemize}
+\item Crear vistas analíticas en DuckDB.
+\item Calcular indicadores macrofinancieros.
+\item Construir métricas como ROA, ROE, dolarización y spread cambiario.
+\item Preparar tablas listas para Streamlit.
+\item Integrar la construcción de marts al pipeline.
+\end{itemize}
+
+\section{Resultado esperado}
+
+Al finalizar este hito deberán existir las siguientes vistas:
+
+\begin{verbatim}
+mart.vw_tipo_cambio_diario
+
+mart.vw_indicadores_banca
+
+mart.vw_hhi_bancario
+
+mart.vw_resumen_macrofinanciero
+\end{verbatim}
+
+Estas vistas serán la base del dashboard.
+
+\section{Arquitectura del hito}
+
+El flujo será:
+
+\begin{verbatim}
+core.fact_tipo_cambio
+core.fact_balance_mensual
+core.dim_tiempo
+core.dim_moneda
+core.dim_entidad_financiera
+|
+V
+mart
+|
+V
+Streamlit
+\end{verbatim}
+
+\section{Paso 1: Crear script de marts}
+
+Crear:
+
+\begin{verbatim}
+sql/07_marts.sql
+\end{verbatim}
+
+Este archivo contendrá todas las vistas analíticas.
+
+\section{Paso 2: Crear vista de tipo de cambio diario}
+
+Agregar:
+
+\begin{lstlisting}[language=SQL]
+CREATE OR REPLACE VIEW mart.vw_tipo_cambio_diario AS
+
+SELECT
+t.fecha,
+
+```
+t.anio,
+
+t.mes,
+
+t.anio_mes,
+
+m.moneda_cod,
+
+m.moneda_nombre,
+
+f.tasa_compra,
+
+f.tasa_venta,
+
+f.tasa_promedio,
+
+f.spread
+```
+
+FROM core.fact_tipo_cambio f
+
+JOIN core.dim_tiempo t
+ON t.sk_tiempo = f.sk_tiempo
+
+JOIN core.dim_moneda m
+ON m.sk_moneda = f.sk_moneda;
+\end{lstlisting}
+
+\section{Explicación}
+
+Esta vista transforma la tabla de hechos cambiaria en una tabla amigable para análisis.
+
+En lugar de mostrar claves como:
+
+\begin{verbatim}
+sk_tiempo
+sk_moneda
+\end{verbatim}
+
+muestra variables interpretables:
+
+\begin{verbatim}
+fecha
+anio_mes
+moneda_cod
+tasa_promedio
+spread
+\end{verbatim}
+
+\section{Paso 3: Crear vista de indicadores bancarios}
+
+Agregar:
+
+\begin{lstlisting}[language=SQL]
+CREATE OR REPLACE VIEW mart.vw_indicadores_banca AS
+
+SELECT
+t.fecha,
+
+```
+t.anio,
+
+t.mes,
+
+t.anio_mes,
+
+e.entidad_cod,
+
+e.entidad_nombre,
+
+e.tipo_entidad,
+
+f.activos_totales,
+
+f.cartera_creditos,
+
+f.depositos,
+
+f.patrimonio,
+
+f.resultado_neto,
+
+f.depositos_me,
+
+f.cartera_me,
+
+f.resultado_neto
+    / NULLIF(f.activos_totales, 0)
+    AS roa,
+
+f.resultado_neto
+    / NULLIF(f.patrimonio, 0)
+    AS roe,
+
+f.depositos_me
+    / NULLIF(f.depositos, 0)
+    AS dolarizacion_depositos,
+
+f.cartera_me
+    / NULLIF(f.cartera_creditos, 0)
+    AS dolarizacion_cartera
+```
+
+FROM core.fact_balance_mensual f
+
+JOIN core.dim_tiempo t
+ON t.sk_tiempo = f.sk_tiempo
+
+JOIN core.dim_entidad_financiera e
+ON e.sk_entidad = f.sk_entidad;
+\end{lstlisting}
+
+\section{Indicadores calculados}
+
+La vista anterior calcula:
+
+\begin{itemize}
+\item \texttt{roa}: retorno sobre activos.
+\item \texttt{roe}: retorno sobre patrimonio.
+\item \texttt{dolarizacion_depositos}: proporción de depósitos en moneda extranjera.
+\item \texttt{dolarizacion_cartera}: proporción de cartera en moneda extranjera.
+\end{itemize}
+
+\section{Paso 4: Crear vista de concentración bancaria}
+
+Agregar:
+
+\begin{lstlisting}[language=SQL]
+CREATE OR REPLACE VIEW mart.vw_hhi_bancario AS
+
+WITH cuotas AS
+(
+SELECT
+t.fecha,
+
+```
+    t.anio_mes,
+
+    e.entidad_cod,
+
+    e.entidad_nombre,
+
+    f.activos_totales,
+
+    f.activos_totales
+        / NULLIF(
+            SUM(f.activos_totales)
+            OVER (
+                PARTITION BY t.anio_mes
+            ),
+            0
+        )
+        AS cuota_activos
+
+FROM core.fact_balance_mensual f
+
+JOIN core.dim_tiempo t
+    ON t.sk_tiempo = f.sk_tiempo
+
+JOIN core.dim_entidad_financiera e
+    ON e.sk_entidad = f.sk_entidad
+```
+
+)
+
+SELECT
+fecha,
+
+```
+anio_mes,
+
+SUM(
+    POWER(cuota_activos, 2)
+) AS hhi_activos
+```
+
+FROM cuotas
+
+GROUP BY
+fecha,
+anio_mes
+
+ORDER BY
+anio_mes;
+\end{lstlisting}
+
+\section{Explicación}
+
+El índice HHI mide concentración.
+
+Si una sola entidad domina el mercado, el HHI se acerca a 1.
+
+Si el mercado está muy diversificado, el HHI se acerca a 0.
+
+En este proyecto lo calculamos usando participación en activos.
+
+\section{Paso 5: Crear vista resumen macrofinanciero}
+
+Agregar:
+
+\begin{lstlisting}[language=SQL]
+CREATE OR REPLACE VIEW mart.vw_resumen_macrofinanciero AS
+
+WITH fx AS
+(
+SELECT
+anio_mes,
+
+```
+    AVG(tasa_promedio)
+        AS tasa_promedio_mes,
+
+    AVG(spread)
+        AS spread_promedio_mes
+
+FROM mart.vw_tipo_cambio_diario
+
+WHERE moneda_cod = 'USD'
+
+GROUP BY
+    anio_mes
+```
+
+),
+
+banca AS
+(
+SELECT
+anio_mes,
+
+```
+    SUM(activos_totales)
+        AS activos_totales_sistema,
+
+    SUM(depositos)
+        AS depositos_sistema,
+
+    SUM(resultado_neto)
+        AS resultado_neto_sistema,
+
+    SUM(depositos_me)
+        / NULLIF(SUM(depositos), 0)
+        AS dolarizacion_depositos_sistema
+
+FROM mart.vw_indicadores_banca
+
+GROUP BY
+    anio_mes
+```
+
+)
+
+SELECT
+b.anio_mes,
+
+```
+fx.tasa_promedio_mes,
+
+fx.spread_promedio_mes,
+
+b.activos_totales_sistema,
+
+b.depositos_sistema,
+
+b.resultado_neto_sistema,
+
+b.dolarizacion_depositos_sistema
+```
+
+FROM banca b
+
+LEFT JOIN fx
+ON fx.anio_mes = b.anio_mes
+
+ORDER BY
+b.anio_mes;
+\end{lstlisting}
+
+\section{Explicación}
+
+Esta vista integra información cambiaria y bancaria en un solo objeto analítico.
+
+Será útil para construir la página principal del dashboard.
+
+\section{Paso 6: Crear script Python para construir marts}
+
+Crear:
+
+\begin{verbatim}
+etl/load_marts.py
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=Python]
+from db import get_connection
+
+def run_sql_file(path, conn):
+
+```
+with open(
+    path,
+    "r",
+    encoding="utf-8"
+) as file:
+
+    sql = file.read()
+
+conn.execute(sql)
+```
+
+def main():
+
+```
+conn = get_connection()
+
+run_sql_file(
+    "sql/07_marts.sql",
+    conn
+)
+
+conn.close()
+
+print(
+    "Marts creados correctamente."
+)
+```
+
+if **name** == "**main**":
+main()
+\end{lstlisting}
+
+\section{Paso 7: Ejecutar construcción de marts}
+
+Desde la terminal:
+
+\begin{lstlisting}[language=bash]
+python etl/load_marts.py
+\end{lstlisting}
+
+Salida esperada:
+
+\begin{verbatim}
+Marts creados correctamente.
+\end{verbatim}
+
+\section{Paso 8: Crear consulta de monitoreo de marts}
+
+Crear:
+
+\begin{verbatim}
+sql/check_marts.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+SELECT
+table_schema,
+
+```
+table_name
+```
+
+FROM information_schema.tables
+
+WHERE table_schema = 'mart'
+
+ORDER BY
+table_name;
+\end{lstlisting}
+
+\section{Paso 9: Crear script para revisar marts}
+
+Crear:
+
+\begin{verbatim}
+etl/check_marts.py
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=Python]
+from db import get_connection
+
+conn = get_connection()
+
+with open(
+"sql/check_marts.sql",
+"r",
+encoding="utf-8"
+) as file:
+
+```
+sql = file.read()
+```
+
+result = conn.execute(sql).fetchdf()
+
+print(result)
+
+conn.close()
+\end{lstlisting}
+
+Ejecutar:
+
+\begin{lstlisting}[language=bash]
+python etl/check_marts.py
+\end{lstlisting}
+
+\section{Paso 10: Inspeccionar vista de tipo de cambio}
+
+Crear:
+
+\begin{verbatim}
+sql/inspect_vw_tipo_cambio_diario.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+SELECT *
+FROM mart.vw_tipo_cambio_diario
+ORDER BY
+fecha,
+moneda_cod
+LIMIT 10;
+\end{lstlisting}
+
+\section{Paso 11: Inspeccionar vista bancaria}
+
+Crear:
+
+\begin{verbatim}
+sql/inspect_vw_indicadores_banca.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+SELECT *
+FROM mart.vw_indicadores_banca
+ORDER BY
+fecha,
+entidad_cod
+LIMIT 10;
+\end{lstlisting}
+
+\section{Paso 12: Inspeccionar resumen macrofinanciero}
+
+Crear:
+
+\begin{verbatim}
+sql/inspect_vw_resumen_macrofinanciero.sql
+\end{verbatim}
+
+Contenido:
+
+\begin{lstlisting}[language=SQL]
+SELECT *
+FROM mart.vw_resumen_macrofinanciero
+ORDER BY
+anio_mes;
+\end{lstlisting}
+
+\section{Paso 13: Integrar al pipeline}
+
+Actualizar:
+
+\begin{verbatim}
+etl/run_pipeline.py
+\end{verbatim}
+
+Contenido recomendado:
+
+\begin{lstlisting}[language=Python]
+import sys
+
+import subprocess
+
+steps = [
+"etl/load_staging.py",
+"etl/load_dimensions.py",
+"etl/load_facts.py",
+"etl/load_marts.py"
+]
+
+for step in steps:
+
+```
+print(
+    f"Ejecutando {step}..."
+)
+
+subprocess.run(
+    [
+        sys.executable,
+        step
+    ],
+    check=True
+)
+```
+
+print(
+"Pipeline ejecutado correctamente."
+)
+\end{lstlisting}
+
+\section{Paso 14: Ejecutar pipeline completo}
+
+Desde la terminal:
+
+\begin{lstlisting}[language=bash]
+python etl/run_pipeline.py
+\end{lstlisting}
+
+Salida esperada:
+
+\begin{verbatim}
+Ejecutando etl/load_staging.py...
+Ejecutando etl/load_dimensions.py...
+Ejecutando etl/load_facts.py...
+Ejecutando etl/load_marts.py...
+
+Pipeline ejecutado correctamente.
+\end{verbatim}
+
+\section{Buenas prácticas}
+
+Durante este hito seguiremos estas reglas:
+
+\begin{enumerate}
+\item El dashboard deberá conectarse a la capa \texttt{mart}, no directamente a \texttt{core}.
+\item Los indicadores deben calcularse de forma reproducible.
+\item Las vistas deben tener nombres claros.
+\item Cada vista debe responder a una pregunta de negocio.
+\item Las vistas deben ser fáciles de consumir desde Streamlit.
+\end{enumerate}
+
+\section{Checklist de validación}
+
+\begin{itemize}
+\item[$\Box$] Vista \texttt{vw_tipo_cambio_diario} creada.
+\item[$\Box$] Vista \texttt{vw_indicadores_banca} creada.
+\item[$\Box$] Vista \texttt{vw_hhi_bancario} creada.
+\item[$\Box$] Vista \texttt{vw_resumen_macrofinanciero} creada.
+\item[$\Box$] Indicadores bancarios calculados.
+\item[$\Box$] Resumen macrofinanciero generado.
+\item[$\Box$] Pipeline actualizado.
+\end{itemize}
+
+\section{Entregable}
+
+Al finalizar este hito el estudiante deberá disponer de:
+
+\begin{itemize}
+\item Capa \texttt{mart} construida.
+\item Vistas analíticas para Streamlit.
+\item Indicadores macrofinancieros.
+\item Pipeline completo hasta data marts.
+\item Base lista para visualización.
+\end{itemize}
+
+\section{Próximo hito}
+
+En el Hito 10 construiremos el dashboard en Streamlit.
+
+Aprenderemos a:
+
+\begin{itemize}
+\item Conectar Streamlit con DuckDB.
+\item Leer vistas de la capa \texttt{mart}.
+\item Construir KPIs.
+\item Crear gráficos interactivos.
+\item Diseñar una primera aplicación macrofinanciera.
+\end{itemize}
