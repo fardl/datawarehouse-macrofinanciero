@@ -2,12 +2,12 @@ import pandas as pd
 from db import get_connection
 from datetime import datetime
 
-fx = pd.read_csv('./data/raw/tipo_cambio.csv')
+fx = pd.read_csv('./data/processed/tipo_cambio.csv')
 print(
     f"Filas FX: {len(fx)}"
 )
 
-balances = pd.read_csv('./data/raw/balances.csv')
+balances = pd.read_csv('./data/processed/balances.csv')
 print(
     f"Filas Balances: {len(balances)}"
 )

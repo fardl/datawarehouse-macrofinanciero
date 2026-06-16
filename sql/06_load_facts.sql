@@ -38,7 +38,7 @@ JOIN core.dim_tiempo t
 ON t.fecha = 
     STRPTIME(
     r.fecha,
-    '%m/%d/%Y'
+    '%Y-%m-%d'
     )
 
 JOIN core.dim_moneda m
@@ -89,15 +89,13 @@ SELECT
 
 FROM staging.balance_bancario_raw r
 JOIN core.dim_tiempo t
-ON t.fecha =
-    last_day(
-        strptime(
-            CAST(
-                CAST(r.periodo AS DOUBLE) AS INTEGER
-            )::VARCHAR || '01',
-            '%Y%m%d'
-        )::DATE
-    )
+    ON t.fecha =
+        last_day(
+            strptime(
+                r.periodo,
+                '%Y-%m-%d'
+            )::DATE
+        )
 JOIN core.dim_entidad_financiera e
 ON e.entidad_cod = r.entidad_cod
 

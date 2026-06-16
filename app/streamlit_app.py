@@ -120,12 +120,13 @@ if not ultimo.empty:
         fx,
         x="fecha",
         y="tasa_promedio",
-        title="Tipo de cambio promedio diario"
+        title="Tipo de cambio promedio diario",
+        color="moneda_cod"
     )
 
     st.plotly_chart(
         fig_fx,
-        use_container_width=True
+        width="stretch"
     )
 
 # Graficos de indicadores bancarios
@@ -158,7 +159,7 @@ fig_roa = px.line(
 
 st.plotly_chart(
     fig_roa,
-    use_container_width=True
+    width="stretch"
 )
 
 
@@ -171,12 +172,12 @@ fig_roe = px.line(
 
 st.plotly_chart(
     fig_roe,
-    use_container_width=True
+    width="stretch"
 )
 
 
-# Grafico dolarizacion
-st.subheader("Dolarizacion bancaria")
+# Gráfico dolarización
+st.subheader("Dolarización bancaria")
 
 df_dolarizacion = banca_filtrada[
     [
@@ -201,28 +202,31 @@ fig_dolarizacion = px.line(
     x="fecha",
     y="dolarizacion",
     color="indicador",
-    title="Dolarizacion de depositos y cartera"
+    title="Dolarización de depósitos y cartera"
 )
 
 st.plotly_chart(
     fig_dolarizacion,
-    use_container_width=True
+    width="stretch"
 )
-
 
 # Grafico de concentracion bancaria
 st.subheader("Concentracion bancaria")
+hhi["fecha_mes"] = pd.to_datetime(
+    hhi["anio_mes"].astype(str),
+    format="%Y%m"
+)
 
 fig_hhi = px.line(
     hhi,
-    x="anio_mes",
+    x="fecha_mes",
     y="hhi_activos",
-    title="Indice HHI por activos"
+    title="Índice HHI por activos"
 )
 
 st.plotly_chart(
     fig_hhi,
-    use_container_width=True
+    width="stretch"
 )
 
 # Mostrar tablas de datos
@@ -231,7 +235,7 @@ with st.expander(
 ):
     st.dataframe(
         resumen,
-        use_container_width=True
+        width="stretch"
     )
 
 with st.expander(
@@ -239,7 +243,7 @@ with st.expander(
 ):
     st.dataframe(
         banca,
-        use_container_width=True
+        width="stretch"
     )
 
 

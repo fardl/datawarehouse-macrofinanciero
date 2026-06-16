@@ -13,8 +13,8 @@ SELECT
     monthname(fecha) AS nombre_mes,
     fecha = last_day(fecha) AS es_fin_de_mes
 FROM generate_series(
-    DATE '2022-01-01',
-    DATE '2024-12-31',
+    DATE '2004-01-01',
+    DATE '2026-04-30',
     INTERVAL 1 DAY
 ) t(fecha);
 
@@ -38,7 +38,7 @@ SELECT
     entidad_cod,
     entidad_nombre,
     tipo_entidad,
-    DATE '2022-01-01' AS vigente_desde,
+    DATE '2012-01-01' AS vigente_desde,
     DATE '9999-12-31' AS vigente_hasta,
     TRUE AS es_actual
 FROM (

@@ -1,0 +1,442 @@
+\chapter{Hito 12: Despliegue del Dashboard en Streamlit Community Cloud}
+
+\section{Objetivo}
+
+El objetivo de este hito es publicar el dashboard macrofinanciero en Internet utilizando Streamlit Community Cloud.
+
+Al finalizar este hito el estudiante será capaz de:
+
+\begin{itemize}
+\item Conectar un repositorio GitHub con Streamlit Community Cloud.
+\item Configurar el despliegue automático.
+\item Resolver errores comunes de dependencias.
+\item Gestionar la base DuckDB en un entorno remoto.
+\item Publicar una aplicación accesible mediante URL pública.
+\end{itemize}
+
+\section{Resultado esperado}
+
+Al finalizar este hito el proyecto deberá estar disponible en una dirección similar a:
+
+\begin{verbatim}
+https://dwh-macrofinanciero-rd.streamlit.app
+\end{verbatim}
+
+o cualquier URL generada por Streamlit Community Cloud.
+
+\section{Arquitectura final}
+
+La arquitectura completa del proyecto será:
+
+\begin{verbatim}
+GitHub
+|
+V
+Streamlit Cloud
+|
+V
+Dashboard Web
+
+DuckDB
+|
+V
+Capa Mart
+|
+V
+Visualizaciones
+\end{verbatim}
+
+\section{Paso 1: Verificar que el proyecto funciona localmente}
+
+Antes de desplegar, ejecutar:
+
+\begin{lstlisting}[language=bash]
+python etl/run_pipeline.py
+\end{lstlisting}
+
+y luego:
+
+\begin{lstlisting}[language=bash]
+streamlit run app/streamlit_app.py
+\end{lstlisting}
+
+Verificar:
+
+\begin{itemize}
+\item El dashboard abre correctamente.
+\item Los gráficos se visualizan.
+\item Los KPIs aparecen.
+\item No existen errores de conexión.
+\end{itemize}
+
+\section{Paso 2: Verificar estructura del repositorio}
+
+La estructura mínima requerida será:
+
+\begin{verbatim}
+dwh_macrofinanciero_rd/
+
++-- app/
+|   -- streamlit_app.py
+
++-- data/
+|   -- warehouse/
+|       -- macrofinanzas.duckdb
+
++-- etl/
+
++-- sql/
+
++-- requirements.txt
+
++-- README.md
+\end{verbatim}
+
+\section{Paso 3: Verificar requirements.txt}
+
+Abrir:
+
+\begin{verbatim}
+requirements.txt
+\end{verbatim}
+
+Confirmar que incluye:
+
+\begin{verbatim}
+duckdb
+pandas
+streamlit
+plotly
+python-dotenv
+\end{verbatim}
+
+Si existen dudas:
+
+\begin{lstlisting}[language=bash]
+pip freeze > requirements.txt
+\end{lstlisting}
+
+\section{Paso 4: Decidir estrategia para DuckDB}
+
+Existen dos alternativas.
+
+\subsection{Opción A: Publicar la base DuckDB}
+
+Subir al repositorio:
+
+\begin{verbatim}
+data/warehouse/macrofinanzas.duckdb
+\end{verbatim}
+
+Ventajas:
+
+\begin{itemize}
+\item Configuración sencilla.
+\item La aplicación funciona inmediatamente.
+\item Adecuada para proyectos educativos.
+\end{itemize}
+
+Desventajas:
+
+\begin{itemize}
+\item La base crece con el tiempo.
+\item No es adecuada para producción.
+\end{itemize}
+
+\subsection{Opción B: Reconstruir la base automáticamente}
+
+La aplicación ejecuta el pipeline cuando detecta que la base no existe.
+
+Ventajas:
+
+\begin{itemize}
+\item Más profesional.
+\item Reproducible.
+\item No requiere almacenar la base en Git.
+\end{itemize}
+
+Desventajas:
+
+\begin{itemize}
+\item Mayor complejidad.
+\item Tiempo de inicio más largo.
+\end{itemize}
+
+\section{Recomendación}
+
+Para este proyecto se recomienda inicialmente:
+
+\begin{quote}
+Subir una versión pequeña de \texttt{macrofinanzas.duckdb}.
+\end{quote}
+
+Posteriormente se puede migrar a una estrategia de reconstrucción automática.
+
+\section{Paso 5: Crear cuenta en Streamlit Community Cloud}
+
+Entrar a:
+
+\begin{verbatim}
+https://share.streamlit.io
+\end{verbatim}
+
+Autenticarse utilizando:
+
+\begin{itemize}
+\item Cuenta GitHub.
+\end{itemize}
+
+\section{Paso 6: Crear nueva aplicación}
+
+Seleccionar:
+
+\begin{verbatim}
+New App
+\end{verbatim}
+
+Completar:
+
+\begin{itemize}
+\item Repository
+\item Branch
+\item Main file path
+\end{itemize}
+
+\section{Paso 7: Configurar archivo principal}
+
+Seleccionar:
+
+\begin{verbatim}
+app/streamlit_app.py
+\end{verbatim}
+
+como archivo principal.
+
+\section{Paso 8: Configurar variables de entorno}
+
+Si el proyecto utiliza:
+
+\begin{verbatim}
+.env
+\end{verbatim}
+
+agregar variables desde:
+
+\begin{verbatim}
+Settings
+Secrets
+\end{verbatim}
+
+Ejemplo:
+
+\begin{verbatim}
+DUCKDB_PATH=data/warehouse/macrofinanzas.duckdb
+\end{verbatim}
+
+\section{Paso 9: Iniciar despliegue}
+
+Presionar:
+
+\begin{verbatim}
+Deploy
+\end{verbatim}
+
+Streamlit realizará:
+
+\begin{enumerate}
+\item Clonado del repositorio.
+\item Instalación de dependencias.
+\item Ejecución de la aplicación.
+\end{enumerate}
+
+\section{Paso 10: Revisar logs}
+
+Si la aplicación falla, revisar:
+
+\begin{verbatim}
+Manage App
+Logs
+\end{verbatim}
+
+Errores frecuentes:
+
+\begin{itemize}
+\item Dependencias faltantes.
+\item Ruta incorrecta de DuckDB.
+\item Archivo principal incorrecto.
+\item Error en consultas SQL.
+\end{itemize}
+
+\section{Paso 11: Resolver problema de rutas}
+
+En local utilizamos:
+
+\begin{lstlisting}[language=Python]
+DB_PATH =
+"data/warehouse/macrofinanzas.duckdb"
+\end{lstlisting}
+
+Para hacer la aplicación más robusta:
+
+\begin{lstlisting}[language=Python]
+from pathlib import Path
+
+BASE_DIR = Path(**file**).resolve().parent.parent
+
+DB_PATH = (
+BASE_DIR
+/
+"data"
+/
+"warehouse"
+/
+"macrofinanzas.duckdb"
+)
+\end{lstlisting}
+
+Esta técnica evita errores cuando la aplicación se ejecuta en servidores remotos.
+
+\section{Paso 12: Crear página de error amigable}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+try:
+
+```
+resumen = run_query(
+    """
+    SELECT *
+    FROM mart.vw_resumen_macrofinanciero
+    """
+)
+```
+
+except Exception as e:
+
+```
+st.error(
+    f"Error al conectar con DuckDB: {e}"
+)
+
+st.stop()
+```
+
+\end{lstlisting}
+
+Esto facilita el diagnóstico de errores en producción.
+
+\section{Paso 13: Verificar funcionamiento remoto}
+
+Comprobar:
+
+\begin{itemize}
+\item La aplicación abre.
+\item Los KPIs aparecen.
+\item Los gráficos funcionan.
+\item Los filtros responden.
+\item No existen errores visibles.
+\end{itemize}
+
+\section{Paso 14: Crear versión inicial pública}
+
+Una vez validado:
+
+\begin{itemize}
+\item Compartir URL.
+\item Agregar URL al README.
+\item Agregar URL al CV.
+\item Agregar URL a LinkedIn.
+\end{itemize}
+
+\section{Paso 15: Actualizar README}
+
+Agregar sección:
+
+\begin{verbatim}
+
+## Aplicación en línea
+
+https://xxxxx.streamlit.app
+\end{verbatim}
+
+\section{Paso 16: Validar reproducibilidad}
+
+Clonar el repositorio en otra carpeta.
+
+Ejecutar:
+
+\begin{lstlisting}[language=bash]
+pip install -r requirements.txt
+
+streamlit run app/streamlit_app.py
+\end{lstlisting}
+
+Si funciona correctamente, el proyecto es reproducible.
+
+\section{Buenas prácticas}
+
+Durante este hito seguiremos estas reglas:
+
+\begin{enumerate}
+\item No subir credenciales.
+\item Mantener requirements actualizado.
+\item Documentar claramente el despliegue.
+\item Verificar el dashboard después de cada cambio.
+\item Utilizar rutas relativas.
+\end{enumerate}
+
+\section{Checklist de validación}
+
+\begin{itemize}
+\item[$\Box$] Proyecto publicado en GitHub.
+\item[$\Box$] Streamlit Cloud configurado.
+\item[$\Box$] Aplicación desplegada.
+\item[$\Box$] URL pública generada.
+\item[$\Box$] Dashboard funcional.
+\item[$\Box$] README actualizado.
+\item[$\Box$] Proyecto reproducible.
+\end{itemize}
+
+\section{Entregable}
+
+Al finalizar este hito el estudiante deberá disponer de:
+
+\begin{itemize}
+\item Dashboard público.
+\item URL accesible desde Internet.
+\item Repositorio GitHub profesional.
+\item Pipeline reproducible.
+\item Proyecto completo de Data Engineering y BI.
+\end{itemize}
+
+\section{Proyecto completado}
+
+Al concluir este hito se habrá construido una solución completa:
+
+\begin{verbatim}
+CSV
+|
+V
+Python
+|
+V
+DuckDB
+|
+V
+staging
+|
+V
+core
+|
+V
+mart
+|
+V
+Streamlit
+|
+V
+Internet
+\end{verbatim}
+
+El estudiante habrá desarrollado un proyecto integral de ingeniería de datos, modelado dimensional, ETL y visualización analítica aplicados al contexto macrofinanciero.
