@@ -307,3 +307,29 @@
 \contentsline {section}{\numberline {13.22}Checklist de validación}{153}{section.13.22}%
 \contentsline {section}{\numberline {13.23}Entregable}{153}{section.13.23}%
 \contentsline {section}{\numberline {13.24}Próximo hito}{153}{section.13.24}%
+\contentsline {chapter}{\numberline {14}Hito 11: Preparación del Proyecto para GitHub y Despliegue}{154}{chapter.14}%
+\contentsline {section}{\numberline {14.1}Objetivo}{154}{section.14.1}%
+\contentsline {section}{\numberline {14.2}Resultado esperado}{155}{section.14.2}%
+\contentsline {section}{\numberline {14.3}Paso 1: Revisar estructura del proyecto}{156}{section.14.3}%
+\contentsline {section}{\numberline {14.4}Paso 2: Revisar el archivo \texttt {.gitignore}}{157}{section.14.4}%
+\contentsline {section}{\numberline {14.5}Nota importante sobre DuckDB}{157}{section.14.5}%
+\contentsline {section}{\numberline {14.6}Paso 3: Revisar \texttt {.env.example}}{157}{section.14.6}%
+\contentsline {section}{\numberline {14.7}Paso 4: Actualizar \texttt {requirements.txt}}{158}{section.14.7}%
+\contentsline {section}{\numberline {14.8}Paso 5: Crear un README profesional}{158}{section.14.8}%
+\contentsline {section}{\numberline {14.9}Paso 6: Validar ejecución completa}{160}{section.14.9}%
+\contentsline {section}{\numberline {14.10}Paso 7: Validar dashboard local}{160}{section.14.10}%
+\contentsline {section}{\numberline {14.11}Paso 8: Inicializar Git}{161}{section.14.11}%
+\contentsline {section}{\numberline {14.12}Paso 9: Agregar archivos al repositorio}{161}{section.14.12}%
+\contentsline {section}{\numberline {14.13}Paso 10: Crear commit}{161}{section.14.13}%
+\contentsline {section}{\numberline {14.14}Paso 11: Crear repositorio en GitHub}{162}{section.14.14}%
+\contentsline {section}{\numberline {14.15}Paso 12: Conectar repositorio local con GitHub}{162}{section.14.15}%
+\contentsline {section}{\numberline {14.16}Paso 13: Verificar publicación}{162}{section.14.16}%
+\contentsline {section}{\numberline {14.17}Paso 14: Preparar archivo para despliegue}{163}{section.14.17}%
+\contentsline {section}{\numberline {14.18}Paso 15: Consideración importante sobre datos}{163}{section.14.18}%
+\contentsline {subsection}{\numberline {14.18.1}Opción A: Subir una base pequeña}{163}{subsection.14.18.1}%
+\contentsline {subsection}{\numberline {14.18.2}Opción B: Reconstruir la base}{163}{subsection.14.18.2}%
+\contentsline {section}{\numberline {14.19}Recomendación para este proyecto}{164}{section.14.19}%
+\contentsline {section}{\numberline {14.20}Buenas prácticas}{164}{section.14.20}%
+\contentsline {section}{\numberline {14.21}Checklist de validación}{164}{section.14.21}%
+\contentsline {section}{\numberline {14.22}Entregable}{165}{section.14.22}%
+\contentsline {section}{\numberline {14.23}Próximo hito}{165}{section.14.23}%

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.4.28)  16 JUN 2026 10:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.4.28)  16 JUN 2026 15:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -3517,10 +3517,555 @@ Overfull \hbox (58.45851pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/10.95 CAPÕTULO 13.  HITO 10: CONSTRUCCI”N DEL DASHBOARD EN STREAMLIT \T1/cmr/m/n/10.95 153
  []
 
-[153] (./main.aux
+[153]
+\openout2 = `chapters/hito11.aux'.
+
+ (./chapters/hito11.tex
+Cap\'{\i }tulo 14.
+
+Overfull \hbox (36.11086pt too wide) in paragraph at lines 5--6
+[]\T1/cmtt/m/n/10.95 El objetivo de este hito es preparar el proyecto para ser publicado
+ []
+
+
+Overfull \hbox (19.11086pt too wide) in paragraph at lines 5--6
+\T1/cmtt/m/n/10.95 en GitHub y posteriormente desplegado en Streamlit Community Cloud. 
+ []
+
+[154
+
+
+
+
+]
+Overfull \hbox (24.79411pt too wide) in paragraph at lines 31--32
+[]\T1/cmtt/m/n/10.95 Ahora debemos organizar el repositorio para que cualquier persona
+ []
+
+
+Overfull \hbox (30.45248pt too wide) in paragraph at lines 46--47
+[]\T1/cmtt/m/n/10.95 Al finalizar este hito el proyecto deber· estar listo para subirse
+ []
+
+LaTeX Info: Redefining \. on input line 87.
+LaTeX Info: Redefining \% on input line 87.
+
+Overfull \hbox (119.97852pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÕTULO 14.  HITO 11: PREPARACI”N DEL PROYECTO PARA GITHUB Y DESPLIEGUE \T1/cmr/m/n/10.95 155
+ []
+
+[155]
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 114.
+
+Overfull \hbox (58.74434pt too wide) in paragraph at lines 116--117
+[]\T1/cmtt/m/n/10.95 El archivo .gitignore evita subir al repositorio archivos innecesarios,
+ []
+
+LaTeX Info: Redefining \. on input line 118.
+LaTeX Info: Redefining \% on input line 118.
+
+Overfull \hbox (119.97852pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÕTULO 14.  HITO 11: PREPARACI”N DEL PROYECTO PARA GITHUB Y DESPLIEGUE \T1/cmr/m/n/10.95 156
+ []
+
+[156]
+Overfull \hbox (30.45248pt too wide) in paragraph at lines 148--149
+[]\T1/cmtt/m/n/10.95 En su lugar, el usuario debe poder reconstruir la base ejecutando: 
+ []
+
+
+Overfull \hbox (30.45248pt too wide) in paragraph at lines 154--155
+[]\T1/cmtt/m/n/10.95 Esta es una pr·ctica recomendable porque permite reproducibilidad. 
+ []
+
+LaTeX Info: Redefining \. on input line 170.
+LaTeX Info: Redefining \% on input line 170.
+
+Overfull \hbox (119.97852pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÕTULO 14.  HITO 11: PREPARACI”N DEL PROYECTO PARA GITHUB Y DESPLIEGUE \T1/cmr/m/n/10.95 157
+ []
+
+[157]
+
+./chapters/hito11.tex:212: LaTeX Error: Invalid UTF-8 byte sequence (√\expandafter).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.212 Proyecto aplicado de ingenier√≠a 
+                                       de datos para construir una plataform...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+./chapters/hito11.tex:212: LaTeX Error: Invalid UTF-8 byte "AD.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.212 Proyecto aplicado de ingenier√≠a 
+                                       de datos para construir una plataform...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+Overfull \hbox (604.19421pt too wide) in paragraph at lines 212--214
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+LaTeX Info: Redefining \. on input line 220.
+LaTeX Info: Redefining \% on input line 220.
+
+Overfull \hbox (119.97852pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÕTULO 14.  HITO 11: PREPARACI”N DEL PROYECTO PARA GITHUB Y DESPLIEGUE \T1/cmr/m/n/10.95 158
+ []
+
+[158]
+
+./chapters/hito11.tex:220: LaTeX Error: Invalid UTF-8 byte sequence (√\expandafter).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.220 * Organizar la informaci√≥n 
+                                  en capas staging, core y mart.
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+./chapters/hito11.tex:220: LaTeX Error: Invalid UTF-8 byte "B3.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.220 * Organizar la informaci√≥n 
+                                  en capas staging, core y mart.
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+Overfull \hbox (33.8258pt too wide) in paragraph at lines 220--221
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (67.7763pt too wide) in paragraph at lines 226--228
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+./chapters/hito11.tex:228: LaTeX Error: Invalid UTF-8 byte sequence (√\expandafter).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.228 ## Tecnolog√≠as
+                     
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+./chapters/hito11.tex:228: LaTeX Error: Invalid UTF-8 byte "AD.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.228 ## Tecnolog√≠as
+                     
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+./chapters/hito11.tex:247: LaTeX Error: Invalid UTF-8 byte sequence (√\expandafter).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.247 ## C√≥mo 
+               ejecutar el proyecto
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+./chapters/hito11.tex:247: LaTeX Error: Invalid UTF-8 byte "B3.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.247 ## C√≥mo 
+               ejecutar el proyecto
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+LaTeX Info: Redefining \. on input line 257.
+LaTeX Info: Redefining \% on input line 257.
+
+Overfull \hbox (119.97852pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÕTULO 14.  HITO 11: PREPARACI”N DEL PROYECTO PARA GITHUB Y DESPLIEGUE \T1/cmr/m/n/10.95 159
+ []
+
+[159]
+
+./chapters/hito11.tex:271: LaTeX Error: Invalid UTF-8 byte sequence (√\expandafter).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.271 Francisco Ram√≠rez
+                        
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+./chapters/hito11.tex:271: LaTeX Error: Invalid UTF-8 byte "AD.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.271 Francisco Ram√≠rez
+                        
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+./chapters/hito11.tex:285: Missing $ inserted.
+<inserted text> 
+                $
+l.285 \item \texttt{load_staging.py}
+                                    
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./chapters/hito11.tex:285: Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.285 \item \texttt{load_staging.py}
+                                    
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+./chapters/hito11.tex:286: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.286 \item
+            \texttt{load_dimensions.py}
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./chapters/hito11.tex:286: Missing $ inserted.
+<inserted text> 
+                $
+l.286 \item \texttt
+                   {load_dimensions.py}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./chapters/hito11.tex:286: Missing $ inserted.
+<inserted text> 
+                $
+l.286 \item \texttt{load_dimensions.py}
+                                       
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./chapters/hito11.tex:286: Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.286 \item \texttt{load_dimensions.py}
+                                       
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+./chapters/hito11.tex:287: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.287 \item
+            \texttt{load_facts.py}
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./chapters/hito11.tex:287: Missing $ inserted.
+<inserted text> 
+                $
+l.287 \item \texttt
+                   {load_facts.py}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./chapters/hito11.tex:287: Missing $ inserted.
+<inserted text> 
+                $
+l.287 \item \texttt{load_facts.py}
+                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./chapters/hito11.tex:287: Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.287 \item \texttt{load_facts.py}
+                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+./chapters/hito11.tex:288: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.288 \item
+            \texttt{load_marts.py}
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./chapters/hito11.tex:288: Missing $ inserted.
+<inserted text> 
+                $
+l.288 \item \texttt
+                   {load_marts.py}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./chapters/hito11.tex:288: Missing $ inserted.
+<inserted text> 
+                $
+l.288 \item \texttt{load_marts.py}
+                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./chapters/hito11.tex:288: Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.288 \item \texttt{load_marts.py}
+                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+./chapters/hito11.tex:289: LaTeX Error: Command \end{itemize} invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.289 \end{itemize}
+                   
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./chapters/hito11.tex:289: Missing $ inserted.
+<inserted text> 
+                $
+l.289 \end{itemize}
+                   
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./chapters/hito11.tex:289: Missing } inserted.
+<inserted text> 
+                }
+l.289 \end{itemize}
+                   
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./chapters/hito11.tex:289: Missing } inserted.
+<inserted text> 
+                }
+l.289 \end{itemize}
+                   
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./chapters/hito11.tex:289: Missing } inserted.
+<inserted text> 
+                }
+l.289 \end{itemize}
+                   
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./chapters/hito11.tex:289: Missing } inserted.
+<inserted text> 
+                }
+l.289 \end{itemize}
+                   
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+LaTeX Info: Redefining \. on input line 305.
+LaTeX Info: Redefining \% on input line 305.
+
+Overfull \hbox (119.97852pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÕTULO 14.  HITO 11: PREPARACI”N DEL PROYECTO PARA GITHUB Y DESPLIEGUE \T1/cmr/m/n/10.95 160
+ []
+
+[160]
+LaTeX Info: Redefining \. on input line 363.
+LaTeX Info: Redefining \% on input line 363.
+
+Overfull \hbox (119.97852pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÕTULO 14.  HITO 11: PREPARACI”N DEL PROYECTO PARA GITHUB Y DESPLIEGUE \T1/cmr/m/n/10.95 161
+ []
+
+[161]
+Overfull \hbox (1.21895pt too wide) in paragraph at lines 374--375
+[]\T1/cmtt/m/n/10.95 No agregar .gitignore desde GitHub si ya existe localmente. 
+ []
+
+
+Overfull \hbox (16.10905pt too wide) in paragraph at lines 377--377
+[]\T1/cmr/bx/n/14.4 Paso 12: Co-nec-tar re-po-si-to-rio lo-cal con GitHub 
+ []
+
+
+Overfull \hbox (149.2575pt too wide) in paragraph at lines 382--383
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+LaTeX Info: Redefining \. on input line 412.
+LaTeX Info: Redefining \% on input line 412.
+
+Overfull \hbox (119.97852pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÕTULO 14.  HITO 11: PREPARACI”N DEL PROYECTO PARA GITHUB Y DESPLIEGUE \T1/cmr/m/n/10.95 162
+ []
+
+[162]
+Overfull \hbox (19.13574pt too wide) in paragraph at lines 422--423
+[]\T1/cmtt/m/n/10.95 Si el archivo macrofinanzas.duckdb no se sube a GitHub, entonces
+ []
+
+
+Overfull \hbox (7.819pt too wide) in paragraph at lines 434--435
+[]\T1/cmtt/m/n/10.95 Permite que la app funcione inmediatamente en Streamlit Cloud. 
+ []
+
+
+Overfull \hbox (53.08597pt too wide) in paragraph at lines 442--443
+[]\T1/cmtt/m/n/10.95 en GitHub, siempre que sea pequeÒo y no contenga informaciÛn sensible. 
+ []
+
+
+Overfull \hbox (7.819pt too wide) in paragraph at lines 446--447
+[]\T1/cmtt/m/n/10.95 Modificar la app para que, si no encuentra la base, ejecute el
+ []
+
+
+Overfull \hbox (45.56912pt too wide) in paragraph at lines 455--456
+[]\T1/cmtt/m/n/10.95 Subir una base DuckDB pequeÒa, construida con datos simulados. 
+ []
+
+LaTeX Info: Redefining \. on input line 456.
+LaTeX Info: Redefining \% on input line 456.
+
+Overfull \hbox (119.97852pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÕTULO 14.  HITO 11: PREPARACI”N DEL PROYECTO PARA GITHUB Y DESPLIEGUE \T1/cmr/m/n/10.95 163
+ []
+
+[163]
+Overfull \hbox (24.79411pt too wide) in paragraph at lines 458--459
+[]\T1/cmtt/m/n/10.95 M·s adelante se puede migrar a una arquitectura m·s robusta donde
+ []
+
+LaTeX Info: Redefining \. on input line 492.
+LaTeX Info: Redefining \% on input line 492.
+
+Overfull \hbox (119.97852pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÕTULO 14.  HITO 11: PREPARACI”N DEL PROYECTO PARA GITHUB Y DESPLIEGUE \T1/cmr/m/n/10.95 164
+ []
+
+[164]
+Overfull \hbox (19.13574pt too wide) in paragraph at lines 499--500
+[]\T1/cmtt/m/n/10.95 En el Hito 12 desplegaremos la aplicaciÛn en Streamlit Community
+ []
+
+)
+LaTeX Info: Redefining \. on input line 25.
+LaTeX Info: Redefining \% on input line 25.
+
+Overfull \hbox (119.97852pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/10.95 CAPÕTULO 14.  HITO 11: PREPARACI”N DEL PROYECTO PARA GITHUB Y DESPLIEGUE \T1/cmr/m/n/10.95 165
+ []
+
+[165] (./main.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
- (./chapters/hito01.aux) (./chapters/hito02.aux) (./chapters/hito02_duckdb.aux) (./chapters/hito03.aux) (./chapters/hito04.aux) (./chapters/hito05.aux) (./chapters/hito05_duckdb.aux) (./chapters/hito06.aux) (./chapters/hito06_duckdb.aux) (./chapters/hito07_duckdb.aux) (./chapters/hito08.aux) (./chapters/hito09.aux) (./chapters/hito10.aux))
+ (./chapters/hito01.aux) (./chapters/hito02.aux) (./chapters/hito02_duckdb.aux) (./chapters/hito03.aux) (./chapters/hito04.aux) (./chapters/hito05.aux) (./chapters/hito05_duckdb.aux) (./chapters/hito06.aux) (./chapters/hito06_duckdb.aux) (./chapters/hito07_duckdb.aux) (./chapters/hito08.aux) (./chapters/hito09.aux) (./chapters/hito10.aux) (./chapters/hito11.aux))
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
@@ -3533,7 +4078,7 @@ Package rerunfilecheck Warning: File `main.out' has changed.
 
 Package rerunfilecheck Info: Checksums for `main.out':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  726B8E2B92324119B7C17C58D44DED0A;64159.
+(rerunfilecheck)             After:  21DBCD203106F3732BDA7DC2D1A4D241;69926.
  )
 (\end occurred inside a group at level 3)
 
@@ -3542,18 +4087,18 @@ Package rerunfilecheck Info: Checksums for `main.out':
 ### simple group (level 1) entered at line 129 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 16964 strings out of 467349
- 260050 string characters out of 5419862
- 832371 words of memory out of 5000000
- 42813 multiletter control sequences out of 15000+600000
- 647131 words of font info for 91 fonts, out of 8000000 for 9000
+ 17206 strings out of 467349
+ 263831 string characters out of 5419862
+ 833371 words of memory out of 5000000
+ 42896 multiletter control sequences out of 15000+600000
+ 647444 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 80i,6n,82p,444b,2608s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfsl1095.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on main.pdf (154 pages, 536276 bytes).
+ 80i,6n,82p,444b,2684s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfsl1095.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sftt1440.pfb>
+Output written on main.pdf (166 pages, 581805 bytes).
 PDF statistics:
- 4256 PDF objects out of 4296 (max. 8388607)
- 4024 compressed objects within 41 object streams
- 3019 named destinations out of 3580 (max. 500000)
+ 4485 PDF objects out of 5155 (max. 8388607)
+ 4237 compressed objects within 43 object streams
+ 3172 named destinations out of 3580 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -2,13 +2,14 @@
 .env
 
 **pycache**/
-
 *.pyc
 *.pyo
 
 .vscode/
 
 data/processed/
+data/warehouse/*.duckdb
+data/warehouse/*.wal
 
 .DS_Store
 Thumbs.db

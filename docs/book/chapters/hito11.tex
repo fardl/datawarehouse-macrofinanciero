@@ -1,0 +1,509 @@
+\chapter{Hito 11: Preparación del Proyecto para GitHub y Despliegue}
+
+\section{Objetivo}
+
+El objetivo de este hito es preparar el proyecto para ser publicado en GitHub y posteriormente desplegado en Streamlit Community Cloud.
+
+Hasta este punto ya hemos construido:
+
+\begin{verbatim}
+CSV
+|
+V
+Python
+|
+V
+DuckDB
+|
+V
+staging
+|
+V
+core
+|
+V
+mart
+|
+V
+Streamlit
+\end{verbatim}
+
+Ahora debemos organizar el repositorio para que cualquier persona pueda entender, instalar y ejecutar el proyecto.
+
+Al finalizar este hito el estudiante será capaz de:
+
+\begin{itemize}
+\item Revisar la estructura final del repositorio.
+\item Crear un \texttt{README.md} profesional.
+\item Actualizar el archivo \texttt{requirements.txt}.
+\item Preparar el archivo \texttt{.gitignore}.
+\item Validar que la aplicación se ejecuta desde cero.
+\item Preparar el proyecto para publicación en GitHub.
+\end{itemize}
+
+\section{Resultado esperado}
+
+Al finalizar este hito el proyecto deberá estar listo para subirse a GitHub.
+
+La estructura esperada será:
+
+\begin{verbatim}
+dwh_macrofinanciero_rd/
+
++-- app/
+|   -- streamlit_app.py
+
++-- data/
+|   +-- raw/
+|   +-- processed/
+|   -- warehouse/
+
++-- docs/
+|   -- book/
+
++-- etl/
+|   +-- db.py
+|   +-- load_staging.py
+|   +-- load_dimensions.py
+|   +-- load_facts.py
+|   +-- load_marts.py
+|   -- run_pipeline.py
+
++-- sql/
+|   +-- 01_create_schemas.sql
+|   +-- 02_staging_ddl.sql
+|   +-- 03_dimensions_ddl.sql
+|   +-- 04_load_dimensions.sql
+|   +-- 05_facts_ddl.sql
+|   +-- 06_load_facts.sql
+|   -- 07_marts.sql
+
++-- tests/
+
++-- README.md
++-- requirements.txt
++-- .gitignore
++-- .env.example
+\end{verbatim}
+
+\section{Paso 1: Revisar estructura del proyecto}
+
+Desde la raíz del proyecto ejecutar:
+
+\begin{lstlisting}[language=bash]
+tree /f
+\end{lstlisting}
+
+En caso de no tener disponible el comando \texttt{tree}, usar:
+
+\begin{lstlisting}[language=bash]
+dir
+\end{lstlisting}
+
+Verificar que las carpetas principales existen:
+
+\begin{itemize}
+\item \texttt{app}
+\item \texttt{data}
+\item \texttt{docs}
+\item \texttt{etl}
+\item \texttt{sql}
+\item \texttt{tests}
+\end{itemize}
+
+\section{Paso 2: Revisar el archivo \texttt{.gitignore}}
+
+El archivo \texttt{.gitignore} evita subir al repositorio archivos innecesarios, privados o pesados.
+
+Debe contener:
+
+\begin{lstlisting}
+.venv/
+.env
+
+**pycache**/
+*.pyc
+*.pyo
+
+.vscode/
+
+data/processed/
+data/warehouse/*.duckdb
+data/warehouse/*.wal
+
+.DS_Store
+Thumbs.db
+\end{lstlisting}
+
+\section{Nota importante sobre DuckDB}
+
+El archivo:
+
+\begin{verbatim}
+data/warehouse/macrofinanzas.duckdb
+\end{verbatim}
+
+no debe subirse a GitHub si el proyecto crecerá en tamaño.
+
+En su lugar, el usuario debe poder reconstruir la base ejecutando:
+
+\begin{lstlisting}[language=bash]
+python etl/run_pipeline.py
+\end{lstlisting}
+
+Esta es una práctica recomendable porque permite reproducibilidad.
+
+\section{Paso 3: Revisar \texttt{.env.example}}
+
+El archivo:
+
+\begin{verbatim}
+.env.example
+\end{verbatim}
+
+debe documentar la ruta esperada de la base DuckDB.
+
+Contenido sugerido:
+
+\begin{lstlisting}
+DUCKDB_PATH=data/warehouse/macrofinanzas.duckdb
+\end{lstlisting}
+
+El archivo real:
+
+\begin{verbatim}
+.env
+\end{verbatim}
+
+no debe subirse a GitHub.
+
+\section{Paso 4: Actualizar \texttt{requirements.txt}}
+
+Con el entorno virtual activo:
+
+\begin{lstlisting}[language=bash]
+pip freeze > requirements.txt
+\end{lstlisting}
+
+Verificar que incluya, al menos:
+
+\begin{itemize}
+\item \texttt{duckdb}
+\item \texttt{pandas}
+\item \texttt{python-dotenv}
+\item \texttt{streamlit}
+\item \texttt{plotly}
+\end{itemize}
+
+\section{Paso 5: Crear un README profesional}
+
+Actualizar el archivo:
+
+\begin{verbatim}
+README.md
+\end{verbatim}
+
+con el siguiente contenido sugerido:
+
+\begin{lstlisting}
+
+# Data Warehouse Macrofinanciero RD
+
+Proyecto aplicado de ingeniería de datos para construir una plataforma de inteligencia macrofinanciera utilizando Python, DuckDB y Streamlit.
+
+## Objetivo
+
+Construir un flujo completo de datos que permita:
+
+* Ingerir datos desde archivos CSV.
+* Almacenarlos en DuckDB.
+* Organizar la información en capas staging, core y mart.
+* Construir indicadores macrofinancieros.
+* Publicar un dashboard interactivo en Streamlit.
+
+## Arquitectura
+
+CSV -> Python -> DuckDB -> Staging -> Core -> Mart -> Streamlit
+
+## Tecnologías
+
+* Python
+* DuckDB
+* Pandas
+* Streamlit
+* Plotly
+* Git
+* GitHub
+
+## Estructura del proyecto
+
+app/
+data/
+docs/
+etl/
+sql/
+tests/
+
+## Cómo ejecutar el proyecto
+
+1. Crear entorno virtual
+
+python -m venv .venv
+
+2. Activar entorno virtual
+
+.venv\Scripts\activate
+
+3. Instalar dependencias
+
+pip install -r requirements.txt
+
+4. Ejecutar pipeline
+
+python etl/run_pipeline.py
+
+5. Abrir dashboard
+
+streamlit run app/streamlit_app.py
+
+## Autor
+
+Francisco Ramírez
+\end{lstlisting}
+
+\section{Paso 6: Validar ejecución completa}
+
+Desde la raíz del proyecto ejecutar:
+
+\begin{lstlisting}[language=bash]
+python etl/run_pipeline.py
+\end{lstlisting}
+
+Verificar que se ejecutan correctamente:
+
+\begin{itemize}
+\item \texttt{load_staging.py}
+\item \texttt{load_dimensions.py}
+\item \texttt{load_facts.py}
+\item \texttt{load_marts.py}
+\end{itemize}
+
+\section{Paso 7: Validar dashboard local}
+
+Ejecutar:
+
+\begin{lstlisting}[language=bash]
+streamlit run app/streamlit_app.py
+\end{lstlisting}
+
+Verificar:
+
+\begin{itemize}
+\item La aplicación abre en el navegador.
+\item Los KPIs se muestran correctamente.
+\item Los gráficos se renderizan.
+\item Las tablas se visualizan.
+\item No aparecen errores de conexión con DuckDB.
+\end{itemize}
+
+\section{Paso 8: Inicializar Git}
+
+Si el repositorio aún no está inicializado:
+
+\begin{lstlisting}[language=bash]
+git init
+\end{lstlisting}
+
+Verificar estado:
+
+\begin{lstlisting}[language=bash]
+git status
+\end{lstlisting}
+
+\section{Paso 9: Agregar archivos al repositorio}
+
+Ejecutar:
+
+\begin{lstlisting}[language=bash]
+git add .
+\end{lstlisting}
+
+Revisar qué archivos serán incluidos:
+
+\begin{lstlisting}[language=bash]
+git status
+\end{lstlisting}
+
+Confirmar que no aparecen:
+
+\begin{itemize}
+\item \texttt{.env}
+\item \texttt{.venv/}
+\item \texttt{macrofinanzas.duckdb}
+\end{itemize}
+
+\section{Paso 10: Crear commit}
+
+Ejecutar:
+
+\begin{lstlisting}[language=bash]
+git commit -m "Prepare project for GitHub deployment"
+\end{lstlisting}
+
+Verificar historial:
+
+\begin{lstlisting}[language=bash]
+git log --oneline
+\end{lstlisting}
+
+\section{Paso 11: Crear repositorio en GitHub}
+
+Entrar a GitHub y crear un repositorio nuevo.
+
+Nombre sugerido:
+
+\begin{verbatim}
+dwh_macrofinanciero_rd
+\end{verbatim}
+
+Seleccionar:
+
+\begin{itemize}
+\item Repositorio público o privado.
+\item No inicializar con README si ya existe uno local.
+\item No agregar \texttt{.gitignore} desde GitHub si ya existe localmente.
+\end{itemize}
+
+\section{Paso 12: Conectar repositorio local con GitHub}
+
+GitHub mostrará instrucciones similares a:
+
+\begin{lstlisting}[language=bash]
+git remote add origin https://github.com/usuario/dwh_macrofinanciero_rd.git
+git branch -M main
+git push -u origin main
+\end{lstlisting}
+
+Ejecutarlas desde la raíz del proyecto.
+
+\section{Paso 13: Verificar publicación}
+
+Entrar al repositorio en GitHub y verificar que aparecen:
+
+\begin{itemize}
+\item \texttt{README.md}
+\item \texttt{requirements.txt}
+\item carpeta \texttt{app}
+\item carpeta \texttt{etl}
+\item carpeta \texttt{sql}
+\item carpeta \texttt{docs}
+\end{itemize}
+
+\section{Paso 14: Preparar archivo para despliegue}
+
+Streamlit Community Cloud utilizará:
+
+\begin{verbatim}
+requirements.txt
+\end{verbatim}
+
+para instalar dependencias y:
+
+\begin{verbatim}
+app/streamlit_app.py
+\end{verbatim}
+
+como archivo principal de la aplicación.
+
+Verificar que en GitHub existan ambos archivos.
+
+\section{Paso 15: Consideración importante sobre datos}
+
+Si el archivo \texttt{macrofinanzas.duckdb} no se sube a GitHub, entonces la app desplegada no tendrá base de datos a menos que:
+
+\begin{itemize}
+\item La app construya la base al iniciar.
+\item El pipeline se ejecute antes del despliegue.
+\item Se suba una versión pequeña de la base DuckDB.
+\end{itemize}
+
+Para esta primera versión educativa, hay dos opciones.
+
+\subsection{Opción A: Subir una base pequeña}
+
+Permite que la app funcione inmediatamente en Streamlit Cloud.
+
+En este caso se puede permitir temporalmente:
+
+\begin{verbatim}
+data/warehouse/macrofinanzas.duckdb
+\end{verbatim}
+
+en GitHub, siempre que sea pequeño y no contenga información sensible.
+
+\subsection{Opción B: Reconstruir la base}
+
+Modificar la app para que, si no encuentra la base, ejecute el pipeline automáticamente.
+
+Esta opción es más robusta, pero requiere más cuidado.
+
+\section{Recomendación para este proyecto}
+
+Para la primera publicación, se recomienda la Opción A:
+
+\begin{quote}
+Subir una base DuckDB pequeña, construida con datos simulados.
+\end{quote}
+
+Más adelante se puede migrar a una arquitectura más robusta donde la base se reconstruya automáticamente.
+
+\section{Buenas prácticas}
+
+Durante este hito seguiremos estas reglas:
+
+\begin{enumerate}
+\item No subir credenciales al repositorio.
+\item Mantener \texttt{requirements.txt} actualizado.
+\item Documentar claramente cómo ejecutar el proyecto.
+\item Asegurar que el pipeline reconstruye la base.
+\item Usar datos simulados para despliegues públicos.
+\end{enumerate}
+
+\section{Checklist de validación}
+
+\begin{itemize}
+\item[$\Box$] Archivo \texttt{README.md} actualizado.
+\item[$\Box$] Archivo \texttt{requirements.txt} actualizado.
+\item[$\Box$] Archivo \texttt{.gitignore} revisado.
+\item[$\Box$] Pipeline ejecuta correctamente.
+\item[$\Box$] Dashboard abre localmente.
+\item[$\Box$] Repositorio Git inicializado.
+\item[$\Box$] Primer commit de despliegue creado.
+\item[$\Box$] Repositorio publicado en GitHub.
+\end{itemize}
+
+\section{Entregable}
+
+Al finalizar este hito el estudiante deberá disponer de:
+
+\begin{itemize}
+\item Repositorio GitHub profesional.
+\item Proyecto documentado.
+\item Dashboard ejecutable localmente.
+\item Pipeline reproducible.
+\item Proyecto listo para desplegar en Streamlit Cloud.
+\end{itemize}
+
+\section{Próximo hito}
+
+En el Hito 12 desplegaremos la aplicación en Streamlit Community Cloud.
+
+Aprenderemos a:
+
+\begin{itemize}
+\item Conectar GitHub con Streamlit Cloud.
+\item Configurar el archivo principal de la app.
+\item Gestionar dependencias.
+\item Resolver errores comunes de despliegue.
+\item Obtener una URL pública del dashboard.
+\end{itemize}
