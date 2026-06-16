@@ -4,7 +4,7 @@ select
     t.anio,
     t.mes,
     t.anio_mes,
-    m.moneda_mes,
+    m.moneda_cod,
     m.moneda_nombre,
     f.tasa_compra,
     f.tasa_venta,
@@ -40,6 +40,9 @@ SELECT
     f.resultado_neto
         /NULLIF(f.patrimonio, 0)
         AS roe,
+    f.depositos_me
+        /NULLIF(f.depositos,0)
+        AS dolarizacion_depositos,
     f.cartera_me
         /NULLIF(f.cartera_creditos,0)
         AS dolarizacion_cartera
@@ -47,7 +50,7 @@ FROM core.fact_balance_mensual f
 JOIN core.dim_tiempo t
 ON t.sk_tiempo = f.sk_tiempo
 
-JOIN core.dim_entiedad_financiera e
+JOIN core.dim_entidad_financiera e
 ON e.sk_entidad = f.sk_entidad;
 
 CREATE OR REPLACE VIEW mart.vw_hhi_bancario AS
@@ -57,7 +60,7 @@ WITH cuotas AS
             t.fecha,
             t.anio_mes,
             e.entidad_cod,
-            e.entidad_nombres,
+            e.entidad_nombre,
             f.activos_totales,
             f.activos_totales
                 /NULLIF(
@@ -67,7 +70,7 @@ WITH cuotas AS
                     ),
                     0
                 )
-                AS cuotas_activos
+                AS cuota_activos
         FROM core.fact_balance_mensual f
         JOIN core.dim_tiempo t
             ON t.sk_tiempo = f.sk_tiempo
@@ -95,7 +98,7 @@ WITH fx AS
             AVG(tasa_promedio)
                 AS tasa_promedio_mes,
             AVG(spread)
-                AS spead_promedio_mes
+                AS spread_promedio_mes
         FROM mart.vw_tipo_cambio_diario
         WHERE moneda_cod = 'USD'
         GROUP BY

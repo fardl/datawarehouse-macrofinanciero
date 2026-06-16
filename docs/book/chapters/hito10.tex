@@ -1,0 +1,752 @@
+\chapter{Hito 10: Construcción del Dashboard en Streamlit}
+
+\section{Objetivo}
+
+El objetivo de este hito es construir la primera versión del dashboard macrofinanciero utilizando Streamlit.
+
+Hasta este momento hemos construido:
+
+\begin{verbatim}
+CSV
+|
+V
+Python
+|
+V
+DuckDB
+|
+V
+staging
+|
+V
+core
+|
+V
+mart
+\end{verbatim}
+
+En este hito conectaremos la capa \texttt{mart} con una aplicación web interactiva.
+
+Al finalizar este hito el estudiante será capaz de:
+
+\begin{itemize}
+\item Instalar Streamlit.
+\item Conectar Streamlit con DuckDB.
+\item Consultar vistas de la capa \texttt{mart}.
+\item Crear indicadores KPI.
+\item Crear gráficos básicos.
+\item Construir una primera aplicación macrofinanciera.
+\end{itemize}
+
+\section{Resultado esperado}
+
+Al finalizar este hito deberá existir una aplicación:
+
+\begin{verbatim}
+app/streamlit_app.py
+\end{verbatim}
+
+capaz de mostrar:
+
+\begin{itemize}
+\item Resumen macrofinanciero.
+\item Evolución del tipo de cambio.
+\item Indicadores bancarios.
+\item Dolarización.
+\item Concentración bancaria.
+\end{itemize}
+
+\section{Arquitectura del hito}
+
+El flujo será:
+
+\begin{verbatim}
+DuckDB
+|
+V
+mart
+|
+V
+Streamlit
+|
+V
+Usuario
+\end{verbatim}
+
+\section{Paso 1: Instalar Streamlit}
+
+Con el entorno virtual activo, ejecutar:
+
+\begin{lstlisting}[language=bash]
+pip install streamlit
+pip install plotly
+\end{lstlisting}
+
+Actualizar dependencias:
+
+\begin{lstlisting}[language=bash]
+pip freeze > requirements.txt
+\end{lstlisting}
+
+\section{Paso 2: Crear carpeta de aplicación}
+
+Verificar que existe:
+
+\begin{verbatim}
+app/
+\end{verbatim}
+
+Crear el archivo:
+
+\begin{verbatim}
+app/streamlit_app.py
+\end{verbatim}
+
+\section{Paso 3: Importar librerías}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+import duckdb
+import pandas as pd
+import streamlit as st
+import plotly.express as px
+\end{lstlisting}
+
+\section{Paso 4: Definir ruta de DuckDB}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+DB_PATH = "data/warehouse/macrofinanzas.duckdb"
+\end{lstlisting}
+
+\section{Paso 5: Crear función de consulta}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+def run_query(query):
+
+```
+conn = duckdb.connect(DB_PATH)
+
+df = conn.execute(
+    query
+).fetchdf()
+
+conn.close()
+
+return df
+```
+
+\end{lstlisting}
+
+Esta función permite consultar DuckDB desde Streamlit y devolver los resultados como un DataFrame de Pandas.
+
+\section{Paso 6: Configurar página}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+st.set_page_config(
+page_title="Dashboard Macrofinanciero RD",
+page_icon="📊",
+layout="wide"
+)
+
+st.title(
+"Dashboard Macrofinanciero RD"
+)
+
+st.caption(
+"Proyecto de Data Warehouse macrofinanciero con DuckDB y Streamlit"
+)
+\end{lstlisting}
+
+\section{Paso 7: Cargar datos desde mart}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+resumen = run_query(
+"""
+SELECT *
+FROM mart.vw_resumen_macrofinanciero
+ORDER BY anio_mes
+"""
+)
+
+fx = run_query(
+"""
+SELECT *
+FROM mart.vw_tipo_cambio_diario
+ORDER BY fecha
+"""
+)
+
+banca = run_query(
+"""
+SELECT *
+FROM mart.vw_indicadores_banca
+ORDER BY fecha
+"""
+)
+
+hhi = run_query(
+"""
+SELECT *
+FROM mart.vw_hhi_bancario
+ORDER BY anio_mes
+"""
+)
+\end{lstlisting}
+
+\section{Paso 8: Crear KPIs principales}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+ultimo = resumen.sort_values(
+"anio_mes"
+).tail(1)
+
+if not ultimo.empty:
+
+```
+tasa_promedio = ultimo[
+    "tasa_promedio_mes"
+].iloc[0]
+
+activos = ultimo[
+    "activos_totales_sistema"
+].iloc[0]
+
+depositos = ultimo[
+    "depositos_sistema"
+].iloc[0]
+
+dolarizacion = ultimo[
+    "dolarizacion_depositos_sistema"
+].iloc[0]
+
+col1, col2, col3, col4 = st.columns(4)
+
+col1.metric(
+    "Tipo de cambio promedio",
+    round(tasa_promedio, 2)
+)
+
+col2.metric(
+    "Activos del sistema",
+    f"{activos:,.0f}"
+)
+
+col3.metric(
+    "Depósitos del sistema",
+    f"{depositos:,.0f}"
+)
+
+col4.metric(
+    "Dolarización depósitos",
+    f"{dolarizacion:.2%}"
+)
+```
+
+\end{lstlisting}
+
+\section{Paso 9: Gráfico de tipo de cambio}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+st.subheader(
+"Evolución del tipo de cambio"
+)
+
+fig_fx = px.line(
+fx,
+x="fecha",
+y="tasa_promedio",
+color="moneda_cod",
+title="Tipo de cambio promedio diario"
+)
+
+st.plotly_chart(
+fig_fx,
+use_container_width=True
+)
+\end{lstlisting}
+
+\section{Paso 10: Gráfico de indicadores bancarios}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+st.subheader(
+"Indicadores bancarios"
+)
+
+entidades = banca[
+"entidad_nombre"
+].dropna().unique()
+
+entidad_seleccionada = st.selectbox(
+"Seleccione una entidad financiera",
+entidades
+)
+
+banca_filtrada = banca[
+banca["entidad_nombre"]
+==
+entidad_seleccionada
+]
+
+fig_roa = px.line(
+banca_filtrada,
+x="fecha",
+y="roa",
+title="ROA"
+)
+
+st.plotly_chart(
+fig_roa,
+use_container_width=True
+)
+
+fig_roe = px.line(
+banca_filtrada,
+x="fecha",
+y="roe",
+title="ROE"
+)
+
+st.plotly_chart(
+fig_roe,
+use_container_width=True
+)
+\end{lstlisting}
+
+\section{Paso 11: Gráfico de dolarización}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+st.subheader(
+"Dolarización bancaria"
+)
+
+fig_dolarizacion = px.line(
+banca_filtrada,
+x="fecha",
+y=[
+"dolarizacion_depositos",
+"dolarizacion_cartera"
+],
+title="Dolarización de depósitos y cartera"
+)
+
+st.plotly_chart(
+fig_dolarizacion,
+use_container_width=True
+)
+\end{lstlisting}
+
+\section{Paso 12: Gráfico de concentración bancaria}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+st.subheader(
+"Concentración bancaria"
+)
+
+fig_hhi = px.line(
+hhi,
+x="anio_mes",
+y="hhi_activos",
+title="Índice HHI por activos"
+)
+
+st.plotly_chart(
+fig_hhi,
+use_container_width=True
+)
+\end{lstlisting}
+
+\section{Paso 13: Mostrar tablas de datos}
+
+Agregar:
+
+\begin{lstlisting}[language=Python]
+with st.expander(
+"Ver resumen macrofinanciero"
+):
+
+```
+st.dataframe(
+    resumen,
+    use_container_width=True
+)
+```
+
+with st.expander(
+"Ver indicadores bancarios"
+):
+
+```
+st.dataframe(
+    banca,
+    use_container_width=True
+)
+```
+
+\end{lstlisting}
+
+\section{Paso 14: Versión completa inicial de la aplicación}
+
+El archivo \texttt{app/streamlit_app.py} deberá contener:
+
+\begin{lstlisting}[language=Python]
+import duckdb
+import pandas as pd
+import streamlit as st
+import plotly.express as px
+
+DB_PATH = "data/warehouse/macrofinanzas.duckdb"
+
+def run_query(query):
+
+```
+conn = duckdb.connect(DB_PATH)
+
+df = conn.execute(
+    query
+).fetchdf()
+
+conn.close()
+
+return df
+```
+
+st.set_page_config(
+page_title="Dashboard Macrofinanciero RD",
+page_icon="📊",
+layout="wide"
+)
+
+st.title(
+"Dashboard Macrofinanciero RD"
+)
+
+st.caption(
+"Proyecto de Data Warehouse macrofinanciero con DuckDB y Streamlit"
+)
+
+resumen = run_query(
+"""
+SELECT *
+FROM mart.vw_resumen_macrofinanciero
+ORDER BY anio_mes
+"""
+)
+
+fx = run_query(
+"""
+SELECT *
+FROM mart.vw_tipo_cambio_diario
+ORDER BY fecha
+"""
+)
+
+banca = run_query(
+"""
+SELECT *
+FROM mart.vw_indicadores_banca
+ORDER BY fecha
+"""
+)
+
+hhi = run_query(
+"""
+SELECT *
+FROM mart.vw_hhi_bancario
+ORDER BY anio_mes
+"""
+)
+
+ultimo = resumen.sort_values(
+"anio_mes"
+).tail(1)
+
+if not ultimo.empty:
+
+```
+tasa_promedio = ultimo[
+    "tasa_promedio_mes"
+].iloc[0]
+
+activos = ultimo[
+    "activos_totales_sistema"
+].iloc[0]
+
+depositos = ultimo[
+    "depositos_sistema"
+].iloc[0]
+
+dolarizacion = ultimo[
+    "dolarizacion_depositos_sistema"
+].iloc[0]
+
+col1, col2, col3, col4 = st.columns(4)
+
+col1.metric(
+    "Tipo de cambio promedio",
+    round(tasa_promedio, 2)
+)
+
+col2.metric(
+    "Activos del sistema",
+    f"{activos:,.0f}"
+)
+
+col3.metric(
+    "Depósitos del sistema",
+    f"{depositos:,.0f}"
+)
+
+col4.metric(
+    "Dolarización depósitos",
+    f"{dolarizacion:.2%}"
+)
+```
+
+st.subheader(
+"Evolución del tipo de cambio"
+)
+
+fig_fx = px.line(
+fx,
+x="fecha",
+y="tasa_promedio",
+color="moneda_cod",
+title="Tipo de cambio promedio diario"
+)
+
+st.plotly_chart(
+fig_fx,
+use_container_width=True
+)
+
+st.subheader(
+"Indicadores bancarios"
+)
+
+entidades = banca[
+"entidad_nombre"
+].dropna().unique()
+
+entidad_seleccionada = st.selectbox(
+"Seleccione una entidad financiera",
+entidades
+)
+
+banca_filtrada = banca[
+banca["entidad_nombre"]
+==
+entidad_seleccionada
+]
+
+fig_roa = px.line(
+banca_filtrada,
+x="fecha",
+y="roa",
+title="ROA"
+)
+
+st.plotly_chart(
+fig_roa,
+use_container_width=True
+)
+
+fig_roe = px.line(
+banca_filtrada,
+x="fecha",
+y="roe",
+title="ROE"
+)
+
+st.plotly_chart(
+fig_roe,
+use_container_width=True
+)
+
+st.subheader(
+"Dolarización bancaria"
+)
+
+fig_dolarizacion = px.line(
+banca_filtrada,
+x="fecha",
+y=[
+"dolarizacion_depositos",
+"dolarizacion_cartera"
+],
+title="Dolarización de depósitos y cartera"
+)
+
+st.plotly_chart(
+fig_dolarizacion,
+use_container_width=True
+)
+
+st.subheader(
+"Concentración bancaria"
+)
+
+fig_hhi = px.line(
+hhi,
+x="anio_mes",
+y="hhi_activos",
+title="Índice HHI por activos"
+)
+
+st.plotly_chart(
+fig_hhi,
+use_container_width=True
+)
+
+with st.expander(
+"Ver resumen macrofinanciero"
+):
+
+```
+st.dataframe(
+    resumen,
+    use_container_width=True
+)
+```
+
+with st.expander(
+"Ver indicadores bancarios"
+):
+
+```
+st.dataframe(
+    banca,
+    use_container_width=True
+)
+```
+
+\end{lstlisting}
+
+\section{Paso 15: Ejecutar Streamlit}
+
+Desde la raíz del proyecto:
+
+\begin{lstlisting}[language=bash]
+streamlit run app/streamlit_app.py
+\end{lstlisting}
+
+Streamlit abrirá una dirección local parecida a:
+
+\begin{verbatim}
+http://localhost:8501
+\end{verbatim}
+
+\section{Paso 16: Verificar funcionamiento}
+
+Comprobar:
+
+\begin{itemize}
+\item El dashboard abre correctamente.
+\item Los KPIs aparecen en la parte superior.
+\item El gráfico del tipo de cambio se visualiza.
+\item El selector de entidad funciona.
+\item Las tablas aparecen dentro de los expansores.
+\end{itemize}
+
+\section{Paso 17: Problemas frecuentes}
+
+\subsection{No module named streamlit}
+
+Instalar:
+
+\begin{lstlisting}[language=bash]
+pip install streamlit
+\end{lstlisting}
+
+\subsection{No module named plotly}
+
+Instalar:
+
+\begin{lstlisting}[language=bash]
+pip install plotly
+\end{lstlisting}
+
+\subsection{La vista mart no existe}
+
+Ejecutar primero:
+
+\begin{lstlisting}[language=bash]
+python etl/run_pipeline.py
+\end{lstlisting}
+
+\subsection{La base DuckDB no existe}
+
+Verificar que existe:
+
+\begin{verbatim}
+data/warehouse/macrofinanzas.duckdb
+\end{verbatim}
+
+\section{Buenas prácticas}
+
+Durante este hito seguiremos estas reglas:
+
+\begin{enumerate}
+\item Streamlit debe consumir la capa \texttt{mart}.
+\item No consultar directamente \texttt{staging}.
+\item Separar consultas SQL de visualizaciones cuando el proyecto crezca.
+\item Mantener el dashboard simple en la primera versión.
+\item Validar que el pipeline corre antes de abrir Streamlit.
+\end{enumerate}
+
+\section{Checklist de validación}
+
+\begin{itemize}
+\item[$\Box$] Streamlit instalado.
+\item[$\Box$] Plotly instalado.
+\item[$\Box$] Archivo \texttt{streamlit_app.py} creado.
+\item[$\Box$] App conectada a DuckDB.
+\item[$\Box$] KPIs visibles.
+\item[$\Box$] Gráficos visibles.
+\item[$\Box$] Filtro de entidad funcional.
+\item[$\Box$] Dashboard abierto localmente.
+\end{itemize}
+
+\section{Entregable}
+
+Al finalizar este hito el estudiante deberá disponer de:
+
+\begin{itemize}
+\item Dashboard Streamlit funcional.
+\item Conexión DuckDB--Streamlit.
+\item KPIs macrofinancieros.
+\item Gráficos básicos.
+\item Primera aplicación analítica del proyecto.
+\end{itemize}
+
+\section{Próximo hito}
+
+En el Hito 11 prepararemos el proyecto para publicación.
+
+Aprenderemos a:
+
+\begin{itemize}
+\item Organizar archivos para GitHub.
+\item Crear un \texttt{README.md} profesional.
+\item Preparar \texttt{requirements.txt}.
+\item Verificar que la aplicación pueda ejecutarse en otro entorno.
+\item Preparar el despliegue en Streamlit Community Cloud.
+\end{itemize}

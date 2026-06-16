@@ -4,7 +4,8 @@ import subprocess
 steps =   [
         "etl/load_staging.py",
         "etl/load_dimensions.py",
-        "etl/load_facts.py"
+        "etl/load_facts.py",
+        "etl/load_marts.py"
     ]
 
 for step in steps:
